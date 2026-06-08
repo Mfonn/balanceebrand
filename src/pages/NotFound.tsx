@@ -1,29 +1,20 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { SEOHead } from '@/components/SEOHead';
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { Mark } from "@/components/balance/Mark";
 
-const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (import.meta.env.DEV) console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
-
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <SEOHead 
-        title="404 - Page Not Found"
-        description="The page you're looking for doesn't exist. Return to discover events and community calendars."
-      />
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-gray-600">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 underline hover:text-blue-700">
-          Return to Home
-        </a>
-      </div>
-    </div>
-  );
-};
+const NotFound = () => (
+  <div className="min-h-screen flex flex-col items-center justify-center bg-cream text-ink px-6 text-center">
+    <Helmet>
+      <title>Not found — balance_ee</title>
+      <meta name="robots" content="noindex" />
+    </Helmet>
+    <Mark className="w-24 h-24 animate-wiggle" />
+    <h1 className="font-display text-7xl mt-6">404</h1>
+    <p className="text-ink/70 mt-2 text-lg">This page wandered off on a long walk.</p>
+    <Link to="/" className="mt-8 rounded-full bg-terracotta text-cream font-medium px-6 py-3 hover:bg-ink transition-colors">
+      Take me home
+    </Link>
+  </div>
+);
 
 export default NotFound;
