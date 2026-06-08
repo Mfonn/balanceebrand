@@ -2,104 +2,164 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* balance_ee design system — terracotta + sage, joyful, alive
+   All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Brand palette (HSL) */
+    --terracotta: 14 53% 53%;      /* #c4654a */
+    --peach: 24 70% 70%;            /* #e8a87c */
+    --sage: 110 21% 57%;            /* #87a878 */
+    --forest: 100 17% 34%;          /* #4a6741 */
+    --cream: 36 41% 96%;            /* warm off-white */
+    --ink: 100 17% 18%;             /* deep forest for text */
+
+    --background: 36 41% 96%;
+    --foreground: 100 17% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 100 17% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 100 17% 18%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 14 53% 53%;
+    --primary-foreground: 36 41% 96%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 110 21% 57%;
+    --secondary-foreground: 36 41% 96%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 36 30% 92%;
+    --muted-foreground: 100 12% 35%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 24 70% 70%;
+    --accent-foreground: 100 17% 18%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 36 41% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 36 25% 85%;
+    --input: 36 25% 85%;
+    --ring: 14 53% 53%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Gradients & shadows */
+    --gradient-warm: linear-gradient(135deg, hsl(24 70% 78%), hsl(14 53% 60%));
+    --gradient-sage: linear-gradient(135deg, hsl(110 21% 65%), hsl(100 17% 38%));
+    --gradient-sunrise: linear-gradient(135deg, hsl(24 70% 75%) 0%, hsl(14 53% 53%) 50%, hsl(330 50% 60%) 100%);
+    --shadow-soft: 0 8px 32px -8px hsl(14 53% 30% / 0.18);
+    --shadow-glow: 0 0 40px hsl(24 70% 70% / 0.5), 0 0 80px hsl(14 53% 53% / 0.25);
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar (legacy, kept for shadcn) */
+    --sidebar-background: 36 41% 96%;
+    --sidebar-foreground: 100 17% 18%;
+    --sidebar-primary: 14 53% 53%;
+    --sidebar-primary-foreground: 36 41% 96%;
+    --sidebar-accent: 36 30% 92%;
+    --sidebar-accent-foreground: 100 17% 18%;
+    --sidebar-border: 36 25% 85%;
+    --sidebar-ring: 14 53% 53%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 100 17% 10%;
+    --foreground: 36 41% 96%;
+    --card: 100 17% 14%;
+    --card-foreground: 36 41% 96%;
+    --popover: 100 17% 14%;
+    --popover-foreground: 36 41% 96%;
+    --primary: 24 70% 70%;
+    --primary-foreground: 100 17% 10%;
+    --secondary: 110 21% 40%;
+    --secondary-foreground: 36 41% 96%;
+    --muted: 100 12% 18%;
+    --muted-foreground: 36 25% 75%;
+    --accent: 14 53% 53%;
+    --accent-foreground: 36 41% 96%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 36 41% 96%;
+    --border: 100 12% 22%;
+    --input: 100 12% 22%;
+    --ring: 24 70% 70%;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "ss02";
+  }
+  h1, h2, h3, h4 { @apply font-display; }
+  ::selection { background-color: hsl(var(--terracotta) / 0.25); }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  /* Shimmer sweep used on calendar event days */
+  .shimmer-day {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .shimmer-day::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(115deg,
+      transparent 30%,
+      hsl(36 80% 90% / 0.85) 50%,
+      transparent 70%);
+    transform: translateX(-100%);
+    animation: shimmer-sweep 3.2s ease-in-out infinite;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+  .shimmer-day::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    box-shadow: 0 0 0 2px hsl(var(--terracotta) / 0.6),
+                0 0 24px hsl(var(--peach) / 0.7);
+    animation: pulse-ring 2.4s ease-in-out infinite;
+    pointer-events: none;
   }
 
-  body {
-    @apply bg-background text-foreground font-sans;
-  }
+  .gradient-warm { background: var(--gradient-warm); }
+  .gradient-sage { background: var(--gradient-sage); }
+  .gradient-sunrise { background: var(--gradient-sunrise); }
+
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+}
+
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(100%); }
+}
+
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 2px hsl(var(--terracotta) / 0.55), 0 0 20px hsl(var(--peach) / 0.55); }
+  50% { box-shadow: 0 0 0 3px hsl(var(--terracotta) / 0.85), 0 0 36px hsl(var(--peach) / 0.85); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(4deg); }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
 }
