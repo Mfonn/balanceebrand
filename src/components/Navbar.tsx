@@ -7,11 +7,12 @@ import { AuthSheet } from "./AuthSheet";
 import { Mark } from "./balance/Mark";
 import { SOCIAL } from "@/data/events";
 
-const NAV_LINKS = [
+const NAV_LINKS: { to: string; label: string; badge?: string }[] = [
   { to: "/", label: "Home" },
-  { to: "/calendar", label: "June Calendar" },
+  { to: "/classes", label: "Classes" },
+  { to: "/calendar", label: "Events" },
+  { to: "/wellness-ai", label: "Wellness AI", badge: "new" },
   { to: "/learn", label: "Learn" },
-  { to: "/booking", label: "Book a Class" },
   { to: "/about", label: "About" },
 ];
 
@@ -56,9 +57,12 @@ export const Navbar: React.FC = () => {
               <Link
                 key={l.to}
                 to={l.to}
-                className="relative px-3 py-2 text-sm font-medium text-ink/80 hover:text-terracotta transition-colors group"
+                className="relative px-3 py-2 text-sm font-medium text-ink/80 hover:text-terracotta transition-colors group inline-flex items-center gap-1.5"
               >
                 {l.label}
+                {l.badge && (
+                  <span className="text-[9px] uppercase tracking-wider bg-terracotta text-cream rounded-full px-1.5 py-0.5">{l.badge}</span>
+                )}
                 <span className="absolute inset-x-3 -bottom-0.5 h-0.5 bg-terracotta scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
               </Link>
             ))}
@@ -92,10 +96,13 @@ export const Navbar: React.FC = () => {
                   key={l.to}
                   to={l.to}
                   onClick={() => setOpen(false)}
-                  className="font-display text-3xl text-ink py-3 border-b border-border opacity-0 animate-fade-in"
+                  className="font-display text-3xl text-ink py-3 border-b border-border opacity-0 animate-fade-in inline-flex items-center gap-2"
                   style={{ animationDelay: `${i * 60}ms`, animationFillMode: "forwards" }}
                 >
                   {l.label}
+                  {l.badge && (
+                    <span className="text-[10px] uppercase tracking-wider bg-terracotta text-cream rounded-full px-2 py-0.5 font-sans">{l.badge}</span>
+                  )}
                 </Link>
               ))}
               <a
