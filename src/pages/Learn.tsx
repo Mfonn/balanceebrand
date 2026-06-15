@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { FloatingDecor } from "@/components/balance/FloatingDecor";
+import { Footer } from "@/components/Footer";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ExternalLink, BookOpen } from "lucide-react";
 
@@ -29,7 +29,7 @@ const Learn: React.FC = () => (
     <Navbar />
 
     <section className="relative pt-28 md:pt-36 pb-12 px-4 md:px-8 overflow-hidden">
-      <FloatingDecor className="opacity-60" />
+      <div className="absolute -top-24 right-[8%] w-72 h-72 rounded-full bg-peach/25 blur-3xl pointer-events-none" aria-hidden />
       <div className="relative mx-auto max-w-3xl text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-terracotta">learn</p>
         <h1 className="font-display text-5xl sm:text-6xl md:text-7xl mt-3 leading-[1.0] text-balance">
