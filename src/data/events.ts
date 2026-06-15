@@ -1,6 +1,5 @@
 import bookClubImg from "@/assets/event-book-club.jpg";
 import soireeImg from "@/assets/event-fitness-soiree.jpg";
-import golfImg from "@/assets/event-golf.jpg";
 
 export type BalanceEvent = {
   id: string;
@@ -8,7 +7,7 @@ export type BalanceEvent = {
   slot: "AM" | "PM" | "ALLDAY";
   title: string;
   tagline: string;
-  date: string;           // human readable
+  date: string;
   time: string;
   location: string;
   image: string;
@@ -17,9 +16,12 @@ export type BalanceEvent = {
   addOns?: string[];
   tickets: { label: string; price: string; note?: string }[];
   bring?: string[];
-  selarUrl: string;       // booking link
+  selarUrl: string;
   collab?: string;
   accent: "terracotta" | "sage" | "peach";
+  featured?: boolean;
+  status?: "upcoming" | "past";
+  recapNote?: string;
 };
 
 export const JUNE_EVENTS: BalanceEvent[] = [
@@ -31,43 +33,22 @@ export const JUNE_EVENTS: BalanceEvent[] = [
     tagline: "Good books · Good company · Gentle yoga",
     date: "Saturday, June 13, 2026",
     time: "Evening · 4:00 PM",
-    location: "Lagos · venue revealed on booking",
+    location: "Lagos",
     image: bookClubImg,
     vibe: "Cozy, conversational, restorative",
     included: [
       "Book swap & open discussion",
-      "Healthy herbal tea (natural herbs)",
-      "Gentle restorative yoga session",
+      "Healthy herbal tea",
+      "Gentle restorative yoga",
       "Light bites",
     ],
     tickets: [{ label: "Access fee", price: "₦14,000" }],
-    bring: ["Your favorite book", "An open heart", "Loose comfy outfit"],
+    bring: ["Your favourite book", "An open heart", "Loose comfy outfit"],
     selarUrl: "https://selar.com/9647447724",
     collab: "@balance_ee × @707_treat",
     accent: "peach",
-  },
-  {
-    id: "golf-meet",
-    day: 20,
-    slot: "AM",
-    title: "Empowering Women on the Green",
-    tagline: "Play · Network · Connect · Grow",
-    date: "Saturday, June 20, 2026",
-    time: "8:00 AM",
-    location: "Top Golf Course · Lagos",
-    image: golfImg,
-    vibe: "Exclusive ladies meet & greet · all skill levels",
-    included: [
-      "Ladies meet & greet on the green",
-      "Networking with fellow enthusiasts",
-      "Coaching for all skill levels",
-      "Limited to just 50 women",
-    ],
-    tickets: [{ label: "Registration", price: "₦50,000", note: "Exclusive" }],
-    bring: ["Comfortable athletic wear", "Sun protection"],
-    selarUrl: "https://selar.com/9647447724",
-    collab: "@balance_ee × @topgolfcourse",
-    accent: "sage",
+    status: "past",
+    recapNote: "This gathering happened on June 13. Recap coming soon — DM us for the next one.",
   },
   {
     id: "fitness-soiree",
@@ -76,7 +57,7 @@ export const JUNE_EVENTS: BalanceEvent[] = [
     title: "Fitness Soirée",
     tagline: "An evening of movement & community",
     date: "Saturday, June 20, 2026",
-    time: "Evening · Doors at 4:00 PM",
+    time: "Doors at 4:00 PM",
     location: "Lagos · waterfront venue",
     image: soireeImg,
     vibe: "Shop + chill · wellness-first hospitality",
@@ -88,25 +69,26 @@ export const JUNE_EVENTS: BalanceEvent[] = [
     ],
     addOns: ["Kayaking", "Fishing", "Painting"],
     tickets: [
-      { label: "Early Bird", price: "₦15,000", note: "23rd – 13th" },
-      { label: "Late", price: "₦25,000", note: "13th – 20th" },
+      { label: "Early Bird", price: "₦15,000", note: "until June 13" },
+      { label: "Late", price: "₦25,000", note: "June 13 – 20" },
     ],
-    bring: ["Easy-to-move outfits", "Your own mat", "A friend"],
+    bring: ["Easy-to-move outfit", "Your own mat", "A friend"],
     selarUrl: "https://selar.com/g335o95n61",
     collab: "@balance_ee × @essence_rebirth",
     accent: "terracotta",
+    featured: true,
+    status: "upcoming",
   },
 ];
 
 export const getEventsForDay = (day: number) => JUNE_EVENTS.filter((e) => e.day === day);
 export const EVENT_DAYS = Array.from(new Set(JUNE_EVENTS.map((e) => e.day)));
-
-export const SCRIPTURE = {
-  ref: "Psalm 46:5",
-  text: "God is within her, she will not fail.",
-};
+export const FEATURED_EVENT = JUNE_EVENTS.find((e) => e.featured)!;
+export const UPCOMING_EVENTS = JUNE_EVENTS.filter((e) => e.status !== "past");
 
 export const SOCIAL = {
   instagram: "https://www.instagram.com/balance_ee",
   handle: "@balance_ee",
+  // Replace with your real WhatsApp number (international format, no +)
+  whatsapp: "2348000000000",
 };

@@ -126,22 +126,40 @@ export const EventModal: React.FC<Props> = ({ event, onClose }) => {
 
         {/* Sticky CTA */}
         <div className="sticky bottom-0 bg-cream border-t border-border px-5 sm:px-8 py-4 flex flex-col sm:flex-row gap-3">
-          <a
-            href={event.selarUrl}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-terracotta text-cream font-medium py-3.5 px-6 hover:bg-ink transition-colors text-base"
-          >
-            Book on Selar <ExternalLink className="w-4 h-4" />
-          </a>
-          <a
-            href={SOCIAL.instagram}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink text-ink font-medium py-3.5 px-6 hover:bg-ink hover:text-cream transition-colors"
-          >
-            <Instagram className="w-4 h-4" /> DM to reserve
-          </a>
+          {event.status === "past" ? (
+            <>
+              <div className="flex-1 rounded-2xl bg-muted text-ink/80 px-5 py-3 text-sm leading-relaxed">
+                {event.recapNote ?? "This event has already happened. DM us for the next one."}
+              </div>
+              <a
+                href={SOCIAL.instagram}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream font-medium py-3.5 px-6 hover:bg-terracotta transition-colors"
+              >
+                <Instagram className="w-4 h-4" /> DM for the next
+              </a>
+            </>
+          ) : (
+            <>
+              <a
+                href={event.selarUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-terracotta text-cream font-medium py-3.5 px-6 hover:bg-ink transition-colors text-base"
+              >
+                Book on Selar <ExternalLink className="w-4 h-4" />
+              </a>
+              <a
+                href={SOCIAL.instagram}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink text-ink font-medium py-3.5 px-6 hover:bg-ink hover:text-cream transition-colors"
+              >
+                <Instagram className="w-4 h-4" /> DM to reserve
+              </a>
+            </>
+          )}
         </div>
       </div>
     </div>
