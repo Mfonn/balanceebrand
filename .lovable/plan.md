@@ -1,92 +1,74 @@
 ## Goal
+Strip the AI-generated copy and stock imagery, make balance_ee feel authentic, add real Saturday class booking, refresh June events around the Fitness Soirée, surface the new AI wellness chatbot, and elevate the UI to feel alive — futuristic-minimal-luxury with a happy, fun pulse.
 
-Transform the remixed event template into the official **balance_ee** website — a joyful, alive wellness brand site where events are one section among several. High-converting, mobile-first, Selar-powered bookings, with June's shimmering calendar as the centerpiece moment.
+## 1. Content & copy cleanup (authenticity pass)
+- Sweep every page (`Home`, `About`, `Learn`, `Booking`, `CalendarPage`, `Footer`, hero/marquee) and remove generic AI phrasing, em-dash stacks, and filler adjectives. Rewrite in balance_ee's voice: warm, grounded, Lagos-real, second-person, short sentences.
+- Remove the "God is within her, she will not fail" scripture block entirely (delete `SCRIPTURE` from `src/data/events.ts` and any usage).
+- Replace AI-illustrated decor / fake event imagery with neutral, brand-aligned visuals: soft gradient/texture backgrounds, photographic placeholders the user can swap, and CSS/SVG art instead of obviously-generated pictures. No invented testimonials, no fake names, no fabricated stats.
+- Add a single line near event imagery: "Real event photos coming soon — swap in `src/assets/`".
 
-## Design Direction
+## 2. Classes (always-on offering)
+New first-class concept separate from Events.
+- New file `src/data/classes.ts`: 50-minute Saturday sessions at 6–7, 7–8, 8–9, 9–10, 10–11, 11–12, 4–5, 5–6, 6–7. Each slot includes: complimentary healthy herbal tea, 50-minute movement session, 24-hour advance booking rule.
+- New page `/classes` (`src/pages/Classes.tsx`):
+  - Hero strip explaining the class format (50 min, tea included, Saturdays only, 24h notice).
+  - Animated time-slot grid; each card shows time, "X spots away" countdown if <24h, and a Book button.
+  - "What to expect", "What to bring", "What's included" tiles.
+- New component `src/components/balance/ClassBookingDialog.tsx`:
+  - Zod-validated form: name, email, phone, chosen slot (prefilled), Saturday date picker (only Saturdays, only ≥24h out), notes.
+  - On submit: build a pre-filled WhatsApp link (`https://wa.me/<number>?text=...`) and an Instagram DM fallback. Validation errors surface as toasts (per project memory).
+  - No backend write — confirmation happens over DM, as chosen.
+- Add Classes to `Navbar` (between Home and Calendar) and to the Home bento grid as a prominent tile ("Saturdays · 9 sessions · book 24h ahead").
+- Need from user: WhatsApp number to wire into the DM link (placeholder used until provided).
 
-- **Palette:** Terracotta `#c4654a`, Peach `#e8a87c`, Sage `#87a878`, Forest `#4a6741` — earthy, warm, grounded
-- **Type:** Abril Fatface (display) + Cabin (body) — expressive, joyful, editorial
-- **Layout:** Bento-grid homepage — playful mixed-size tiles
-- **Feel:** Alive, joyful, refreshing — like stepping into a different universe. Soft floating-flower/leaf animations, shimmer effects, scroll-reveal motion, generous whitespace, organic shapes
+## 3. June 2026 events refresh
+Update `src/data/events.ts`:
+- Remove `golf-meet` entirely (postponed to July).
+- Mark `book-club` (June 13) as `status: "past"` with a "Recap coming soon" note; keep on calendar but render dimmed, no booking CTA.
+- Promote `fitness-soiree` (June 20) to the headline event everywhere:
+  - Larger bento tile on Home with countdown ("X days to Soirée").
+  - Sticky "Featured" ribbon on calendar tile + event modal.
+  - Dedicated hero band on `/calendar` above the grid.
+- `EVENT_DAYS` and `JuneCalendar` updated to reflect the new set (13 dimmed, 20 glowing).
 
-## Site Structure (single domain: balanceee.com.ng)
+## 4. AI wellness chatbot feature
+- New page `/wellness-ai` (`src/pages/WellnessAI.tsx`):
+  - Brand-voiced description (written from the brief, since the PartyRock page is gated): "Your pocket wellness companion. Tell it your schedule, energy, goals or what's sore — it builds a workout plan and daily practices shaped to your real life. Built by balance_ee on AWS PartyRock."
+  - Feature bullets: personalized plans, mindfulness prompts, recovery suggestions, beginner-friendly.
+  - Big "Open the Wellness Bot" button → opens `https://partyrock.aws/u/Balancee` in a new tab.
+  - Short "How to use it in 30 seconds" steps.
+- Add a Home bento tile + Navbar entry ("Wellness AI" with a small "New" pill).
 
-1. **Home** — bento-grid hero with brand intro, animated marquee, featured June calendar tile, "what we do" tiles (Movement · Mind · Community · Events), upcoming events preview, testimonial/scripture moment, CTA to book.
-2. **June '26 Calendar** (anchor on home + standalone page `/calendar`)
-   - Shimmering calendar grid for the month
-   - June 13 (Book Club + Tea Brewing) and June 20 (Golf AM · Fitness Soirée PM) are highlighted with subtle pulse/glow
-   - Clicking a highlighted date opens a rich event modal: image, full details (date, vibe, what's included, add-ons, ticket tiers, what to bring) and a **"Book on Selar"** button linking out:
-     - Fitness Soirée → `https://selar.com/g335o95n61`
-     - Book Club → `https://selar.com/9647447724`
-     - Golf (placeholder Selar link — you'll provide)
-3. **Why Movement** — editorial section explaining the role of movement in lifestyle (walking, strength, posture, mental clarity)
-4. **Learn / FAQ** — accordion content covering:
-   - What is Pilates?
-   - What is Yoga?
-   - What is "the core" and why it matters
-   - Glute activation — what & why
-   - Feet, posture & stabilization
-   - Improving posture through specific exercises
-   - Mental clarity & movement
-   - Journaling for clarity → outbound link to `fuzzyjournals.org`
-   - Why walking matters
-   - Why strength training (lifting weights) matters
-5. **How to Book a Class** — clear step-by-step (1. Pick a session → 2. DM/Selar → 3. Confirm → 4. Show up). Includes a primary CTA: "DM @balance_ee on Instagram" + Selar link block.
-6. **About / Brand** — short brand story, Psalm 46:5 moment, Instagram handle, collaborators (@essence_rebirth, @707_treat).
-7. **Footer** — Instagram, contact, scripture, sitemap.
+## 5. Visual upgrade — futuristic minimal luxury, still happy
+Direction: more whitespace, fewer decorative blobs, sharper grid, with one or two showpiece motion moments. Keep Terracotta × Sage palette but introduce:
+- A near-black ink (`--ink: 20 14% 8%`) and a warm bone (`--bone: 36 30% 96%`) for high-contrast type.
+- A single luxury accent: brushed-gold gradient token `--gilt` for subtle dividers, button rings, and the soirée badge.
+- Tighter type scale, increased tracking on small caps, Abril Fatface reserved for one statement word per section.
 
-## Booking Flow (no payments wired in app)
+Motion & interaction (using `framer-motion`, already in stack):
+- Reveal-on-scroll for every section (staggered fade + 8px rise).
+- Magnetic hover on primary buttons.
+- A horizontal **drag/auto-scroll slider** for classes on Home and another for "Why balance_ee" pillars.
+- Hero: animated text mask + slow parallax on background gradient.
+- Calendar event tiles: gilt shimmer sweep + soft pulse on the featured day.
+- Cursor-follow soft glow on desktop (disabled on touch).
+- Marquee retained but slowed and made monochrome for a luxury feel.
+- All animations respect `prefers-reduced-motion`.
 
-- Every event card and calendar modal has a primary **"Book on Selar"** button → opens the corresponding Selar URL in a new tab.
-- Secondary CTA: "DM to reserve" → `instagram.com/balance_ee`.
-- No card-payment edge function needed. Selar handles checkout end-to-end.
+## 6. SEO & metadata
+- Update `<title>`, meta description, OG/Twitter tags in `index.html` to reflect balance_ee (movement, community, wellness AI), not the template defaults.
+- Add JSON-LD `Organization` + `Event` (Fitness Soirée) schema.
 
-## Calendar Component (the centerpiece)
+## 7. GitHub sync + hosting note
+- The user chose "Sync to GitHub only, I'll host elsewhere". I'll prep the codebase for that, but the actual GitHub connection is a one-click step the user does in Lovable (Plus menu → GitHub → Connect project) — I can't do it from the agent side.
+- Heads-up surfaced in the closing message: balanceee.com.ng on **GitHub Pages** will work for the static UI, but Lovable Cloud features (any future auth/DB/edge functions) won't run there. Today's build is fully static (DM-based bookings, external links), so GH Pages is fine. I'll add a `public/CNAME` file with `balanceee.com.ng` and a Vite `base: '/'` confirmation so the build is GH-Pages-ready.
 
-- Custom-built (replacing the template's event-card list) for **June 2026** — month/year hard-coded for now, easy to swap monthly.
-- Days render as grid cells; event days have a **shimmer + soft glow** effect (CSS gradient sweep + animated ring).
-- Hover → tile lifts and reveals event chip(s). Click → animated modal with event imagery and Selar CTA.
-- Mobile: vertical-friendly grid, large tap targets, sticky "Book now" bar inside open modals.
+## Files touched
+- Edit: `src/data/events.ts`, `src/pages/Home.tsx`, `src/pages/About.tsx`, `src/pages/Learn.tsx`, `src/pages/Booking.tsx`, `src/pages/CalendarPage.tsx`, `src/components/Navbar.tsx`, `src/components/Footer.tsx`, `src/components/balance/JuneCalendar.tsx`, `src/components/balance/EventModal.tsx`, `src/components/balance/FloatingDecor.tsx`, `src/index.css`, `tailwind.config.ts`, `index.html`, `src/App.tsx`.
+- Create: `src/data/classes.ts`, `src/pages/Classes.tsx`, `src/pages/WellnessAI.tsx`, `src/components/balance/ClassBookingDialog.tsx`, `src/components/balance/RevealOnScroll.tsx`, `src/components/balance/DragSlider.tsx`, `public/CNAME`.
+- Delete (or replace with neutral assets): the obviously AI-generated images in `src/assets/` (`event-golf.jpg`, decorative ones not reused). Event poster slots become photo placeholders.
 
-## What changes from the template
-
-- Replace `/` (Discover) with new branded **Home** bento layout.
-- Repurpose Events data: hard-code the three June events with imagery from the PDF (uploaded as Lovable assets). Keep the existing events DB so future months can be added through the existing admin/create flow, but the public site reads from a curated highlight.
-- Remove visible "Create Event / My Events / Admin" nav for public visitors. Keep these routes alive but only show them to signed-in admins (using the existing `user_roles` pattern; you'll be set as admin manually).
-- Rip out Google-Maps location dependency from public pages (events show location text only).
-- Rewrite Navbar with new brand: small flower/smile mark, links → Home · Calendar · Learn · Booking · About.
-- Replace all `#FA76FF` / black-white tokens with the new terracotta+sage design system in `index.css` and `tailwind.config.ts`.
-- Add motion: framer-motion for scroll reveals, marquees, modal transitions, floating decorative SVGs (flowers, leaves, sparkles).
-
-## Content Assets
-
-- Extract the 3 event poster images from your PDF and upload via lovable-assets for the calendar/modals.
-- Generate a few decorative SVG botanicals (flowers, sprigs, sun) for the bento tiles and section borders.
-
-## Publishing & Domain
-
-- After build, you'll click **Publish** in the editor (top right) — that creates the `.lovable.app` URL.
-- Then in **Project Settings → Domains → Connect Domain**, point `balanceee.com.ng` to the published site. DNS instructions are shown there.
-- For GitHub: open the GitHub menu (top right) → **Connect to GitHub** → Lovable will sync the repo automatically on every change. No manual push needed from me.
-
-## Technical Notes
-
-- Stack stays: React + Vite + Tailwind + shadcn + Lovable Cloud.
-- Design tokens (HSL) added to `index.css`: `--terracotta`, `--peach`, `--sage`, `--forest`, plus gradients and shadows.
-- Fonts loaded via Google Fonts link (Abril Fatface + Cabin).
-- Calendar is a standalone component (`src/components/JuneCalendar.tsx`) — month config in one place for easy updates next month.
-- Selar links in a constants file (`src/data/events.ts`) so you can edit URLs without hunting through components.
-- Admin routes (`/admin`, `/create-event`, `/my-events`, `/event/:id/edit`) kept but de-emphasized in nav; require auth+admin role.
-- SEO: page-specific titles/meta, OG image from hero, JSON-LD Event schema for the three June events.
-- Mobile-first: everything tested at 375px first, scaled up.
-
-## Out of scope (this round)
-
-- Wiring native card payments (Selar handles it).
-- Multi-month dynamic calendar driven by DB (June is hard-coded; easy follow-up).
-- E-commerce / merch shop.
-- Newsletter signup (can add quickly later if you want).
-
-## After you approve
-
-Switch me to build mode and I'll execute in this order: design tokens → fonts → home (bento) → calendar + modals → learn/FAQ → how-to-book → about → footer → mobile polish → SEO.
+## Open items I'll need from you (won't block the build — placeholders used)
+- WhatsApp number for class bookings.
+- Real Fitness Soirée venue + final pricing confirmation.
+- Any real photos you want to drop into `src/assets/` later.
