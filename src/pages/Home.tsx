@@ -54,33 +54,33 @@ const Home: React.FC = () => {
         <div className="relative mx-auto max-w-7xl">
           <div className="grid grid-cols-12 gap-3 sm:gap-4 md:gap-5">
             {/* Big intro tile */}
-            <Reveal as="div" className="col-span-12 lg:col-span-8 rounded-3xl gradient-warm p-6 sm:p-10 md:p-14 text-cream relative overflow-hidden min-h-[360px] md:min-h-[480px] flex flex-col justify-end shadow-soft">
-              <Mark className="absolute top-6 right-6 w-20 h-20 md:w-28 md:h-28 animate-wiggle" />
+            <Reveal as="div" className="col-span-12 lg:col-span-5 rounded-3xl gradient-warm p-6 sm:p-10 md:p-12 text-cream relative overflow-hidden min-h-[360px] md:min-h-[520px] flex flex-col justify-end shadow-soft">
+              <Mark className="absolute top-6 right-6 w-16 h-16 md:w-20 md:h-20 animate-wiggle" />
               <p className="text-xs uppercase tracking-[0.3em] opacity-90 mb-3">a wellness community</p>
-              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-balance">
-                Soft strength. <br />
-                <span className="italic text-cream/95">Loud joy.</span>
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl leading-[0.98] text-balance">
+                A Balance approach <br />
+                <span className="italic text-cream/95">to a Healthy Lifestyle.</span>
               </h1>
               <p className="mt-5 max-w-lg text-base md:text-lg text-cream/95 leading-relaxed">
-                Saturday classes every week. Soirées every month. A wellness bot in your pocket. Come move with us.
+                Soirées, book clubs, Saturday classes — something for you every month. Move, gather, rest.
               </p>
               <div className="flex flex-wrap gap-3 mt-7">
                 <Link to="/classes" className="inline-flex items-center gap-2 rounded-full bg-cream text-terracotta font-medium px-5 py-3 hover:bg-ink hover:text-cream transition-colors">
                   Book a class <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link to="/calendar" className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-5 py-3 hover:bg-cream hover:text-terracotta transition-colors">
-                  See June events
+                  See what's on
                 </Link>
               </div>
             </Reveal>
 
-            {/* Hero image tile */}
-            <Reveal as="div" delay={120} className="col-span-12 sm:col-span-7 lg:col-span-4 rounded-3xl overflow-hidden relative min-h-[280px] md:min-h-[480px] shadow-soft group">
-              <img src={heroImg} alt="Movement in a sunlit studio" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" fetchPriority="high" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent" />
-              <div className="absolute inset-x-4 bottom-4 rounded-2xl bg-cream/90 backdrop-blur px-4 py-3">
-                <p className="text-[10px] uppercase tracking-wider text-forest/60">in motion</p>
-                <p className="font-display text-xl text-ink">Move like you mean it.</p>
+            {/* Hero illustration tile — park scene */}
+            <Reveal as="div" delay={120} className="col-span-12 lg:col-span-7 rounded-3xl overflow-hidden relative min-h-[280px] md:min-h-[520px] shadow-soft group bg-cream">
+              <img src={heroImg} alt="Black women practicing yoga, pilates and running together in a soft watercolor park scene" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1200ms]" fetchPriority="high" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-cream/30 via-transparent to-transparent" />
+              <div className="absolute left-4 bottom-4 right-4 sm:left-6 sm:bottom-6 sm:right-auto sm:max-w-xs rounded-2xl bg-cream/85 backdrop-blur-md px-4 py-3 ring-1 ring-gilt/40 shadow-soft">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-forest/60">together · outside · soft</p>
+                <p className="font-display text-xl text-ink mt-0.5">Move like you mean it.</p>
               </div>
             </Reveal>
 
@@ -213,7 +213,7 @@ const Home: React.FC = () => {
           <Reveal delay={100}>
             <p className="text-xs uppercase tracking-[0.3em] text-terracotta">june 20 · headline event</p>
             <h2 className="font-display text-5xl md:text-6xl text-ink mt-3 leading-[1.0] text-balance">
-              The Fitness <span className="italic">Soirée</span>.
+              Fitness <span className="italic">Soirée</span>.
             </h2>
             <p className="mt-5 text-ink/80 text-lg leading-relaxed">
               An evening of movement, mimosas and meaningful conversation. Yoga + Pilates on the mat, a talk on stress &
@@ -248,9 +248,9 @@ const Home: React.FC = () => {
         <div className="mx-auto max-w-5xl">
           <Reveal>
             <div className="text-center mb-10">
-              <p className="text-xs uppercase tracking-[0.3em] text-terracotta">special events</p>
-              <h2 className="font-display text-5xl sm:text-6xl text-ink mt-3">June, gently glowing.</h2>
-              <p className="mt-4 text-ink/70 max-w-xl mx-auto">Classes run every Saturday — events are the special ones. Tap a glowing date.</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-terracotta">monthly</p>
+              <h2 className="font-display text-5xl sm:text-6xl text-ink mt-3">Soirées, book clubs.</h2>
+              <p className="mt-4 text-ink/70 max-w-xl mx-auto">Something for you every month. Classes run every Saturday — events are the special ones.</p>
             </div>
           </Reveal>
           <Reveal delay={100}>
