@@ -89,6 +89,8 @@ export const UPCOMING_EVENTS = JUNE_EVENTS.filter((e) => e.status !== "past");
 export const SOCIAL = {
   instagram: "https://www.instagram.com/balance_ee",
   handle: "@balance_ee",
-  // Replace with your real WhatsApp number (international format, no +)
-  whatsapp: "2348000000000",
+  // WhatsApp / phone — international format, no +
+  whatsapp: "2349112984781",
+  phone: "+2349112984781",
+  phoneTel: "tel:+2349112984781",
 };

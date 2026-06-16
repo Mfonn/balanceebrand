@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Instagram, Calendar, MessageCircle, CheckCheck, ArrowRight, Coffee, ExternalLink, Sparkles } from "lucide-react";
+import { Instagram, Calendar, MessageCircle, CheckCheck, ArrowRight, Coffee, ExternalLink, Sparkles, Phone } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";
@@ -123,16 +123,24 @@ const Booking: React.FC = () => {
           </div>
 
           <Reveal>
-            <div className="mt-10 rounded-3xl bg-ink text-cream p-8 sm:p-10 text-center">
+            <div className="mt-10 rounded-3xl bg-ink text-cream p-8 sm:p-10 text-center ring-1 ring-gilt/30">
               <p className="font-display text-2xl sm:text-3xl">Questions first?</p>
-              <p className="mt-2 text-cream/80">DM us on Instagram — we reply quickly.</p>
-              <a
-                href={SOCIAL.instagram}
-                target="_blank" rel="noreferrer noopener"
-                className="inline-flex items-center gap-2 mt-5 rounded-full bg-cream text-ink font-medium px-6 py-3 hover:bg-terracotta hover:text-cream transition-colors"
-              >
-                <Instagram className="w-4 h-4" /> Message {SOCIAL.handle}
-              </a>
+              <p className="mt-2 text-cream/80">The best way to reach us is an Instagram DM — or a call.</p>
+              <div className="mt-5 flex flex-wrap justify-center gap-3">
+                <a
+                  href={SOCIAL.instagram}
+                  target="_blank" rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 rounded-full bg-cream text-ink font-medium px-6 py-3 hover:bg-terracotta hover:text-cream transition-colors"
+                >
+                  <Instagram className="w-4 h-4" /> DM {SOCIAL.handle}
+                </a>
+                <a
+                  href={SOCIAL.phoneTel}
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-ink transition-colors"
+                >
+                  <Phone className="w-4 h-4" /> {SOCIAL.phone}
+                </a>
+              </div>
             </div>
           </Reveal>
         </div>

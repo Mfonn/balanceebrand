@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Heart } from "lucide-react";
+import { Instagram, Heart, Phone } from "lucide-react";
 import { Mark } from "./balance/Mark";
 import { SOCIAL } from "@/data/events";
 
@@ -35,16 +35,24 @@ export const Footer: React.FC = () => (
 
       <div>
         <h4 className="font-display text-2xl mb-4">Stay close</h4>
-        <a
-          href={SOCIAL.instagram}
-          target="_blank"
-          rel="noreferrer noopener"
-          className="inline-flex items-center gap-2 rounded-full bg-cream text-forest px-5 py-2.5 font-medium hover:bg-peach hover:text-ink transition-colors"
-        >
-          <Instagram className="w-4 h-4" /> {SOCIAL.handle}
-        </a>
+        <div className="flex flex-wrap gap-2">
+          <a
+            href={SOCIAL.instagram}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex items-center gap-2 rounded-full bg-cream text-forest px-5 py-2.5 font-medium hover:bg-peach hover:text-ink transition-colors"
+          >
+            <Instagram className="w-4 h-4" /> {SOCIAL.handle}
+          </a>
+          <a
+            href={SOCIAL.phoneTel}
+            className="inline-flex items-center gap-2 rounded-full border border-cream/40 text-cream px-5 py-2.5 font-medium hover:bg-cream hover:text-forest transition-colors"
+          >
+            <Phone className="w-4 h-4" /> {SOCIAL.phone}
+          </a>
+        </div>
         <p className="mt-6 text-sm text-cream/70">
-          DM us to reserve a class, ask a question, or just say hi.
+          Best way to reach us is an Instagram DM — or give us a call.
         </p>
         <p className="mt-8 text-xs text-cream/50 flex items-center gap-1">
           Made with <Heart className="w-3 h-3 fill-peach text-peach" /> · © {new Date().getFullYear()} balance_ee

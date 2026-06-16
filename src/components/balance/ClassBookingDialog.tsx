@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { z } from "zod";
-import { X, Instagram, MessageCircle } from "lucide-react";
+import { X, Instagram, MessageCircle, Phone } from "lucide-react";
 import { CLASS_SLOTS, ClassSlot, CLASS_RULES, nextSaturdays } from "@/data/classes";
 import { SOCIAL } from "@/data/events";
 import { toast } from "@/hooks/use-toast";
@@ -130,17 +130,26 @@ ${form.notes ? `Notes: ${form.notes}` : ""}`;
           </Field>
         </div>
 
-        <div className="border-t border-border px-6 py-4 flex flex-col sm:flex-row gap-3">
-          <button type="submit" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-terracotta text-cream font-medium py-3 px-5 hover:bg-ink transition-colors">
-            <MessageCircle className="w-4 h-4" /> Confirm via WhatsApp
-          </button>
-          <a
-            href={SOCIAL.instagram}
-            target="_blank" rel="noreferrer noopener"
-            className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink text-ink font-medium py-3 px-5 hover:bg-ink hover:text-cream transition-colors"
-          >
-            <Instagram className="w-4 h-4" /> DM instead
-          </a>
+        <div className="border-t border-border px-6 py-4 space-y-3">
+          <p className="text-[11px] text-ink/60 text-center">Best way to confirm: Instagram DM or a quick call.</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button type="submit" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-terracotta text-cream font-medium py-3 px-5 hover:bg-ink transition-colors">
+              <MessageCircle className="w-4 h-4" /> Confirm via WhatsApp
+            </button>
+            <a
+              href={SOCIAL.instagram}
+              target="_blank" rel="noreferrer noopener"
+              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink text-ink font-medium py-3 px-5 hover:bg-ink hover:text-cream transition-colors"
+            >
+              <Instagram className="w-4 h-4" /> DM us
+            </a>
+            <a
+              href={SOCIAL.phoneTel}
+              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink text-ink font-medium py-3 px-5 hover:bg-ink hover:text-cream transition-colors"
+            >
+              <Phone className="w-4 h-4" /> Call
+            </a>
+          </div>
         </div>
       </form>
     </div>
