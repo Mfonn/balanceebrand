@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Instagram, Heart, Sparkles, Bot, Coffee, Users } from "lucide-react";
+import { Instagram, Heart, Sparkles, Bot, Coffee, Users, Phone, Baby } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Mark } from "@/components/balance/Mark";
@@ -35,16 +35,25 @@ const About: React.FC = () => (
           <p className="mt-4 text-ink/80 text-lg leading-relaxed">
             Movement is one pillar. Mind is another. Community is the soil. We're building all three — slowly, joyfully.
           </p>
-          <a
-            href={SOCIAL.instagram}
-            target="_blank" rel="noreferrer noopener"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink text-cream px-6 py-3 font-medium hover:bg-terracotta transition-colors"
-          >
-            <Instagram className="w-4 h-4" /> Follow {SOCIAL.handle}
-          </a>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={SOCIAL.instagram}
+              target="_blank" rel="noreferrer noopener"
+              className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-6 py-3 font-medium hover:bg-terracotta transition-colors"
+            >
+              <Instagram className="w-4 h-4" /> DM {SOCIAL.handle}
+            </a>
+            <a
+              href={SOCIAL.phoneTel}
+              className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink px-6 py-3 font-medium hover:bg-ink hover:text-cream transition-colors"
+            >
+              <Phone className="w-4 h-4" /> {SOCIAL.phone}
+            </a>
+          </div>
+          <p className="mt-3 text-sm text-ink/60">Best way to reach us is an Instagram DM — or a call.</p>
         </Reveal>
         <Reveal delay={120}>
-          <div className="relative rounded-3xl overflow-hidden shadow-soft aspect-[4/5]">
+          <div className="relative rounded-3xl overflow-hidden shadow-soft aspect-[4/5] ring-1 ring-gilt/30">
             <img src={heroImg} alt="A balance_ee class moment" className="absolute inset-0 w-full h-full object-cover" />
           </div>
         </Reveal>
@@ -82,18 +91,24 @@ const About: React.FC = () => (
           <p className="text-xs uppercase tracking-[0.3em] text-terracotta text-center">what you'll find here</p>
           <h2 className="font-display text-4xl md:text-5xl text-center mt-3 mb-12">Three doors in</h2>
         </Reveal>
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { Icon: Coffee, t: "Saturday classes", d: "50-minute sessions from 6 AM to 7 PM, every Saturday. Tea included.", to: "/classes" },
-            { Icon: Sparkles, t: "Monthly events", d: "Soirées, book clubs, gatherings. The ones to mark in your calendar.", to: "/calendar" },
-            { Icon: Bot, t: "Wellness AI", d: "Chat with our bot for plans, practices and gentle nudges.", to: "/wellness-ai" },
-          ].map(({ Icon, t, d, to }, i) => (
+            { Icon: Coffee, t: "Saturday classes", d: "50-minute sessions from 6 AM to 7 PM, every Saturday. Tea included.", to: "/classes", soon: false },
+            { Icon: Sparkles, t: "Monthly events", d: "Soirées, book clubs, gatherings. The ones to mark in your calendar.", to: "/calendar", soon: false },
+            { Icon: Bot, t: "Wellness AI", d: "Chat with our bot for plans, practices and gentle nudges.", to: "/wellness-ai", soon: false },
+            { Icon: Baby, t: "Birth Doula", d: "Continuous, calming support before, during and after birth — shown to ease labour, lower intervention rates and grow confidence for the new parent.", to: "/about", soon: true },
+          ].map(({ Icon, t, d, to, soon }, i) => (
             <Reveal key={t} delay={i * 100}>
-              <Link to={to} className="block rounded-3xl bg-cream border-2 border-forest/10 p-6 h-full hover:border-terracotta hover:-translate-y-0.5 transition-all">
+              <Link to={to} className="block rounded-3xl bg-cream border-2 border-forest/10 p-6 h-full hover:border-terracotta hover:-translate-y-0.5 transition-all relative">
+                {soon && (
+                  <span className="absolute top-4 right-4 text-[10px] uppercase tracking-[0.2em] bg-gilt/20 text-gilt border border-gilt/40 rounded-full px-2.5 py-1 font-semibold">
+                    coming soon
+                  </span>
+                )}
                 <Icon className="w-7 h-7 text-terracotta" />
                 <p className="font-display text-2xl mt-3">{t}</p>
-                <p className="text-ink/75 mt-2 leading-relaxed">{d}</p>
-                <p className="mt-4 text-sm font-medium text-terracotta">Explore →</p>
+                <p className="text-ink/75 mt-2 leading-relaxed text-sm">{d}</p>
+                {!soon && <p className="mt-4 text-sm font-medium text-terracotta">Explore →</p>}
               </Link>
             </Reveal>
           ))}
