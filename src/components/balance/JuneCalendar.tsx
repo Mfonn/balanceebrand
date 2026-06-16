@@ -36,8 +36,8 @@ export const JuneCalendar: React.FC<Props> = ({ onSelectEvent }) => {
           <h2 className="font-display text-4xl sm:text-5xl text-ink mt-1">{MONTH} <span className="text-terracotta">{YEAR}</span></h2>
         </div>
         <div className="hidden sm:flex items-center gap-2 text-xs text-forest/70">
-          <span className="inline-block w-3 h-3 rounded-full bg-terracotta shadow-[0_0_12px_hsl(var(--peach))]" />
-          shimmering = event
+          <span className="inline-block w-2.5 h-2.5 rounded-full bg-terracotta" />
+          event day
         </div>
       </div>
 
@@ -67,7 +67,7 @@ export const JuneCalendar: React.FC<Props> = ({ onSelectEvent }) => {
                 relative aspect-square rounded-xl sm:rounded-2xl flex flex-col items-center justify-center
                 transition-all duration-300
                 ${hasEvent && !isPast
-                  ? `shimmer-day bg-gradient-to-br ${accent} text-cream font-semibold cursor-pointer hover:scale-[1.06] hover:-translate-y-0.5 hover:z-10`
+                  ? `bg-gradient-to-br ${accent} text-cream font-semibold cursor-pointer hover:scale-[1.06] hover:-translate-y-0.5 hover:z-10 ring-1 ring-gilt/40`
                   : isPast
                     ? "bg-muted text-ink/50 cursor-pointer hover:bg-muted/80 border border-dashed border-forest/20"
                     : "bg-cream text-ink/70 hover:bg-muted"}

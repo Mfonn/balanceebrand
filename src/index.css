@@ -15,6 +15,8 @@
     --forest: 100 17% 34%;          /* #4a6741 */
     --cream: 36 41% 96%;            /* warm off-white */
     --ink: 100 17% 18%;             /* deep forest for text */
+    --gilt: 38 55% 62%;             /* soft luxe gold accent */
+    --obsidian: 220 18% 9%;         /* futuristic deep ink */
 
     --background: 36 41% 96%;
     --foreground: 100 17% 18%;
@@ -135,9 +137,19 @@
   .gradient-warm { background: var(--gradient-warm); }
   .gradient-sage { background: var(--gradient-sage); }
   .gradient-sunrise { background: var(--gradient-sunrise); }
+  .gradient-gilt {
+    background: linear-gradient(135deg, hsl(38 55% 70%), hsl(38 55% 55%), hsl(24 70% 60%));
+  }
 
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-luxe { box-shadow: 0 1px 0 hsl(var(--gilt) / 0.5) inset, 0 12px 40px -16px hsl(var(--obsidian) / 0.35); }
+
+  /* Hairline gold border used for luxe accents */
+  .ring-gilt\/40 { --tw-ring-color: hsl(var(--gilt) / 0.4); }
+  .border-gilt { border-color: hsl(var(--gilt)); }
+  .text-gilt { color: hsl(var(--gilt)); }
+  .bg-gilt { background-color: hsl(var(--gilt)); }
 }
 
 @keyframes shimmer-sweep {
