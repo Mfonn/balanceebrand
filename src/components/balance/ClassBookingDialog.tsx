@@ -46,18 +46,11 @@ export const ClassBookingDialog: React.FC<Props> = ({ open, onClose, defaultSlot
       toast({ title: "Just one thing", description: first.message, variant: "destructive" });
       return;
     }
-    const msg =
-`Hi balance_ee! I'd like to book a Saturday class.
-
-Name: ${form.name}
-Email: ${form.email}
-Phone: ${form.phone}
-Date: ${dateLabel}
-Time: ${slot.label}
-${form.notes ? `Notes: ${form.notes}` : ""}`;
-    const wa = `https://wa.me/${SOCIAL.whatsapp}?text=${encodeURIComponent(msg)}`;
-    window.open(wa, "_blank", "noopener,noreferrer");
-    toast({ title: "Almost in", description: "Finish the chat to lock your spot." });
+    window.open(SOCIAL.instagram, "_blank", "noopener,noreferrer");
+    toast({
+      title: "Almost in",
+      description: `Send us a DM or call ${SOCIAL.phone} with: ${form.name} · ${dateLabel} · ${slot.label}`,
+    });
     onClose();
   };
 
