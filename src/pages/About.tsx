@@ -54,7 +54,7 @@ const About: React.FC = () => (
         </Reveal>
         <Reveal delay={120}>
           <div className="relative rounded-3xl overflow-hidden shadow-soft aspect-[4/5] ring-1 ring-gilt/30">
-            <img src={heroImg} alt="A balance_ee class moment" className="absolute inset-0 w-full h-full object-cover" />
+            <img src={heroImg} alt="A soft, illustrated park scenery" className="absolute inset-0 w-full h-full object-cover" />
           </div>
         </Reveal>
       </div>
