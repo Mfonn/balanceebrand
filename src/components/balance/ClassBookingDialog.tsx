@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { z } from "zod";
-import { X, Instagram, MessageCircle, Phone } from "lucide-react";
+import { X, Instagram, Phone } from "lucide-react";
 import { CLASS_SLOTS, ClassSlot, CLASS_RULES, nextSaturdays } from "@/data/classes";
 import { SOCIAL } from "@/data/events";
 import { toast } from "@/hooks/use-toast";
