@@ -10,7 +10,7 @@ import { UPCOMING_EVENTS, SOCIAL } from "@/data/events";
 
 const STEPS = [
   { icon: Calendar, title: "Pick what fits", body: "Saturday class? Monthly event? Choose your entry point." },
-  { icon: MessageCircle, title: "Reserve", body: "Classes confirm over WhatsApp. Events book on Selar in one tap." },
+  { icon: MessageCircle, title: "Reserve", body: "Classes confirm by Instagram DM or a call. Events book on Selar in one tap." },
   { icon: CheckCheck, title: "Get your details", body: "You'll get venue, what to bring and any last-minute notes." },
   { icon: Coffee, title: "Show up", body: "Easy clothes, open heart. Tea waits at the end of class." },
 ];
@@ -21,7 +21,7 @@ const Booking: React.FC = () => {
     <div className="min-h-screen bg-cream text-ink">
       <Helmet>
         <title>How to Book — balance_ee</title>
-        <meta name="description" content="Book a Saturday class over WhatsApp, or grab a spot for a monthly event on Selar. balance_ee, simply." />
+        <meta name="description" content="Book a Saturday class by Instagram DM or a call, or grab a spot for a monthly event on Selar. balance_ee, simply." />
         <link rel="canonical" href="/booking" />
       </Helmet>
       <Navbar />
@@ -54,7 +54,7 @@ const Booking: React.FC = () => {
               <Coffee className="relative w-8 h-8 text-peach" />
               <p className="relative text-[11px] uppercase tracking-[0.25em] text-peach mt-3">weekly</p>
               <p className="relative font-display text-4xl mt-1">Saturday classes</p>
-              <p className="relative mt-3 text-cream/85">50 min · tea included · book 24h ahead. WhatsApp confirmation.</p>
+              <p className="relative mt-3 text-cream/85">50 min · tea included · book 24h ahead. Confirm by DM or a call.</p>
               <button onClick={() => setOpen(true)} className="relative mt-5 inline-flex items-center gap-2 rounded-full bg-cream text-ink font-medium px-5 py-3 hover:bg-terracotta hover:text-cream transition-colors">
                 Book a class <ArrowRight className="w-4 h-4" />
               </button>

@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { z } from "zod";
-import { X, Instagram, MessageCircle, Phone } from "lucide-react";
+import { X, Instagram, Phone } from "lucide-react";
 import { CLASS_SLOTS, ClassSlot, CLASS_RULES, nextSaturdays } from "@/data/classes";
 import { SOCIAL } from "@/data/events";
 import { toast } from "@/hooks/use-toast";
@@ -46,18 +46,11 @@ export const ClassBookingDialog: React.FC<Props> = ({ open, onClose, defaultSlot
       toast({ title: "Just one thing", description: first.message, variant: "destructive" });
       return;
     }
-    const msg =
-`Hi balance_ee! I'd like to book a Saturday class.
-
-Name: ${form.name}
-Email: ${form.email}
-Phone: ${form.phone}
-Date: ${dateLabel}
-Time: ${slot.label}
-${form.notes ? `Notes: ${form.notes}` : ""}`;
-    const wa = `https://wa.me/${SOCIAL.whatsapp}?text=${encodeURIComponent(msg)}`;
-    window.open(wa, "_blank", "noopener,noreferrer");
-    toast({ title: "Almost in", description: "Finish the chat to lock your spot." });
+    window.open(SOCIAL.instagram, "_blank", "noopener,noreferrer");
+    toast({
+      title: "Almost in",
+      description: `Send us a DM or call ${SOCIAL.phone} with: ${form.name} · ${dateLabel} · ${slot.label}`,
+    });
     onClose();
   };
 
@@ -131,23 +124,16 @@ ${form.notes ? `Notes: ${form.notes}` : ""}`;
         </div>
 
         <div className="border-t border-border px-6 py-4 space-y-3">
-          <p className="text-[11px] text-ink/60 text-center">Best way to confirm: Instagram DM or a quick call.</p>
+          <p className="text-[11px] text-ink/60 text-center">Confirm with an Instagram DM or a quick call — no WhatsApp needed.</p>
           <div className="flex flex-col sm:flex-row gap-3">
             <button type="submit" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-terracotta text-cream font-medium py-3 px-5 hover:bg-ink transition-colors">
-              <MessageCircle className="w-4 h-4" /> Confirm via WhatsApp
+              <Instagram className="w-4 h-4" /> Confirm via DM
             </button>
-            <a
-              href={SOCIAL.instagram}
-              target="_blank" rel="noreferrer noopener"
-              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink text-ink font-medium py-3 px-5 hover:bg-ink hover:text-cream transition-colors"
-            >
-              <Instagram className="w-4 h-4" /> DM us
-            </a>
             <a
               href={SOCIAL.phoneTel}
               className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink text-ink font-medium py-3 px-5 hover:bg-ink hover:text-cream transition-colors"
             >
-              <Phone className="w-4 h-4" /> Call
+              <Phone className="w-4 h-4" /> Call {SOCIAL.phone}
             </a>
           </div>
         </div>
