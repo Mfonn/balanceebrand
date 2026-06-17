@@ -124,17 +124,16 @@ export const ClassBookingDialog: React.FC<Props> = ({ open, onClose, defaultSlot
         </div>
 
         <div className="border-t border-border px-6 py-4 space-y-3">
-          <p className="text-[11px] text-ink/60 text-center">Best way to confirm: Instagram DM or a quick call.</p>
+          <p className="text-[11px] text-ink/60 text-center">Confirm with an Instagram DM or a quick call — no WhatsApp needed.</p>
           <div className="flex flex-col sm:flex-row gap-3">
             <button type="submit" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-terracotta text-cream font-medium py-3 px-5 hover:bg-ink transition-colors">
-              <MessageCircle className="w-4 h-4" /> Confirm via WhatsApp
+              <Instagram className="w-4 h-4" /> Confirm via DM
             </button>
             <a
-              href={SOCIAL.instagram}
-              target="_blank" rel="noreferrer noopener"
+              href={SOCIAL.phoneTel}
               className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink text-ink font-medium py-3 px-5 hover:bg-ink hover:text-cream transition-colors"
             >
-              <Instagram className="w-4 h-4" /> DM us
+              <Phone className="w-4 h-4" /> Call {SOCIAL.phone}
             </a>
             <a
               href={SOCIAL.phoneTel}
