@@ -104,7 +104,7 @@ const Classes: React.FC = () => {
           {[
             { Icon: Leaf,     t: "What we do",     d: "A blend of pilates, yoga, mobility and breath. Beginner-friendly, never boring." },
             { Icon: Coffee,   t: "What's included", d: "A 50-minute class, a clean mat space, and a warm cup of healthy herbal tea after." },
-            { Icon: Calendar, t: "How to book",     d: "Pick a Saturday and a time, fill the short form, confirm over WhatsApp. 24h lead time keeps it smooth." },
+            { Icon: Calendar, t: "How to book",     d: "Pick a Saturday and a time, fill the short form, then confirm with an Instagram DM or a quick call. 24h lead time keeps it smooth." },
           ].map(({ Icon, t, d }, i) => (
             <Reveal key={t} delay={i * 80}>
               <div className="rounded-3xl bg-cream border-2 border-forest/10 p-6 h-full">
