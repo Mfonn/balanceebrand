@@ -11,11 +11,11 @@ interface SEOHeadProps {
 export const SEOHead = ({ 
   title, 
   description, 
-  keywords = 'events, discover events, event management, community events',
+  keywords = 'abuja yoga, abuja pilates, abuja fitness, abuja events, events in abuja today, wellness abuja, health doctor abuja, posture abuja, tight core abuja, glutes activation abuja, myofascial release abuja, meditation abuja, mindfulness abuja',
   image = '/placeholder.svg',
-  url = window.location.href
+  url = typeof window !== 'undefined' ? window.location.href : 'https://balanceee.com.ng/'
 }: SEOHeadProps) => {
-  const fullTitle = `${title} | EventHub`;
+  const fullTitle = `${title} | Balance_ee — Abuja Wellness`;
   
   return (
     <Helmet>
