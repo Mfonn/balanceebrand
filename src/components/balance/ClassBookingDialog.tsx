@@ -135,12 +135,6 @@ export const ClassBookingDialog: React.FC<Props> = ({ open, onClose, defaultSlot
             >
               <Phone className="w-4 h-4" /> Call {SOCIAL.phone}
             </a>
-            <a
-              href={SOCIAL.phoneTel}
-              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink text-ink font-medium py-3 px-5 hover:bg-ink hover:text-cream transition-colors"
-            >
-              <Phone className="w-4 h-4" /> Call
-            </a>
           </div>
         </div>
       </form>
