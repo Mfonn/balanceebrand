@@ -76,7 +76,7 @@ const Home: React.FC = () => {
 
             {/* Hero illustration tile — park scene */}
             <Reveal as="div" delay={120} className="col-span-12 lg:col-span-7 rounded-3xl overflow-hidden relative min-h-[280px] md:min-h-[520px] shadow-soft group bg-cream">
-              <img src={heroImg} alt="Black women practicing yoga, pilates and running together in a soft watercolor park scene" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1200ms]" fetchPriority="high" />
+              <img src={heroImg} alt="A soft, storybook illustration of a peaceful park scenery" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1200ms]" fetchPriority="high" />
               <div className="absolute inset-0 bg-gradient-to-tr from-cream/30 via-transparent to-transparent" />
               <div className="absolute left-4 bottom-4 right-4 sm:left-6 sm:bottom-6 sm:right-auto sm:max-w-xs rounded-2xl bg-cream/85 backdrop-blur-md px-4 py-3 ring-1 ring-gilt/40 shadow-soft">
                 <p className="text-[10px] uppercase tracking-[0.2em] text-forest/60">together · outside · soft</p>
