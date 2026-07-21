@@ -7,6 +7,8 @@ import CalendarPage from "./pages/CalendarPage";
 import Learn from "./pages/Learn";
 import Booking from "./pages/Booking";
 import Classes from "./pages/Classes";
+import Services from "./pages/Services";
+import TentsAndTonic from "./pages/TentsAndTonic";
 import WellnessAI from "./pages/WellnessAI";
 import About from "./pages/About";
 import Auth from "./pages/Auth";
@@ -22,8 +24,10 @@ const App = () => (
     <Sonner />
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/services" element={<Services />} />
       <Route path="/classes" element={<Classes />} />
       <Route path="/calendar" element={<CalendarPage />} />
+      <Route path="/event/tents-and-tonic" element={<TentsAndTonic />} />
       <Route path="/wellness-ai" element={<WellnessAI />} />
       <Route path="/learn" element={<Learn />} />
       <Route path="/booking" element={<Booking />} />
