@@ -10,7 +10,7 @@ import { UPCOMING_EVENTS, SOCIAL } from "@/data/events";
 
 const STEPS = [
   { icon: Calendar, title: "Pick what fits", body: "Saturday class? Monthly event? Choose your entry point." },
-  { icon: MessageCircle, title: "Reserve", body: "Classes confirm by Instagram DM or a call. Events book on Selar in one tap." },
+  { icon: MessageCircle, title: "Reserve", body: "Classes confirm on WhatsApp in one message. Events book online in one tap." },
   { icon: CheckCheck, title: "Get your details", body: "You'll get venue, what to bring and any last-minute notes." },
   { icon: Coffee, title: "Show up", body: "Easy clothes, open heart. Tea waits at the end of class." },
 ];
@@ -54,7 +54,7 @@ const Booking: React.FC = () => {
               <Coffee className="relative w-8 h-8 text-peach" />
               <p className="relative text-[11px] uppercase tracking-[0.25em] text-peach mt-3">weekly</p>
               <p className="relative font-display text-4xl mt-1">Saturday classes</p>
-              <p className="relative mt-3 text-cream/85">50 min · tea included · book 24h ahead. Confirm by DM or a call.</p>
+              <p className="relative mt-3 text-cream/85">50 min · tea included · book 24h ahead. Confirm on WhatsApp.</p>
               <button onClick={() => setOpen(true)} className="relative mt-5 inline-flex items-center gap-2 rounded-full bg-cream text-ink font-medium px-5 py-3 hover:bg-terracotta hover:text-cream transition-colors">
                 Book a class <ArrowRight className="w-4 h-4" />
               </button>
@@ -125,20 +125,21 @@ const Booking: React.FC = () => {
           <Reveal>
             <div className="mt-10 rounded-3xl bg-ink text-cream p-8 sm:p-10 text-center ring-1 ring-gilt/30">
               <p className="font-display text-2xl sm:text-3xl">Questions first?</p>
-              <p className="mt-2 text-cream/80">The best way to reach us is an Instagram DM — or a call.</p>
+              <p className="mt-2 text-cream/80">Chat &amp; schedule on WhatsApp — DM or a call work too.</p>
               <div className="mt-5 flex flex-wrap justify-center gap-3">
                 <a
-                  href={SOCIAL.instagram}
+                  href={SOCIAL.whatsappUrl}
                   target="_blank" rel="noreferrer noopener"
                   className="inline-flex items-center gap-2 rounded-full bg-cream text-ink font-medium px-6 py-3 hover:bg-terracotta hover:text-cream transition-colors"
                 >
-                  <Instagram className="w-4 h-4" /> DM {SOCIAL.handle}
+                  <MessageCircle className="w-4 h-4" /> WhatsApp {SOCIAL.phone}
                 </a>
                 <a
-                  href={SOCIAL.phoneTel}
+                  href={SOCIAL.instagram}
+                  target="_blank" rel="noreferrer noopener"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-ink transition-colors"
                 >
-                  <Phone className="w-4 h-4" /> {SOCIAL.phone}
+                  <Instagram className="w-4 h-4" /> DM {SOCIAL.handle}
                 </a>
               </div>
             </div>

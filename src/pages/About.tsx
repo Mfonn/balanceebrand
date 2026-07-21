@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Instagram, Heart, Sparkles, Bot, Coffee, Users, Phone, Baby } from "lucide-react";
+import { Instagram, Heart, Sparkles, Bot, Coffee, Users, Phone, Baby, MessageCircle } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Mark } from "@/components/balance/Mark";
@@ -37,20 +37,21 @@ const About: React.FC = () => (
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href={SOCIAL.instagram}
+              href={SOCIAL.whatsappUrl}
               target="_blank" rel="noreferrer noopener"
               className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-6 py-3 font-medium hover:bg-terracotta transition-colors"
             >
-              <Instagram className="w-4 h-4" /> DM {SOCIAL.handle}
+              <MessageCircle className="w-4 h-4" /> WhatsApp {SOCIAL.phone}
             </a>
             <a
-              href={SOCIAL.phoneTel}
+              href={SOCIAL.instagram}
+              target="_blank" rel="noreferrer noopener"
               className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink px-6 py-3 font-medium hover:bg-ink hover:text-cream transition-colors"
             >
-              <Phone className="w-4 h-4" /> {SOCIAL.phone}
+              <Instagram className="w-4 h-4" /> DM {SOCIAL.handle}
             </a>
           </div>
-          <p className="mt-3 text-sm text-ink/60">Best way to reach us is an Instagram DM — or a call.</p>
+          <p className="mt-3 text-sm text-ink/60">Chat &amp; schedule classes on WhatsApp.</p>
         </Reveal>
         <Reveal delay={120}>
           <div className="relative rounded-3xl overflow-hidden shadow-soft aspect-[4/5] ring-1 ring-gilt/30">

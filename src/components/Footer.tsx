@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Heart, Phone } from "lucide-react";
+import { Instagram, Heart, Phone, MessageCircle } from "lucide-react";
 import { Mark } from "./balance/Mark";
 import { SOCIAL } from "@/data/events";
 
@@ -17,7 +17,7 @@ export const Footer: React.FC = () => (
           <span className="font-display text-3xl">balance<span className="text-peach">_ee</span></span>
         </div>
         <p className="text-cream/80 max-w-xs leading-relaxed">
-          A community for movement, mind & joyful living. Weekly classes, monthly gatherings, and a wellness bot in your pocket.
+          A wellness community in Abuja. Weekly Saturday classes, monthly events, and a wellness bot in your pocket.
         </p>
       </div>
 
@@ -25,10 +25,11 @@ export const Footer: React.FC = () => (
         <h4 className="font-display text-2xl mb-4">Wander</h4>
         <ul className="space-y-2 text-cream/85">
           <li><Link to="/" className="hover:text-peach transition-colors">Home</Link></li>
+          <li><Link to="/services" className="hover:text-peach transition-colors">Services</Link></li>
           <li><Link to="/classes" className="hover:text-peach transition-colors">Saturday Classes</Link></li>
           <li><Link to="/calendar" className="hover:text-peach transition-colors">Events</Link></li>
+          <li><Link to="/event/tents-and-tonic" className="hover:text-peach transition-colors">Tents &amp; Tonic</Link></li>
           <li><Link to="/wellness-ai" className="hover:text-peach transition-colors">Wellness AI</Link></li>
-          <li><Link to="/learn" className="hover:text-peach transition-colors">Learn</Link></li>
           <li><Link to="/about" className="hover:text-peach transition-colors">About</Link></li>
         </ul>
       </div>
@@ -37,10 +38,18 @@ export const Footer: React.FC = () => (
         <h4 className="font-display text-2xl mb-4">Stay close</h4>
         <div className="flex flex-wrap gap-2">
           <a
-            href={SOCIAL.instagram}
+            href={SOCIAL.whatsappUrl}
             target="_blank"
             rel="noreferrer noopener"
             className="inline-flex items-center gap-2 rounded-full bg-cream text-forest px-5 py-2.5 font-medium hover:bg-peach hover:text-ink transition-colors"
+          >
+            <MessageCircle className="w-4 h-4" /> WhatsApp
+          </a>
+          <a
+            href={SOCIAL.instagram}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex items-center gap-2 rounded-full border border-cream/40 text-cream px-5 py-2.5 font-medium hover:bg-cream hover:text-forest transition-colors"
           >
             <Instagram className="w-4 h-4" /> {SOCIAL.handle}
           </a>
@@ -52,7 +61,7 @@ export const Footer: React.FC = () => (
           </a>
         </div>
         <p className="mt-6 text-sm text-cream/70">
-          Best way to reach us is an Instagram DM — or give us a call.
+          Chat &amp; schedule classes on WhatsApp — or an Instagram DM works too.
         </p>
         <p className="mt-8 text-xs text-cream/50 flex items-center gap-1">
           Made with <Heart className="w-3 h-3 fill-peach text-peach" /> · © {new Date().getFullYear()} balance_ee
