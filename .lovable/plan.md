@@ -1,74 +1,85 @@
-## Goal
-Strip the AI-generated copy and stock imagery, make balance_ee feel authentic, add real Saturday class booking, refresh June events around the Fitness Soirée, surface the new AI wellness chatbot, and elevate the UI to feel alive — futuristic-minimal-luxury with a happy, fun pulse.
+# Refresh plan (v2)
 
-## 1. Content & copy cleanup (authenticity pass)
-- Sweep every page (`Home`, `About`, `Learn`, `Booking`, `CalendarPage`, `Footer`, hero/marquee) and remove generic AI phrasing, em-dash stacks, and filler adjectives. Rewrite in balance_ee's voice: warm, grounded, Lagos-real, second-person, short sentences.
-- Remove the "God is within her, she will not fail" scripture block entirely (delete `SCRIPTURE` from `src/data/events.ts` and any usage).
-- Replace AI-illustrated decor / fake event imagery with neutral, brand-aligned visuals: soft gradient/texture backgrounds, photographic placeholders the user can swap, and CSS/SVG art instead of obviously-generated pictures. No invented testimonials, no fake names, no fabricated stats.
-- Add a single line near event imagery: "Real event photos coming soon — swap in `src/assets/`".
+## 1. Landing / hero copy
+- Hero tagline: replace "Move, Gather, Rest" → **"Soirées, Book Clubs, Camping"**.
+- Remove floral/flowery decorative icons across the site.
+- Delete the "Together, Outside, Soft" section (and its image) from Home.
+- Preserve **"Move like you mean it"** and reposition it as the hero eyebrow / secondary line.
 
-## 2. Classes (always-on offering)
-New first-class concept separate from Events.
-- New file `src/data/classes.ts`: 50-minute Saturday sessions at 6–7, 7–8, 8–9, 9–10, 10–11, 11–12, 4–5, 5–6, 6–7. Each slot includes: complimentary healthy herbal tea, 50-minute movement session, 24-hour advance booking rule.
-- New page `/classes` (`src/pages/Classes.tsx`):
-  - Hero strip explaining the class format (50 min, tea included, Saturdays only, 24h notice).
-  - Animated time-slot grid; each card shows time, "X spots away" countdown if <24h, and a Book button.
-  - "What to expect", "What to bring", "What's included" tiles.
-- New component `src/components/balance/ClassBookingDialog.tsx`:
-  - Zod-validated form: name, email, phone, chosen slot (prefilled), Saturday date picker (only Saturdays, only ≥24h out), notes.
-  - On submit: build a pre-filled WhatsApp link (`https://wa.me/<number>?text=...`) and an Instagram DM fallback. Validation errors surface as toasts (per project memory).
-  - No backend write — confirmation happens over DM, as chosen.
-- Add Classes to `Navbar` (between Home and Calendar) and to the Home bento grid as a prominent tile ("Saturdays · 9 sessions · book 24h ahead").
-- Need from user: WhatsApp number to wire into the DM link (placeholder used until provided).
+## 2. Nav + Services
+- Rename top-nav **Classes → Services** (route `/services`; keep `/classes` as alias).
+- Services page has three blocks:
+  1. **Classes** — existing Saturday schedule + booking flow.
+  2. **Events** — links to `/calendar`.
+  3. **Personalized & Specialized Programs** — two cards, each opens a **"Coming soon"** state:
+     - **8-Week Program**
+     - **3-Month Program**
+     - Shared description: *"For people recovering from injury or pregnancy, breaking out of long sedentary years, or ready to level up their fitness journey."*
 
-## 3. June 2026 events refresh
-Update `src/data/events.ts`:
-- Remove `golf-meet` entirely (postponed to July).
-- Mark `book-club` (June 13) as `status: "past"` with a "Recap coming soon" note; keep on calendar but render dimmed, no booking CTA.
-- Promote `fitness-soiree` (June 20) to the headline event everywhere:
-  - Larger bento tile on Home with countdown ("X days to Soirée").
-  - Sticky "Featured" ribbon on calendar tile + event modal.
-  - Dedicated hero band on `/calendar` above the grid.
-- `EVENT_DAYS` and `JuneCalendar` updated to reflect the new set (13 dimmed, 20 glowing).
+## 3. WhatsApp booking
+- Add WhatsApp (`+234 911 298 4781` → `wa.me/2349112984781`) as primary booking/chat channel across `ClassBookingDialog`, `Booking`, `Footer`, `About`, event pages, and Home hero CTA.
+- Copy: *"Chat & schedule classes on WhatsApp."*
+- Number already lives in `src/data/events.ts` `SOCIAL.whatsapp` — reuse.
 
-## 4. AI wellness chatbot feature
-- New page `/wellness-ai` (`src/pages/WellnessAI.tsx`):
-  - Brand-voiced description (written from the brief, since the PartyRock page is gated): "Your pocket wellness companion. Tell it your schedule, energy, goals or what's sore — it builds a workout plan and daily practices shaped to your real life. Built by balance_ee on AWS PartyRock."
-  - Feature bullets: personalized plans, mindfulness prompts, recovery suggestions, beginner-friendly.
-  - Big "Open the Wellness Bot" button → opens `https://partyrock.aws/u/Balancee` in a new tab.
-  - Short "How to use it in 30 seconds" steps.
-- Add a Home bento tile + Navbar entry ("Wellness AI" with a small "New" pill).
+## 4. Events data (`src/data/events.ts`)
+- Mark **Fitness Soirée** as `status: "past"` (remove `featured`).
+- Add new featured event **Tents & Tonic** (July 31 – Aug 2, 2026):
+  - id: `tents-and-tonic`
+  - Subtitle: *"The Art of Being a Neighbor"*
+  - Collab: `@balance_ee × African Dream Community`
+  - Location: Abuja
+  - Difficulty: Medium · Element: Water
+  - Tickets: **Day Pass ₦40,000**, **Full Weekend ₦85,000**
+  - Ticket link: `https://www.rekap.africa/e/tentstonic-l8d55`
+  - Instagram reference reel: `https://www.instagram.com/reel/Da70aySoQFx/`
+  - `featured: true`, `status: "upcoming"`
 
-## 5. Visual upgrade — futuristic minimal luxury, still happy
-Direction: more whitespace, fewer decorative blobs, sharper grid, with one or two showpiece motion moments. Keep Terracotta × Sage palette but introduce:
-- A near-black ink (`--ink: 20 14% 8%`) and a warm bone (`--bone: 36 30% 96%`) for high-contrast type.
-- A single luxury accent: brushed-gold gradient token `--gilt` for subtle dividers, button rings, and the soirée badge.
-- Tighter type scale, increased tracking on small caps, Abril Fatface reserved for one statement word per section.
+## 5. Calendar
+- Swap `JuneCalendar` → **July 2026** calendar highlighting **July 31** (badge "→ Aug 2").
+- Update CalendarPage title/meta from June → July. Featured hero band shows Tents & Tonic.
 
-Motion & interaction (using `framer-motion`, already in stack):
-- Reveal-on-scroll for every section (staggered fade + 8px rise).
-- Magnetic hover on primary buttons.
-- A horizontal **drag/auto-scroll slider** for classes on Home and another for "Why balance_ee" pillars.
-- Hero: animated text mask + slow parallax on background gradient.
-- Calendar event tiles: gilt shimmer sweep + soft pulse on the featured day.
-- Cursor-follow soft glow on desktop (disabled on touch).
-- Marquee retained but slowed and made monochrome for a luxury feel.
-- All animations respect `prefers-reduced-motion`.
+## 6. Tents & Tonic subpage — `/event/tents-and-tonic`
+New route + `src/pages/TentsAndTonic.tsx`:
+- **Hero** — poster-style title "The Art of Being a Neighbor", dates, location, Medium/Water chips, Rekap CTA. Aesthetic echoes the uploaded poster (warm sunset tones, cream, deep terracotta serif display, gilt eyebrow). Uploaded image is reference only — will generate a similar warm-tone bell-tent hero via `imagegen`.
+- **About** — rainy-season Abuja context, waterproof tents + sleeping pads provided, healthy-stress framing.
+- **Programme**:
+  - Friday evening movement session
+  - Saturday movement session + bazaar
+  - Mindfulness: *"building a linear path to your heart's desire from your highest self"*
+  - First-timer note for yoga/pilates newcomers
+  - **Dr. Selma (Bioderma)** talk on basic skincare + free on-site dermatology assessments
+- **Third-space philosophy** — scenic views, real-life interactions over doomscrolling; authentic vs artificial dopamine.
+- **Tickets** — two cards: Day Pass ₦40,000 · Full Weekend ₦85,000 → Rekap; WhatsApp secondary.
+- **Instagram reel embed** — the reel URL above rendered via Instagram `blockquote` embed + `//www.instagram.com/embed.js`.
+- **Sponsors marquee** (top + bottom of page):
+  - **Bioderma** — "Biology at the service of dermatology; dermatology-recommended skincare brand." → https://www.instagram.com/biodermaafrica/
+  - **Sheer Luxury Apartments & Suites** — "Redefining the art of luxury and making that luxury inevitable; ideal home lodging business within reach." → https://www.sheerluxuryabuja.com/
+  - Continuous CSS scroll; each card links out (new tab).
 
-## 6. SEO & metadata
-- Update `<title>`, meta description, OG/Twitter tags in `index.html` to reflect balance_ee (movement, community, wellness AI), not the template defaults.
-- Add JSON-LD `Organization` + `Event` (Fitness Soirée) schema.
+## 7. Reusable component
+- `src/components/SponsorMarquee.tsx` — array of `{ name, blurb, url }`, top+bottom variants.
 
-## 7. GitHub sync + hosting note
-- The user chose "Sync to GitHub only, I'll host elsewhere". I'll prep the codebase for that, but the actual GitHub connection is a one-click step the user does in Lovable (Plus menu → GitHub → Connect project) — I can't do it from the agent side.
-- Heads-up surfaced in the closing message: balanceee.com.ng on **GitHub Pages** will work for the static UI, but Lovable Cloud features (any future auth/DB/edge functions) won't run there. Today's build is fully static (DM-based bookings, external links), so GH Pages is fine. I'll add a `public/CNAME` file with `balanceee.com.ng` and a Vite `base: '/'` confirmation so the build is GH-Pages-ready.
+## 8. Fix blank page on balanceee.com.ng
+Likely causes + fixes in code:
+- Verify `vite.config.ts` `base` — must be `/` (not `/repo-name/`) for a CNAME apex. Fix if wrong.
+- Add `public/.nojekyll` so GitHub Pages serves Vite's `_`-prefixed assets.
+- Confirm workflow copies `dist/index.html` → `dist/404.html` (already present).
+- Confirm `public/CNAME` = `balanceee.com.ng` (already present).
+
+Instructions for the user (in the closing message, not code):
+- In the GitHub repo → **Settings → Pages** set **Source: GitHub Actions** (not "Deploy from a branch").
+- DNS on `balanceee.com.ng`: four apex A records → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`; `www` CNAME → `<username>.github.io`.
+- Wait for "DNS check successful" then tick **Enforce HTTPS**.
+
+## 9. SEO
+- Refresh `index.html` title/description/OG to mention Tents & Tonic + Abuja camping wellness retreat.
+- Per-route `SEOHead` on Tents & Tonic page.
 
 ## Files touched
-- Edit: `src/data/events.ts`, `src/pages/Home.tsx`, `src/pages/About.tsx`, `src/pages/Learn.tsx`, `src/pages/Booking.tsx`, `src/pages/CalendarPage.tsx`, `src/components/Navbar.tsx`, `src/components/Footer.tsx`, `src/components/balance/JuneCalendar.tsx`, `src/components/balance/EventModal.tsx`, `src/components/balance/FloatingDecor.tsx`, `src/index.css`, `tailwind.config.ts`, `index.html`, `src/App.tsx`.
-- Create: `src/data/classes.ts`, `src/pages/Classes.tsx`, `src/pages/WellnessAI.tsx`, `src/components/balance/ClassBookingDialog.tsx`, `src/components/balance/RevealOnScroll.tsx`, `src/components/balance/DragSlider.tsx`, `public/CNAME`.
-- Delete (or replace with neutral assets): the obviously AI-generated images in `src/assets/` (`event-golf.jpg`, decorative ones not reused). Event poster slots become photo placeholders.
+- Edit: `src/pages/Home.tsx`, `src/components/Navbar.tsx`, `src/data/events.ts`, `src/App.tsx`, `src/pages/CalendarPage.tsx`, `src/components/balance/JuneCalendar.tsx` (→ July), `src/components/balance/ClassBookingDialog.tsx`, `src/pages/Booking.tsx`, `src/components/Footer.tsx`, `src/pages/About.tsx`, `vite.config.ts`, `index.html`.
+- Create: `src/pages/Services.tsx`, `src/pages/TentsAndTonic.tsx`, `src/components/SponsorMarquee.tsx`, `public/.nojekyll`.
+- Generate: hero image for Tents & Tonic (warm-toned bell-tent at sunset, no people) via `imagegen`.
 
-## Open items I'll need from you (won't block the build — placeholders used)
-- WhatsApp number for class bookings.
-- Real Fitness Soirée venue + final pricing confirmation.
-- Any real photos you want to drop into `src/assets/` later.
+## Open items (non-blocking; placeholders will ship)
+1. Sponsor logos — none provided; I'll render name+blurb typographic cards. Drop PNGs anytime and I'll swap them in.
+2. Additional Instagram reels beyond the one you sent — send more URLs and I'll add them to the embed row.
