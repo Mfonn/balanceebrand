@@ -9,7 +9,7 @@ import { SOCIAL } from "@/data/events";
 
 const NAV_LINKS: { to: string; label: string; badge?: string }[] = [
   { to: "/", label: "Home" },
-  { to: "/classes", label: "Classes" },
+  { to: "/services", label: "Services" },
   { to: "/calendar", label: "Events" },
   { to: "/wellness-ai", label: "Wellness AI", badge: "new" },
   { to: "/learn", label: "Learn" },

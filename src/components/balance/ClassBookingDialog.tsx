@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { z } from "zod";
-import { X, Instagram, Phone } from "lucide-react";
+import { X, Instagram, Phone, MessageCircle } from "lucide-react";
 import { CLASS_SLOTS, ClassSlot, CLASS_RULES, nextSaturdays } from "@/data/classes";
 import { SOCIAL } from "@/data/events";
 import { toast } from "@/hooks/use-toast";
@@ -46,10 +46,12 @@ export const ClassBookingDialog: React.FC<Props> = ({ open, onClose, defaultSlot
       toast({ title: "Just one thing", description: first.message, variant: "destructive" });
       return;
     }
-    window.open(SOCIAL.instagram, "_blank", "noopener,noreferrer");
+    const message = `Hi balance_ee — booking a Saturday class.\n\nName: ${form.name}\nDate: ${dateLabel}\nSlot: ${slot.label}\nEmail: ${form.email}\nPhone: ${form.phone}${form.notes ? `\nNotes: ${form.notes}` : ""}`;
+    const url = `${SOCIAL.whatsappUrl}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
     toast({
-      title: "Almost in",
-      description: `Send us a DM or call ${SOCIAL.phone} with: ${form.name} · ${dateLabel} · ${slot.label}`,
+      title: "Sending you to WhatsApp",
+      description: `Confirm the pre-filled message to lock in ${dateLabel} · ${slot.label}.`,
     });
     onClose();
   };
@@ -124,16 +126,17 @@ export const ClassBookingDialog: React.FC<Props> = ({ open, onClose, defaultSlot
         </div>
 
         <div className="border-t border-border px-6 py-4 space-y-3">
-          <p className="text-[11px] text-ink/60 text-center">Confirm with an Instagram DM or a quick call — no WhatsApp needed.</p>
+          <p className="text-[11px] text-ink/60 text-center">We confirm on WhatsApp — no account needed.</p>
           <div className="flex flex-col sm:flex-row gap-3">
             <button type="submit" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-terracotta text-cream font-medium py-3 px-5 hover:bg-ink transition-colors">
-              <Instagram className="w-4 h-4" /> Confirm via DM
+              <MessageCircle className="w-4 h-4" /> Confirm on WhatsApp
             </button>
             <a
-              href={SOCIAL.phoneTel}
+              href={SOCIAL.instagram}
+              target="_blank" rel="noreferrer noopener"
               className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink text-ink font-medium py-3 px-5 hover:bg-ink hover:text-cream transition-colors"
             >
-              <Phone className="w-4 h-4" /> Call {SOCIAL.phone}
+              <Instagram className="w-4 h-4" /> DM instead
             </a>
           </div>
         </div>
