@@ -1,15 +1,16 @@
 import React, { useMemo } from "react";
-import { JUNE_EVENTS, getEventsForDay, BalanceEvent } from "@/data/events";
+import { EVENTS, getEventsForDay, BalanceEvent } from "@/data/events";
 
 type Props = {
   onSelectEvent: (event: BalanceEvent) => void;
 };
 
-// June 2026: June 1 2026 is a Monday
-const MONTH = "June";
+// July 2026: July 1 is a Wednesday (getDay() === 3)
+const MONTH = "July";
+const MONTH_NUM = 7;
 const YEAR = 2026;
-const FIRST_DAY_WEEKDAY = 1;
-const DAYS_IN_MONTH = 30;
+const FIRST_DAY_WEEKDAY = 3;
+const DAYS_IN_MONTH = 31;
 const WEEKDAYS = ["S", "M", "T", "W", "T", "F", "S"];
 
 export const JuneCalendar: React.FC<Props> = ({ onSelectEvent }) => {
@@ -21,9 +22,11 @@ export const JuneCalendar: React.FC<Props> = ({ onSelectEvent }) => {
   }, []);
 
   const handleDayClick = (day: number) => {
-    const events = getEventsForDay(day);
+    const events = getEventsForDay(day, MONTH_NUM);
     if (events.length >= 1) onSelectEvent(events[0]);
   };
+
+  const monthEvents = EVENTS.filter((e) => e.month === MONTH_NUM || (e.endMonth && e.endMonth >= MONTH_NUM && e.month <= MONTH_NUM));
 
   return (
     <div className="relative rounded-3xl bg-cream border-2 border-forest/15 shadow-soft p-5 sm:p-8 overflow-hidden">
@@ -50,8 +53,9 @@ export const JuneCalendar: React.FC<Props> = ({ onSelectEvent }) => {
       <div className="relative grid grid-cols-7 gap-1 sm:gap-2">
         {cells.map((day, i) => {
           if (day === null) return <div key={i} aria-hidden />;
-          const events = getEventsForDay(day);
+          const events = getEventsForDay(day, MONTH_NUM);
           const hasEvent = events.length > 0;
+          const featured = hasEvent && events.some((e) => e.featured);
           const isPast = hasEvent && events.every((e) => e.status === "past");
           const accent =
             events[0]?.accent === "terracotta" ? "from-terracotta to-peach" :
@@ -67,17 +71,17 @@ export const JuneCalendar: React.FC<Props> = ({ onSelectEvent }) => {
                 relative aspect-square rounded-xl sm:rounded-2xl flex flex-col items-center justify-center
                 transition-all duration-300
                 ${hasEvent && !isPast
-                  ? `bg-gradient-to-br ${accent} text-cream font-semibold cursor-pointer hover:scale-[1.06] hover:-translate-y-0.5 hover:z-10 ring-1 ring-gilt/40`
+                  ? `bg-gradient-to-br ${accent} text-cream font-semibold cursor-pointer hover:scale-[1.06] hover:-translate-y-0.5 hover:z-10 ring-1 ring-gilt/40 ${featured ? "shimmer-day" : ""}`
                   : isPast
                     ? "bg-muted text-ink/50 cursor-pointer hover:bg-muted/80 border border-dashed border-forest/20"
                     : "bg-cream text-ink/70 hover:bg-muted"}
               `}
-              aria-label={hasEvent ? `${day} June — ${events.map(e => e.title).join(", ")}` : `${day} June`}
+              aria-label={hasEvent ? `${day} July — ${events.map(e => e.title).join(", ")}` : `${day} July`}
             >
               <span className={`relative z-10 text-base sm:text-xl ${hasEvent ? "font-display" : ""}`}>{day}</span>
               {hasEvent && (
                 <span className={`relative z-10 mt-0.5 text-[8px] sm:text-[10px] uppercase tracking-wider ${isPast ? "" : "opacity-90"}`}>
-                  {isPast ? "past" : events[0].slot}
+                  {isPast ? "past" : events[0].endDay ? `→ ${events[0].endDay} aug` : events[0].slot}
                 </span>
               )}
             </button>
@@ -86,9 +90,10 @@ export const JuneCalendar: React.FC<Props> = ({ onSelectEvent }) => {
       </div>
 
       <div className="relative mt-8 pt-6 border-t border-forest/10 space-y-3">
-        <p className="text-xs uppercase tracking-[0.25em] text-forest/70 mb-3">Browse the month</p>
-        {JUNE_EVENTS.map((e) => {
+        <p className="text-xs uppercase tracking-[0.25em] text-forest/70 mb-3">Browse events</p>
+        {monthEvents.map((e) => {
           const past = e.status === "past";
+          const monthAbbr = e.month === 7 ? "JUL" : e.month === 6 ? "JUN" : "AUG";
           return (
             <button
               key={e.id}
@@ -99,8 +104,9 @@ export const JuneCalendar: React.FC<Props> = ({ onSelectEvent }) => {
                 <img src={e.image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 text-xs text-forest/70">
-                  <span className="font-mono font-semibold text-terracotta">{String(e.day).padStart(2,"0")} JUN</span>
+                <div className="flex items-center gap-2 text-xs text-forest/70 flex-wrap">
+                  <span className="font-mono font-semibold text-terracotta">{String(e.day).padStart(2,"0")} {monthAbbr}</span>
+                  {e.endDay && <span className="text-forest/50">→ {String(e.endDay).padStart(2,"0")} {e.endMonth === 8 ? "AUG" : monthAbbr}</span>}
                   <span>·</span>
                   <span>{e.slot === "AM" ? "Morning" : e.slot === "PM" ? "Evening" : "All day"}</span>
                   {past && <span className="ml-1 rounded-full bg-ink/10 text-ink/70 px-2 py-0.5 text-[10px] uppercase tracking-wider">past</span>}

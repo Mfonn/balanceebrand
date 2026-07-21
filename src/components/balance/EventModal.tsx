@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { X, MapPin, Clock, Sparkles, ExternalLink, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
+import { X, MapPin, Clock, Sparkles, ExternalLink, Instagram, ArrowRight } from "lucide-react";
 import { BalanceEvent, SOCIAL } from "@/data/events";
 
 type Props = {
@@ -142,13 +143,22 @@ export const EventModal: React.FC<Props> = ({ event, onClose }) => {
             </>
           ) : (
             <>
+              {event.slug && (
+                <Link
+                  to={`/event/${event.slug}`}
+                  onClick={onClose}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream font-medium py-3.5 px-6 hover:bg-terracotta transition-colors"
+                >
+                  Full event page <ArrowRight className="w-4 h-4" />
+                </Link>
+              )}
               <a
                 href={event.selarUrl}
                 target="_blank"
                 rel="noreferrer noopener"
                 className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-terracotta text-cream font-medium py-3.5 px-6 hover:bg-ink transition-colors text-base"
               >
-                Book on Selar <ExternalLink className="w-4 h-4" />
+                Book tickets <ExternalLink className="w-4 h-4" />
               </a>
               <a
                 href={SOCIAL.instagram}

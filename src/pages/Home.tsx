@@ -1,21 +1,19 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles, Users, Flower2, Instagram, Coffee, Bot, Calendar, ExternalLink } from "lucide-react";
+import { ArrowRight, Sparkles, Users, Waves, Instagram, Coffee, Bot, Calendar, ExternalLink, MessageCircle, Tent } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Mark } from "@/components/balance/Mark";
 import { JuneCalendar } from "@/components/balance/JuneCalendar";
 import { EventModal } from "@/components/balance/EventModal";
 import { ClassBookingDialog } from "@/components/balance/ClassBookingDialog";
 import { Reveal } from "@/components/balance/Reveal";
-import { JUNE_EVENTS, BalanceEvent, SOCIAL, FEATURED_EVENT } from "@/data/events";
+import { BalanceEvent, SOCIAL, FEATURED_EVENT } from "@/data/events";
 import { CLASS_SLOTS } from "@/data/classes";
-import heroImg from "@/assets/hero-balance.jpg";
 
 const MARQUEE = [
-  "move", "breathe", "gather", "rest", "soft strength", "deep breath",
-  "tea", "books", "yoga", "pilates", "walking", "presence",
+  "move", "breathe", "gather", "camp", "soft strength", "deep breath",
+  "tea", "books", "yoga", "pilates", "tents", "presence",
 ];
 
 const useCountdown = (target: Date) => {
@@ -34,14 +32,16 @@ const Home: React.FC = () => {
   const [selected, setSelected] = useState<BalanceEvent | null>(null);
   const [bookOpen, setBookOpen] = useState(false);
 
-  const soireeDate = useMemo(() => new Date("2026-06-20T16:00:00+01:00"), []);
-  const { days, hours } = useCountdown(soireeDate);
+  const featuredDate = useMemo(() => new Date("2026-07-31T16:00:00+01:00"), []);
+  const { days, hours } = useCountdown(featuredDate);
+
+  const waLink = `${SOCIAL.whatsappUrl}?text=${encodeURIComponent("Hi balance_ee — I'd like to book a Saturday class.")}`;
 
   return (
     <div className="min-h-screen bg-cream text-ink">
       <Helmet>
-        <title>balance_ee — Saturday classes, soirées & a wellness AI</title>
-        <meta name="description" content="balance_ee is a wellness community in Lagos. Weekly Saturday movement classes, monthly soirées, and a personal wellness AI you can talk to." />
+        <title>balance_ee — Abuja Yoga, Pilates & Wellness Retreats</title>
+        <meta name="description" content="Soirées, book clubs, camping. Weekly Saturday yoga and pilates classes in Abuja, monthly wellness events, and a personal wellness AI." />
         <link rel="canonical" href="/" />
       </Helmet>
       <Navbar />
@@ -53,39 +53,37 @@ const Home: React.FC = () => {
 
         <div className="relative mx-auto max-w-7xl">
           <div className="grid grid-cols-12 gap-3 sm:gap-4 md:gap-5">
-            {/* Big intro tile */}
-            <Reveal as="div" className="col-span-12 lg:col-span-5 rounded-3xl gradient-warm p-6 sm:p-10 md:p-12 text-cream relative overflow-hidden min-h-[360px] md:min-h-[520px] flex flex-col justify-end shadow-soft">
-              <Mark className="absolute top-6 right-6 w-16 h-16 md:w-20 md:h-20 animate-wiggle" />
-              <p className="text-xs uppercase tracking-[0.3em] opacity-90 mb-3">a wellness community</p>
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl leading-[0.98] text-balance">
-                A Balance approach <br />
-                <span className="italic text-cream/95">to a Healthy Lifestyle.</span>
+            {/* Big intro tile — full width */}
+            <Reveal as="div" className="col-span-12 rounded-3xl gradient-warm p-8 sm:p-12 md:p-16 text-cream relative overflow-hidden min-h-[420px] md:min-h-[480px] flex flex-col justify-end shadow-soft">
+              <p className="text-[11px] uppercase tracking-[0.35em] opacity-90 mb-4">a wellness community · abuja</p>
+              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-balance max-w-4xl">
+                Move like you <span className="italic text-cream/95">mean it.</span>
               </h1>
-              <p className="mt-5 max-w-lg text-base md:text-lg text-cream/95 leading-relaxed">
-                Soirées, book clubs, Saturday classes — something for you every month. Move, gather, rest.
+              <p className="mt-6 max-w-2xl text-lg md:text-xl text-cream/95 leading-relaxed">
+                Soirées, book clubs, camping — something for you every month. Chat &amp; schedule classes on WhatsApp.
               </p>
-              <div className="flex flex-wrap gap-3 mt-7">
-                <Link to="/classes" className="inline-flex items-center gap-2 rounded-full bg-cream text-terracotta font-medium px-5 py-3 hover:bg-ink hover:text-cream transition-colors">
+              <div className="flex flex-wrap gap-3 mt-8">
+                <button
+                  onClick={() => setBookOpen(true)}
+                  className="inline-flex items-center gap-2 rounded-full bg-cream text-terracotta font-medium px-6 py-3.5 hover:bg-ink hover:text-cream transition-colors"
+                >
                   Book a class <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link to="/calendar" className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-5 py-3 hover:bg-cream hover:text-terracotta transition-colors">
-                  See what's on
+                </button>
+                <a
+                  href={waLink}
+                  target="_blank" rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3.5 hover:bg-cream hover:text-terracotta transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4" /> WhatsApp us
+                </a>
+                <Link to="/services" className="inline-flex items-center gap-2 rounded-full bg-ink/20 backdrop-blur border-2 border-cream/40 text-cream font-medium px-6 py-3.5 hover:bg-ink/40 transition-colors">
+                  Services
                 </Link>
               </div>
             </Reveal>
 
-            {/* Hero illustration tile — park scene */}
-            <Reveal as="div" delay={120} className="col-span-12 lg:col-span-7 rounded-3xl overflow-hidden relative min-h-[280px] md:min-h-[520px] shadow-soft group bg-cream">
-              <img src={heroImg} alt="A soft, storybook illustration of a peaceful park scenery" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1200ms]" fetchPriority="high" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-cream/30 via-transparent to-transparent" />
-              <div className="absolute left-4 bottom-4 right-4 sm:left-6 sm:bottom-6 sm:right-auto sm:max-w-xs rounded-2xl bg-cream/85 backdrop-blur-md px-4 py-3 ring-1 ring-gilt/40 shadow-soft">
-                <p className="text-[10px] uppercase tracking-[0.2em] text-forest/60">together · outside · soft</p>
-                <p className="font-display text-xl text-ink mt-0.5">Move like you mean it.</p>
-              </div>
-            </Reveal>
-
-            {/* CLASSES tile (prominent) */}
-            <Reveal as="div" delay={80} className="col-span-12 sm:col-span-6 lg:col-span-5 rounded-3xl bg-ink text-cream p-6 sm:p-8 min-h-[200px] shadow-soft relative overflow-hidden group">
+            {/* CLASSES tile */}
+            <Reveal as="div" delay={80} className="col-span-12 sm:col-span-6 lg:col-span-5 rounded-3xl bg-ink text-cream p-6 sm:p-8 min-h-[220px] shadow-soft relative overflow-hidden group">
               <div className="absolute -bottom-12 -right-12 w-48 h-48 rounded-full bg-terracotta/40 blur-3xl group-hover:bg-terracotta/60 transition-colors" />
               <div className="relative flex items-start justify-between">
                 <div>
@@ -112,21 +110,24 @@ const Home: React.FC = () => {
             </Reveal>
 
             {/* WELLNESS AI tile */}
-            <Reveal as="div" delay={140} className="col-span-12 sm:col-span-6 lg:col-span-4 rounded-3xl bg-sage text-cream p-6 sm:p-8 min-h-[200px] shadow-soft relative overflow-hidden group">
+            <Reveal as="div" delay={140} className="col-span-12 sm:col-span-6 lg:col-span-4 rounded-3xl bg-sage text-cream p-6 sm:p-8 min-h-[220px] shadow-soft relative overflow-hidden group">
               <Bot className="w-8 h-8" />
               <p className="text-[11px] uppercase tracking-[0.25em] text-cream/80 mt-2">new · ai chatbot</p>
               <p className="font-display text-4xl mt-1">Wellness AI</p>
-              <p className="mt-2 text-cream/90 text-sm">A bot that builds workout plans & wellness practices for your scenario.</p>
+              <p className="mt-2 text-cream/90 text-sm">A bot that builds workout plans &amp; wellness practices for your scenario.</p>
               <Link to="/wellness-ai" className="mt-4 inline-flex items-center gap-2 rounded-full bg-cream text-forest font-medium px-5 py-2.5 hover:bg-ink hover:text-cream transition-colors">
                 Try it <ArrowRight className="w-4 h-4" />
               </Link>
             </Reveal>
 
-            {/* FEATURED EVENT — Soirée countdown */}
-            <Reveal as="div" delay={120} className="col-span-12 lg:col-span-3 rounded-3xl gradient-sunrise text-cream p-6 sm:p-7 min-h-[200px] shadow-glow relative overflow-hidden group">
-              <p className="text-[10px] uppercase tracking-[0.25em]">featured · june 20</p>
-              <p className="font-display text-3xl mt-1 leading-tight">Fitness Soirée</p>
-              <p className="text-xs text-cream/90 mt-1">{FEATURED_EVENT.tagline}</p>
+            {/* FEATURED EVENT — Tents & Tonic countdown */}
+            <Reveal as="div" delay={120} className="col-span-12 lg:col-span-3 rounded-3xl gradient-sunrise text-cream p-6 sm:p-7 min-h-[220px] shadow-glow relative overflow-hidden group">
+              <div className="flex items-start justify-between">
+                <p className="text-[10px] uppercase tracking-[0.25em]">featured · 31 jul</p>
+                <Tent className="w-5 h-5" />
+              </div>
+              <p className="font-display text-3xl mt-1 leading-tight">Tents &amp; Tonic</p>
+              <p className="text-xs text-cream/90 mt-1">The Art of Being a Neighbor</p>
               <div className="mt-4 flex items-end gap-3">
                 <div>
                   <p className="font-display text-5xl leading-none">{days}</p>
@@ -137,14 +138,14 @@ const Home: React.FC = () => {
                   <p className="text-[10px] uppercase tracking-wider">hrs</p>
                 </div>
               </div>
-              <button onClick={() => setSelected(FEATURED_EVENT)} className="mt-4 inline-flex items-center gap-1 text-sm font-medium hover:underline">
+              <Link to="/event/tents-and-tonic" className="mt-4 inline-flex items-center gap-1 text-sm font-medium hover:underline">
                 See details <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+              </Link>
             </Reveal>
 
             {/* Mini pillar tiles */}
             <Reveal as="div" delay={160} className="col-span-6 lg:col-span-3 rounded-3xl bg-peach text-ink p-5 sm:p-6 flex flex-col justify-between min-h-[160px] shadow-soft">
-              <Flower2 className="w-7 h-7" />
+              <Waves className="w-7 h-7" />
               <div>
                 <p className="font-display text-2xl">Movement</p>
                 <p className="text-sm text-ink/75">yoga · pilates · mobility</p>
@@ -161,7 +162,7 @@ const Home: React.FC = () => {
               <Users className="w-7 h-7" />
               <div>
                 <p className="font-display text-2xl">Community</p>
-                <p className="text-sm text-cream/85">tea, books & soirées</p>
+                <p className="text-sm text-cream/85">tea, books &amp; soirées</p>
               </div>
             </Reveal>
             <Reveal as="a" delay={220}
@@ -194,7 +195,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Featured Soirée band */}
+      {/* Featured Tents & Tonic band */}
       <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <Reveal>
@@ -202,22 +203,23 @@ const Home: React.FC = () => {
               <img src={FEATURED_EVENT.image} alt={FEATURED_EVENT.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
               <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-cream/95 text-terracotta px-3 py-1 text-[11px] uppercase tracking-[0.2em] font-semibold">
-                <Sparkles className="w-3 h-3" /> featured · this month
+                <Sparkles className="w-3 h-3" /> featured · next up
               </span>
               <div className="absolute bottom-5 left-5 right-5 text-cream">
-                <p className="text-xs uppercase tracking-[0.25em]">{FEATURED_EVENT.date}</p>
+                <p className="text-xs uppercase tracking-[0.25em] text-gilt">{FEATURED_EVENT.date}</p>
                 <p className="font-display text-3xl sm:text-4xl mt-1">{FEATURED_EVENT.title}</p>
               </div>
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <p className="text-xs uppercase tracking-[0.3em] text-terracotta">june 20 · headline event</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-terracotta">31 jul → 2 aug · headline event</p>
             <h2 className="font-display text-5xl md:text-6xl text-ink mt-3 leading-[1.0] text-balance">
-              Fitness <span className="italic">Soirée</span>.
+              The Art of <span className="italic">Being a Neighbor.</span>
             </h2>
             <p className="mt-5 text-ink/80 text-lg leading-relaxed">
-              An evening of movement, mimosas and meaningful conversation. Yoga + Pilates on the mat, a talk on stress &
-              inflammation, a grill, juice stand, raffles, and a few quiet kayaks on the water for the ones who want to drift.
+              A wellness camping retreat with African Dream Community. Movement, mindfulness, a skincare
+              talk by Dr. Selma of Bioderma, and real conversation under Abuja's rainy-season sky.
+              Waterproof tents provided.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {FEATURED_EVENT.included.slice(0, 4).map((i) => (
@@ -225,19 +227,19 @@ const Home: React.FC = () => {
               ))}
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
+              <Link
+                to="/event/tents-and-tonic"
+                className="inline-flex items-center gap-2 rounded-full bg-terracotta text-cream font-medium px-6 py-3 hover:bg-ink transition-colors"
+              >
+                Full event page <ArrowRight className="w-4 h-4" />
+              </Link>
               <a
                 href={FEATURED_EVENT.selarUrl}
                 target="_blank" rel="noreferrer noopener"
-                className="inline-flex items-center gap-2 rounded-full bg-terracotta text-cream font-medium px-6 py-3 hover:bg-ink transition-colors"
-              >
-                Book on Selar <ExternalLink className="w-4 h-4" />
-              </a>
-              <button
-                onClick={() => setSelected(FEATURED_EVENT)}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink font-medium px-6 py-3 hover:bg-ink hover:text-cream transition-colors"
               >
-                Full details
-              </button>
+                Book on Rekap <ExternalLink className="w-4 h-4" />
+              </a>
             </div>
           </Reveal>
         </div>
@@ -249,7 +251,7 @@ const Home: React.FC = () => {
           <Reveal>
             <div className="text-center mb-10">
               <p className="text-xs uppercase tracking-[0.3em] text-terracotta">monthly</p>
-              <h2 className="font-display text-5xl sm:text-6xl text-ink mt-3">Soirées, book clubs.</h2>
+              <h2 className="font-display text-5xl sm:text-6xl text-ink mt-3">Soirées, book clubs, camping.</h2>
               <p className="mt-4 text-ink/70 max-w-xl mx-auto">Something for you every month. Classes run every Saturday — events are the special ones.</p>
             </div>
           </Reveal>
@@ -272,9 +274,9 @@ const Home: React.FC = () => {
               You don't need to do all of it — just start, gently, this Saturday.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link to="/classes" className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-3 font-medium hover:bg-terracotta transition-colors">
+              <button onClick={() => setBookOpen(true)} className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-3 font-medium hover:bg-terracotta transition-colors">
                 Book a Saturday class <ArrowRight className="w-4 h-4" />
-              </Link>
+              </button>
               <Link to="/learn" className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink px-5 py-3 font-medium hover:bg-ink hover:text-cream transition-colors">
                 Read Learn
               </Link>
@@ -310,7 +312,7 @@ const Home: React.FC = () => {
             </div>
             <p className="relative text-xs uppercase tracking-[0.3em] mb-3">ready when you are</p>
             <h2 className="relative font-display text-4xl sm:text-6xl">Come find your balance.</h2>
-            <p className="relative mt-4 max-w-xl mx-auto opacity-95">A class, a soirée, a chat with the bot — pick your entry point.</p>
+            <p className="relative mt-4 max-w-xl mx-auto opacity-95">A class, a camp weekend, a chat with the bot — pick your entry point.</p>
             <div className="relative flex flex-wrap justify-center gap-3 mt-7">
               <button onClick={() => setBookOpen(true)} className="rounded-full bg-cream text-terracotta font-medium px-6 py-3 hover:bg-ink hover:text-cream transition-colors">
                 Book a class
@@ -318,8 +320,8 @@ const Home: React.FC = () => {
               <Link to="/calendar" className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors">
                 <Calendar className="w-4 h-4" /> See events
               </Link>
-              <a href={SOCIAL.instagram} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors">
-                <Instagram className="w-4 h-4" /> DM us
+              <a href={waLink} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors">
+                <MessageCircle className="w-4 h-4" /> WhatsApp us
               </a>
             </div>
           </div>

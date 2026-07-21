@@ -14,8 +14,8 @@ const CalendarPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-cream text-ink">
       <Helmet>
-        <title>June Events — balance_ee</title>
-        <meta name="description" content="What's on at balance_ee this June: the Fitness Soirée headline event on June 20. Tap a glowing date to book on Selar." />
+        <title>July Events — Tents & Tonic | balance_ee Abuja</title>
+        <meta name="description" content="What's on at balance_ee this July: Tents & Tonic, a wellness camping retreat on 31 July – 2 August 2026. Tap a glowing date to see the full event." />
         <link rel="canonical" href="/calendar" />
       </Helmet>
       <Navbar />
@@ -28,7 +28,7 @@ const CalendarPage: React.FC = () => {
           </Reveal>
           <Reveal delay={80}>
             <h1 className="font-display text-5xl sm:text-6xl md:text-7xl mt-3 leading-[1.0] text-balance">
-              June, gently <span className="italic">glowing.</span>
+              July, gently <span className="italic">glowing.</span>
             </h1>
           </Reveal>
           <Reveal delay={160}>
@@ -51,21 +51,21 @@ const CalendarPage: React.FC = () => {
                   <Sparkles className="w-3 h-3" /> featured · {FEATURED_EVENT.date}
                 </span>
                 <h2 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight">{FEATURED_EVENT.title}</h2>
-                <p className="mt-2 text-cream/90 max-w-xl">{FEATURED_EVENT.tagline}</p>
+                <p className="mt-2 text-cream/90 max-w-xl">{FEATURED_EVENT.subtitle ?? FEATURED_EVENT.tagline}</p>
                 <div className="mt-5 flex flex-wrap gap-3">
+                  <a
+                    href="/event/tents-and-tonic"
+                    className="inline-flex items-center gap-2 rounded-full bg-terracotta text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors"
+                  >
+                    Full event page
+                  </a>
                   <a
                     href={FEATURED_EVENT.selarUrl}
                     target="_blank" rel="noreferrer noopener"
-                    className="inline-flex items-center gap-2 rounded-full bg-terracotta text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors"
-                  >
-                    Book on Selar <ExternalLink className="w-4 h-4" />
-                  </a>
-                  <button
-                    onClick={() => setSelected(FEATURED_EVENT)}
                     className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors"
                   >
-                    Full details
-                  </button>
+                    Book on Rekap <ExternalLink className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
             </div>
