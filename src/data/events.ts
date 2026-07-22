@@ -1,6 +1,8 @@
 import bookClubImg from "@/assets/event-book-club.jpg";
 import soireeImg from "@/assets/event-fitness-soiree.jpg";
-import tentsImg from "@/assets/tents-and-tonic-hero.jpg";
+import tentsAsset from "@/assets/tents-real.png.asset.json";
+import oviacareAsset from "@/assets/oviacare-logo.svg.asset.json";
+const tentsImg = tentsAsset.url;
 
 export type BalanceEvent = {
   id: string;
@@ -95,7 +97,7 @@ export const EVENTS: BalanceEvent[] = [
     endMonth: 8,
     endDay: 2,
     slot: "ALLDAY",
-    title: "Tents & Tonic",
+    title: "TenTS&Tonic",
     subtitle: "The Art of Being a Neighbor",
     tagline: "A wellness camping retreat · 31 July → 2 August 2026",
     date: "31 July – 2 August 2026",
@@ -145,7 +147,9 @@ export const SOCIAL = {
   phoneTel: "tel:+2349112984781",
 };
 
-export const SPONSORS = [
+export type Sponsor = { name: string; blurb: string; url: string; logo?: string };
+
+export const SPONSORS: Sponsor[] = [
   {
     name: "Bioderma",
     blurb: "Biology at the service of dermatology — a dermatology-recommended skincare brand.",
@@ -155,5 +159,11 @@ export const SPONSORS = [
     name: "Sheer Luxury Apartments & Suites",
     blurb: "Redefining the art of luxury — an ideal home-lodging business within reach.",
     url: "https://www.sheerluxuryabuja.com/",
+  },
+  {
+    name: "OviaCare",
+    blurb: "Specialist hair & scalp clinic — expert diagnosis, treatment and personalized care for all hair conditions.",
+    url: "https://oviacare.org/",
+    logo: oviacareAsset.url,
   },
 ];

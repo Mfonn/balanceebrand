@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Coffee, Clock, Calendar, Sparkles, Leaf, Sunrise, Sun, Moon } from "lucide-react";
+import { Coffee, Clock, Calendar, Sparkles, Leaf, Sunrise, Moon } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";
@@ -9,7 +9,6 @@ import { CLASS_SLOTS, CLASS_RULES } from "@/data/classes";
 
 const PERIOD_META = {
   morning: { Icon: Sunrise, tone: "bg-peach text-ink", label: "Morning" },
-  midday:  { Icon: Sun,     tone: "bg-sage text-cream", label: "Midday" },
   evening: { Icon: Moon,    tone: "bg-forest text-cream", label: "Evening" },
 } as const;
 
@@ -61,7 +60,7 @@ const Classes: React.FC = () => {
       {/* Slot grid */}
       <section className="px-4 md:px-8 pb-16">
         <div className="mx-auto max-w-5xl">
-          {(["morning", "midday", "evening"] as const).map((period, pIdx) => {
+          {(["morning", "evening"] as const).map((period, pIdx) => {
             const meta = PERIOD_META[period];
             const slots = CLASS_SLOTS.filter((s) => s.period === period);
             return (

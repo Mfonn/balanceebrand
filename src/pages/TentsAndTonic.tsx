@@ -1,52 +1,63 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { ExternalLink, MessageCircle, MapPin, Calendar, Droplets, Gauge, Leaf, Sparkles, Users, HeartPulse } from "lucide-react";
+import { ExternalLink, MessageCircle, MapPin, Calendar, Droplets, Gauge, Leaf, Sparkles, Users, HeartPulse, Eye, Scissors, Phone } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";
 import { SponsorMarquee } from "@/components/SponsorMarquee";
 import { SOCIAL, getEventBySlug } from "@/data/events";
+import oviacareAsset from "@/assets/oviacare-logo.svg.asset.json";
 
-const IG_REEL_URL = "https://www.instagram.com/reel/Da70aySoQFx/";
+const IG_REELS = [
+  "https://www.instagram.com/reel/Da70aySoQFx/",
+  "https://www.instagram.com/reel/DZ5HCM5MO2Z/",
+];
+
+const PHONES = [
+  { pretty: "+234 704 053 8528", tel: "tel:+2347040538528" },
+  { pretty: "+234 911 298 4781", tel: "tel:+2349112984781" },
+];
 
 const TentsAndTonic: React.FC = () => {
   const event = getEventBySlug("tents-and-tonic")!;
 
-  // Load Instagram embed script
+  // Load Instagram embed script (and re-process when reels change)
   useEffect(() => {
     const id = "instagram-embed-js";
+    const process = () => (window as any).instgrm?.Embeds?.process?.();
     if (document.getElementById(id)) {
-      (window as any).instgrm?.Embeds?.process?.();
+      process();
       return;
     }
     const s = document.createElement("script");
     s.id = id;
     s.async = true;
     s.src = "https://www.instagram.com/embed.js";
+    s.onload = process;
     document.body.appendChild(s);
   }, []);
 
   const waLink = `${SOCIAL.whatsappUrl}?text=${encodeURIComponent(
-    "Hi balance_ee — I'd like to know more about Tents & Tonic (31 Jul – 2 Aug)."
+    "Hi balance_ee — I'd like to know more about TenTS&Tonic (31 Jul – 2 Aug)."
   )}`;
 
   return (
     <div className="min-h-screen bg-cream text-ink">
       <Helmet>
-        <title>Tents & Tonic — Wellness Camping Retreat, Abuja | balance_ee</title>
+        <title>TenTS&Tonic — Wellness Camping Retreat, Abuja | balance_ee</title>
         <meta
           name="description"
-          content="Tents & Tonic — a wellness camping retreat in Abuja, 31 July – 2 August 2026. Movement, mindfulness, a skincare talk by Dr. Selma of Bioderma, and real third-space community. Book on Rekap."
+          content="TenTS&Tonic — a wellness camping retreat in Abuja for health-conscious adults, 31 July – 2 August 2026. Movement, mindfulness, skincare with Dr. Selma (Bioderma), scalp health with OviaCare. Book on Rekap."
         />
         <link rel="canonical" href="/event/tents-and-tonic" />
-        <meta property="og:title" content="Tents & Tonic — The Art of Being a Neighbor" />
+        <meta property="og:title" content="TenTS&Tonic — The Art of Being a Neighbor" />
         <meta property="og:description" content="A wellness camping retreat in Abuja · 31 July – 2 August 2026 · balance_ee × African Dream Community." />
         <meta property="og:image" content={event.image} />
       </Helmet>
 
       <Navbar />
 
-      <SponsorMarquee label="In partnership with" />
+      <SponsorMarquee label="In partnership with" topClearance />
 
       {/* HERO */}
       <section className="relative pt-16 md:pt-20 pb-12 md:pb-20 px-4 md:px-8 overflow-hidden">
@@ -56,7 +67,7 @@ const TentsAndTonic: React.FC = () => {
               African Dream Community <span className="text-gilt">✕</span> balance_ee
             </p>
             <p className="text-xs uppercase tracking-[0.3em] text-terracotta font-semibold">
-              Tents &amp; Tonic — a wellness camping retreat
+              TenTS&amp;Tonic — a wellness camping retreat
             </p>
             <h1 className="font-display text-5xl sm:text-6xl md:text-7xl mt-4 leading-[0.95] text-balance">
               The Art of <span className="italic text-terracotta">Being a Neighbor.</span>
@@ -81,7 +92,7 @@ const TentsAndTonic: React.FC = () => {
 
             <p className="mt-6 text-ink/80 text-lg leading-relaxed max-w-xl">
               A weekend of movement, mindfulness and real neighbourly conversation, out under Abuja's open sky.
-              A healthy dose of stress is a good thing — the rain, the tents, the shared meals are the whole point.
+              A healthy dose of stress is a good thing — the rain and the tents are the whole point.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -97,18 +108,18 @@ const TentsAndTonic: React.FC = () => {
                 target="_blank" rel="noreferrer noopener"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink font-medium px-6 py-3.5 hover:bg-ink hover:text-cream transition-colors"
               >
-                <MessageCircle className="w-4 h-4" /> WhatsApp us
+                <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
               </a>
             </div>
           </Reveal>
 
           <Reveal delay={120}>
             <div className="relative rounded-3xl overflow-hidden shadow-glow aspect-[4/5] ring-1 ring-gilt/40">
-              <img src={event.image} alt="Bell tent at golden hour on the Abuja savannah" className="absolute inset-0 w-full h-full object-cover" />
+              <img src={event.image} alt="Waterproof camping tent set up under trees for the TenTS&Tonic retreat" className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
               <div className="absolute bottom-5 left-5 right-5 text-cream">
                 <p className="text-[11px] uppercase tracking-[0.25em] text-gilt">wellness camping retreat</p>
-                <p className="font-display text-3xl mt-1">Tents &amp; Tonic</p>
+                <p className="font-display text-3xl mt-1">TenTS&amp;Tonic</p>
               </div>
             </div>
           </Reveal>
@@ -120,13 +131,13 @@ const TentsAndTonic: React.FC = () => {
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.3em] text-terracotta text-center">the programme</p>
-            <h2 className="font-display text-4xl md:text-5xl text-center mt-3">Three days, gently structured.</h2>
+            <h2 className="font-display text-4xl md:text-5xl text-center mt-3">The programme.</h2>
           </Reveal>
 
           <div className="mt-12 grid md:grid-cols-2 gap-4">
             {[
               { Icon: HeartPulse, tone: "bg-terracotta text-cream", t: "Friday evening movement", d: "An easy opener as the sun goes. Land, breathe, meet your neighbours before dark." },
-              { Icon: Users, tone: "bg-peach text-ink", t: "Saturday movement + bazaar", d: "A longer flow, then a wander through the bazaar — food, small brands, slow conversation." },
+              { Icon: Users, tone: "bg-peach text-ink", t: "Saturday movement + bazaar", d: "A longer flow, then a wander through the bazaar." },
               { Icon: Sparkles, tone: "bg-forest text-cream", t: "Mindfulness session", d: "Building a linear path to your heart's desire, from your highest self. Bring a pen." },
               { Icon: Leaf, tone: "bg-sage text-cream", t: "New to yoga or pilates?", d: "This is the softest possible entry point. Curious counts. No experience needed." },
             ].map(({ Icon, tone, t, d }, i) => (
@@ -139,25 +150,130 @@ const TentsAndTonic: React.FC = () => {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Dr. Selma highlight */}
+      {/* SPECIAL GUESTS */}
+      <section className="px-4 md:px-8 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl">
           <Reveal>
-            <div className="mt-6 rounded-3xl bg-cream border-2 border-gilt/40 p-7 sm:p-10 shadow-soft ring-1 ring-gilt/20">
-              <p className="text-[11px] uppercase tracking-[0.3em] text-gilt">special guest</p>
-              <h3 className="font-display text-3xl md:text-4xl mt-2 text-ink">
-                Dr. Selma <span className="text-terracotta">×</span> Bioderma
-              </h3>
-              <p className="mt-3 text-ink/80 max-w-2xl leading-relaxed">
-                A talk on building a basic skincare routine that actually holds up in Abuja weather —
-                plus free on-site dermatology assessments and short consultations for anyone who wants one.
-              </p>
-            </div>
+            <p className="text-xs uppercase tracking-[0.3em] text-terracotta text-center">special guests</p>
+            <h2 className="font-display text-4xl md:text-5xl text-center mt-3 mb-10">
+              Voices with the retreat.
+            </h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              {
+                Icon: Eye,
+                tone: "bg-cream border-2 border-forest/15 text-ink",
+                eyebrow: "pre-event session",
+                title: "Dr. Eking",
+                sub: "Ophthalmology & Movement",
+                body: "A pre-event conversation on how visual health and movement quietly shape everyday posture and presence.",
+              },
+              {
+                Icon: Sparkles,
+                tone: "bg-cream border-2 border-gilt/40 text-ink ring-1 ring-gilt/20",
+                eyebrow: "skincare talk",
+                title: "Dr. Selma × Bioderma",
+                sub: "Skincare that holds up",
+                body: "A talk on building a basic skincare routine that actually holds up with an active life.",
+              },
+              {
+                Icon: Scissors,
+                tone: "bg-cream border-2 border-forest/15 text-ink",
+                eyebrow: "hair & scalp",
+                title: "OviaCare",
+                sub: "Stress, Cortisol & Hair Health",
+                body: "A short session on how chronic stress shows up in the scalp — plus an open Q&A with the clinic.",
+              },
+            ].map((g, i) => (
+              <Reveal key={g.title} delay={i * 100}>
+                <div className={`${g.tone} rounded-3xl p-7 h-full shadow-soft`}>
+                  <g.Icon className="w-7 h-7 text-terracotta" />
+                  <p className="text-[11px] uppercase tracking-[0.25em] text-gilt mt-4">{g.eyebrow}</p>
+                  <h3 className="font-display text-2xl mt-1">{g.title}</h3>
+                  <p className="text-sm text-terracotta font-medium mt-0.5">{g.sub}</p>
+                  <p className="mt-3 text-ink/80 leading-relaxed">{g.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* A WORD FROM OUR SPONSOR — Sheer Luxury */}
+      <section className="px-4 md:px-8 pb-16 md:pb-24">
+        <div className="mx-auto max-w-6xl">
+          <Reveal>
+            <a
+              href="https://www.sheerluxuryabuja.com/"
+              target="_blank" rel="noreferrer noopener"
+              className="group block rounded-[2rem] overflow-hidden bg-ink text-cream ring-1 ring-gilt/30 shadow-glow hover:ring-gilt/60 transition-all"
+            >
+              <div className="grid md:grid-cols-5 gap-0">
+                {/* Left — wordmark tile */}
+                <div className="relative md:col-span-2 min-h-[280px] md:min-h-[420px] p-10 flex flex-col justify-between bg-gradient-to-br from-forest via-ink to-ink overflow-hidden">
+                  <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-gilt/20 blur-3xl" aria-hidden />
+                  <div className="absolute -bottom-24 -left-16 w-72 h-72 rounded-full bg-terracotta/20 blur-3xl" aria-hidden />
+                  <p className="relative text-[10px] uppercase tracking-[0.4em] text-gilt/90">a word from our sponsor</p>
+                  <div className="relative">
+                    <p className="font-display text-4xl md:text-5xl leading-[1.02] text-cream">
+                      Sheer <span className="italic text-gilt">Luxury</span>
+                    </p>
+                    <p className="font-display text-2xl md:text-3xl mt-1 text-cream/85">
+                      Apartments &amp; Suites
+                    </p>
+                    <p className="mt-4 text-[11px] uppercase tracking-[0.3em] text-gilt/80">Garki · Jabi · Abuja</p>
+                  </div>
+                </div>
+
+                {/* Right — copy */}
+                <div className="md:col-span-3 p-8 sm:p-10 md:p-12 bg-cream text-ink">
+                  <p className="text-[11px] uppercase tracking-[0.3em] text-terracotta">official host partner</p>
+                  <h3 className="font-display text-3xl md:text-4xl mt-2">
+                    An accommodation experience with taste.
+                  </h3>
+                  <div className="mt-5 space-y-4 text-ink/80 leading-relaxed">
+                    <p>
+                      From two Abuja locations — Garki and Jabi — Sheer Luxury delivers a high-quality
+                      accommodation experience in comfort and style, led by an experienced team focused on
+                      personalized guest service.
+                    </p>
+                    <p>
+                      Rooms, apartments and suites come with multi-satellite TV on LED screens, high-speed
+                      internet, hair dryers, fully equipped kitchenettes, sterilizing units, microwaves and
+                      refrigerators.
+                    </p>
+                    <p>
+                      Guests also enjoy a gym, swimming pool, poolside bar, laundry, shuttle transfers and
+                      conference facilities — an endless hospitality experience across every stay.
+                    </p>
+                  </div>
+
+                  <div className="mt-7 grid sm:grid-cols-2 gap-3">
+                    <blockquote className="rounded-2xl bg-forest/5 border-l-2 border-gilt pl-4 py-3 text-ink/85 italic">
+                      "To be the ideal home lodging business within reach."
+                    </blockquote>
+                    <blockquote className="rounded-2xl bg-forest/5 border-l-2 border-gilt pl-4 py-3 text-ink/85 italic">
+                      "Redefining the art of luxury, and making that luxury inevitable."
+                    </blockquote>
+                  </div>
+
+                  <p className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-terracotta group-hover:gap-3 transition-all">
+                    Visit sheerluxuryabuja.com <ExternalLink className="w-4 h-4" />
+                  </p>
+                </div>
+              </div>
+            </a>
           </Reveal>
         </div>
       </section>
 
       {/* THIRD SPACE */}
-      <section className="px-4 md:px-8 py-16 md:py-24">
+      <section className="px-4 md:px-8 py-16 md:py-24 bg-sage/10">
         <div className="mx-auto max-w-4xl text-center">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.3em] text-terracotta">why we're doing this</p>
@@ -169,28 +285,33 @@ const TentsAndTonic: React.FC = () => {
           </Reveal>
           <Reveal delay={160}>
             <p className="mt-6 text-ink/80 text-lg leading-relaxed">
-              Tents &amp; Tonic is a third-space experiment — scenic views, shared meals, unhurried
-              conversation. No doomscrolling. No stimulant-borrowed joy. Just the older, quieter kind
-              that comes from being present with people who chose to show up too.
+              TenTS&amp;Tonic is a third-space experiment — scenic views and unhurried conversation.
+              No doomscrolling. No stimulant-borrowed joy. Just the older, quieter kind that comes from
+              being present with people who chose to show up too.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* INSTAGRAM EMBED */}
-      <section className="px-4 md:px-8 pb-16">
-        <div className="mx-auto max-w-md">
+      {/* INSTAGRAM GALLERY */}
+      <section className="px-4 md:px-8 py-16">
+        <div className="mx-auto max-w-4xl">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-terracotta text-center mb-5">a peek</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-terracotta text-center mb-8">a peek · previous gatherings</p>
           </Reveal>
-          <blockquote
-            className="instagram-media"
-            data-instgrm-permalink={IG_REEL_URL}
-            data-instgrm-version="14"
-            style={{ background: "#FFF", border: 0, margin: "0 auto", maxWidth: 540, width: "100%" }}
-          >
-            <a href={IG_REEL_URL} target="_blank" rel="noreferrer noopener">View this reel on Instagram →</a>
-          </blockquote>
+          <div className="grid md:grid-cols-2 gap-6">
+            {IG_REELS.map((url) => (
+              <blockquote
+                key={url}
+                className="instagram-media"
+                data-instgrm-permalink={url}
+                data-instgrm-version="14"
+                style={{ background: "#FFF", border: 0, margin: "0 auto", maxWidth: 540, width: "100%" }}
+              >
+                <a href={url} target="_blank" rel="noreferrer noopener">View this reel on Instagram →</a>
+              </blockquote>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -219,14 +340,29 @@ const TentsAndTonic: React.FC = () => {
               </Reveal>
             ))}
           </div>
-          <div className="mt-8 text-center">
-            <a
-              href={waLink}
-              target="_blank" rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 text-sm text-ink/70 hover:text-terracotta"
-            >
-              <MessageCircle className="w-4 h-4" /> Questions? WhatsApp {SOCIAL.phone}
-            </a>
+
+          {/* Questions / contact numbers */}
+          <div className="mt-10 rounded-3xl border-2 border-forest/10 bg-cream p-6 sm:p-8">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-gilt text-center">questions?</p>
+            <p className="font-display text-2xl text-center mt-2">Call, WhatsApp — we'll pick up.</p>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+              {PHONES.map((p) => (
+                <a
+                  key={p.tel}
+                  href={p.tel}
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink font-medium px-5 py-2.5 hover:bg-ink hover:text-cream transition-colors text-sm"
+                >
+                  <Phone className="w-4 h-4" /> {p.pretty}
+                </a>
+              ))}
+              <a
+                href={waLink}
+                target="_blank" rel="noreferrer noopener"
+                className="inline-flex items-center gap-2 rounded-full bg-terracotta text-cream font-medium px-5 py-2.5 hover:bg-ink transition-colors text-sm"
+              >
+                <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </section>

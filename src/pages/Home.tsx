@@ -74,7 +74,7 @@ const Home: React.FC = () => {
                   target="_blank" rel="noreferrer noopener"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3.5 hover:bg-cream hover:text-terracotta transition-colors"
                 >
-                  <MessageCircle className="w-4 h-4" /> WhatsApp us
+                  <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
                 </a>
                 <Link to="/services" className="inline-flex items-center gap-2 rounded-full bg-ink/20 backdrop-blur border-2 border-cream/40 text-cream font-medium px-6 py-3.5 hover:bg-ink/40 transition-colors">
                   Services
@@ -93,13 +93,12 @@ const Home: React.FC = () => {
                 <Coffee className="w-7 h-7 text-peach" />
               </div>
               <p className="relative mt-3 text-cream/85 text-sm">
-                9 sessions · 50 minutes · complimentary tea after every class. Book 24h ahead.
+                Two 50-minute sessions every Saturday · complimentary tea after. Book 24h ahead.
               </p>
               <div className="relative mt-4 flex flex-wrap gap-1.5">
-                {CLASS_SLOTS.slice(0, 6).map((s) => (
-                  <span key={s.id} className="text-[11px] font-mono bg-cream/10 border border-cream/15 rounded-full px-2 py-0.5">{s.label}</span>
+                {CLASS_SLOTS.map((s) => (
+                  <span key={s.id} className="text-[11px] font-mono bg-cream/10 border border-cream/15 rounded-full px-2 py-0.5">Sat · {s.label}</span>
                 ))}
-                <span className="text-[11px] font-mono bg-cream/10 border border-cream/15 rounded-full px-2 py-0.5">+3 more</span>
               </div>
               <button
                 onClick={() => setBookOpen(true)}
@@ -120,13 +119,13 @@ const Home: React.FC = () => {
               </Link>
             </Reveal>
 
-            {/* FEATURED EVENT — Tents & Tonic countdown */}
+            {/* FEATURED EVENT — TenTS&Tonic countdown */}
             <Reveal as="div" delay={120} className="col-span-12 lg:col-span-3 rounded-3xl gradient-sunrise text-cream p-6 sm:p-7 min-h-[220px] shadow-glow relative overflow-hidden group">
               <div className="flex items-start justify-between">
                 <p className="text-[10px] uppercase tracking-[0.25em]">featured · 31 jul</p>
                 <Tent className="w-5 h-5" />
               </div>
-              <p className="font-display text-3xl mt-1 leading-tight">Tents &amp; Tonic</p>
+              <p className="font-display text-3xl mt-1 leading-tight">TenTS&amp;Tonic</p>
               <p className="text-xs text-cream/90 mt-1">The Art of Being a Neighbor</p>
               <div className="mt-4 flex items-end gap-3">
                 <div>
@@ -195,7 +194,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Featured Tents & Tonic band */}
+      {/* Featured TenTS&Tonic band */}
       <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <Reveal>
@@ -321,7 +320,7 @@ const Home: React.FC = () => {
                 <Calendar className="w-4 h-4" /> See events
               </Link>
               <a href={waLink} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors">
-                <MessageCircle className="w-4 h-4" /> WhatsApp us
+                <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
               </a>
             </div>
           </div>
