@@ -22,13 +22,13 @@ export const Footer: React.FC = () => (
       </div>
 
       <div>
-        <h4 className="font-display text-2xl mb-4">Wander</h4>
+        <h4 className="font-display text-2xl mb-4">Explore</h4>
         <ul className="space-y-2 text-cream/85">
           <li><Link to="/" className="hover:text-peach transition-colors">Home</Link></li>
           <li><Link to="/services" className="hover:text-peach transition-colors">Services</Link></li>
           <li><Link to="/classes" className="hover:text-peach transition-colors">Saturday Classes</Link></li>
           <li><Link to="/calendar" className="hover:text-peach transition-colors">Events</Link></li>
-          <li><Link to="/event/tents-and-tonic" className="hover:text-peach transition-colors">Tents &amp; Tonic</Link></li>
+          <li><Link to="/event/tents-and-tonic" className="hover:text-peach transition-colors">TenTS&amp;Tonic</Link></li>
           <li><Link to="/wellness-ai" className="hover:text-peach transition-colors">Wellness AI</Link></li>
           <li><Link to="/about" className="hover:text-peach transition-colors">About</Link></li>
         </ul>

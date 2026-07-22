@@ -10,7 +10,7 @@ const NotFound = () => (
     </Helmet>
     <Mark className="w-24 h-24 animate-wiggle" />
     <h1 className="font-display text-7xl mt-6">404</h1>
-    <p className="text-ink/70 mt-2 text-lg">This page wandered off on a long walk.</p>
+    <p className="text-ink/70 mt-2 text-lg">This page isn't here.</p>
     <Link to="/" className="mt-8 rounded-full bg-terracotta text-cream font-medium px-6 py-3 hover:bg-ink transition-colors">
       Take me home
     </Link>

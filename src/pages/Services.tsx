@@ -13,11 +13,10 @@ import { toast } from "@/hooks/use-toast";
 const Services: React.FC = () => {
   const [book, setBook] = useState(false);
 
-  const notify = (name: string) =>
-    toast({
-      title: `${name} — coming soon`,
-      description: "We're building this out. DM or WhatsApp us to be first on the list.",
-    });
+  const waProgram = (name: string) =>
+    `${SOCIAL.whatsappUrl}?text=${encodeURIComponent(
+      `Hi balance_ee — I'd like info on the ${name}.`
+    )}`;
 
   return (
     <div className="min-h-screen bg-cream text-ink">
@@ -62,7 +61,7 @@ const Services: React.FC = () => {
                 <p className="relative text-[11px] uppercase tracking-[0.25em] text-peach mt-3">always on</p>
                 <p className="relative font-display text-4xl mt-1">Saturday Classes</p>
                 <p className="relative mt-3 text-cream/85 text-sm leading-relaxed">
-                  9 sessions across the day. 50 minutes each. Complimentary healthy tea after every class.
+                  Two 50-minute Saturday sessions — morning and evening. Complimentary healthy tea after every class.
                   Book at least {CLASS_RULES.cutoffHours} hours ahead.
                 </p>
                 <button
@@ -159,20 +158,21 @@ const Services: React.FC = () => {
               { name: "3-Month Program", tone: "bg-forest text-cream", note: "Deeper transformation · full progression plan" },
             ].map((p, i) => (
               <Reveal key={p.name} delay={i * 100}>
-                <button
-                  onClick={() => notify(p.name)}
-                  className={`${p.tone} w-full text-left rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-soft hover:-translate-y-0.5 transition-transform`}
+                <a
+                  href={waProgram(p.name)}
+                  target="_blank" rel="noreferrer noopener"
+                  className={`${p.tone} block w-full text-left rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-soft hover:-translate-y-0.5 transition-transform`}
                 >
                   <span className="absolute top-5 right-5 text-[10px] uppercase tracking-[0.25em] rounded-full bg-cream/20 border border-cream/30 px-2.5 py-1 font-semibold">
-                    coming soon
+                    by application
                   </span>
                   <HeartPulse className="w-8 h-8" />
                   <p className="font-display text-4xl mt-4">{p.name}</p>
                   <p className="mt-2 opacity-90">{p.note}</p>
                   <p className="mt-6 text-sm inline-flex items-center gap-2 opacity-90">
-                    Tap to be first on the list <ArrowRight className="w-4 h-4" />
+                    <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
                   </p>
-                </button>
+                </a>
               </Reveal>
             ))}
           </div>
@@ -195,7 +195,7 @@ const Services: React.FC = () => {
                 target="_blank" rel="noreferrer noopener"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink font-medium px-5 py-2.5 hover:bg-ink hover:text-cream transition-colors text-sm"
               >
-                <MessageCircle className="w-4 h-4" /> WhatsApp us
+                <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
               </a>
             </div>
           </Reveal>
