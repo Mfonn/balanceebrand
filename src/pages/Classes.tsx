@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Coffee, Clock, Calendar, Sparkles, Leaf, Sunrise, Sun, Moon } from "lucide-react";
+import { Coffee, Clock, Calendar, Sparkles, Leaf, Sunrise, Moon } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";

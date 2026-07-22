@@ -8,7 +8,7 @@ import { Reveal } from "@/components/balance/Reveal";
 import { ClassBookingDialog } from "@/components/balance/ClassBookingDialog";
 import { CLASS_SLOTS, CLASS_RULES } from "@/data/classes";
 import { UPCOMING_EVENTS, SOCIAL } from "@/data/events";
-import { toast } from "@/hooks/use-toast";
+
 
 const Services: React.FC = () => {
   const [book, setBook] = useState(false);
