@@ -194,7 +194,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Featured Tents & Tonic band */}
+      {/* Featured TenTS&Tonic band */}
       <section className="px-4 md:px-8 py-16 md:py-24">
         <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <Reveal>

@@ -14,8 +14,8 @@ const CalendarPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-cream text-ink">
       <Helmet>
-        <title>July Events — Tents & Tonic | balance_ee Abuja</title>
-        <meta name="description" content="What's on at balance_ee this July: Tents & Tonic, a wellness camping retreat on 31 July – 2 August 2026. Tap a glowing date to see the full event." />
+        <title>July Events — TenTS&Tonic | balance_ee Abuja</title>
+        <meta name="description" content="What's on at balance_ee this July: TenTS&Tonic, a wellness camping retreat on 31 July – 2 August 2026. Tap a glowing date to see the full event." />
         <link rel="canonical" href="/calendar" />
       </Helmet>
       <Navbar />
