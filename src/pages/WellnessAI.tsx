@@ -21,18 +21,19 @@ const WellnessAI: React.FC = () => (
       <div className="relative mx-auto max-w-4xl text-center">
         <Reveal>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-ink text-cream px-3 py-1 text-[11px] uppercase tracking-[0.25em]">
-            <Sparkles className="w-3 h-3 text-peach" /> new · powered by AWS PartyRock
+            <Sparkles className="w-3 h-3 text-peach" /> experimental · powered by AWS PartyRock
           </span>
         </Reveal>
         <Reveal delay={80}>
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl mt-5 leading-[1.0] text-balance">
-            Your pocket <span className="italic text-terracotta">wellness</span> companion.
+            An <span className="italic text-terracotta">experiment</span> in pocket wellness.
           </h1>
         </Reveal>
         <Reveal delay={160}>
           <p className="mt-5 text-ink/75 text-lg max-w-2xl mx-auto">
-            Tell it your schedule, your energy, your goals, what's sore — it builds a workout plan and daily practices shaped to your real life.
-            Built by balance_ee, free to try.
+            This one is experimental — a side project, not a finished product. Tell it your schedule, your energy,
+            your goals, what's sore, and it drafts a workout plan and daily practices. If you enjoy tinkering with
+            things, test it and tell us what it gets right (and wrong). It isn't medical advice.
           </p>
         </Reveal>
         <Reveal delay={240}>
@@ -41,9 +42,10 @@ const WellnessAI: React.FC = () => (
             target="_blank" rel="noreferrer noopener"
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-terracotta text-cream font-medium px-7 py-3.5 hover:bg-ink transition-colors"
           >
-            Open the Wellness Bot <ExternalLink className="w-4 h-4" />
+            Test the experiment <ExternalLink className="w-4 h-4" />
           </a>
         </Reveal>
+
       </div>
     </section>
 
