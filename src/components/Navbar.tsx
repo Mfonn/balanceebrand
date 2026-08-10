@@ -45,10 +45,10 @@ export const Navbar: React.FC = () => {
       >
         <div className="mx-auto max-w-7xl px-4 md:px-8 flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2 group" aria-label="balance_ee home">
-            <Mark className="w-9 h-9 md:w-11 md:h-11 transition-transform group-hover:rotate-12" />
             <span className="font-display text-xl md:text-2xl text-ink lowercase tracking-tight">
               balance<span className="text-terracotta">_ee</span>
             </span>
+
           </Link>
 
           {/* Desktop */}
