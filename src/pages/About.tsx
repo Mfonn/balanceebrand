@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Instagram, Heart, Sparkles, Bot, Coffee, Users, Phone, Baby, MessageCircle } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Mark } from "@/components/balance/Mark";
 import { Reveal } from "@/components/balance/Reveal";
 import { SOCIAL } from "@/data/events";
 import heroImg from "@/assets/hero-balance.jpg";
