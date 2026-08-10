@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Instagram, Heart, Sparkles, Bot, Coffee, Users, Phone, Baby, MessageCircle } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Mark } from "@/components/balance/Mark";
 import { Reveal } from "@/components/balance/Reveal";
 import { SOCIAL } from "@/data/events";
 import heroImg from "@/assets/hero-balance.jpg";
@@ -22,16 +21,16 @@ const About: React.FC = () => (
       <div className="absolute -top-24 right-[8%] w-72 h-72 rounded-full bg-peach/30 blur-3xl pointer-events-none" aria-hidden />
       <div className="relative mx-auto max-w-6xl grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <Reveal>
-          <Mark className="w-16 h-16 animate-wiggle mb-4" />
           <p className="text-xs uppercase tracking-[0.3em] text-terracotta">our story</p>
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl mt-3 leading-[1.0] text-balance">
             We believe in <span className="italic text-terracotta">soft</span> strength.
           </h1>
           <p className="mt-5 text-ink/80 text-lg leading-relaxed">
             balance_ee is a wellness community for women who want to move, breathe, and live a little more on purpose.
-            Weekly Saturday classes are our heartbeat. Monthly soirées and gatherings are our celebrations. The wellness bot
+            Daily classes are our heartbeat. Special events are our celebrations. The experimental wellness bot
             is our quiet companion in between.
           </p>
+
           <p className="mt-4 text-ink/80 text-lg leading-relaxed">
             Movement is one pillar. Mind is another. Community is the soil. We're building all three — slowly, joyfully.
           </p>
@@ -94,9 +93,10 @@ const About: React.FC = () => (
         </Reveal>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { Icon: Coffee, t: "Saturday classes", d: "50-minute sessions from 6 AM to 7 PM, every Saturday. Tea included.", to: "/classes", soon: false },
-            { Icon: Sparkles, t: "Monthly events", d: "Soirées, book clubs, gatherings. The ones to mark in your calendar.", to: "/calendar", soon: false },
-            { Icon: Bot, t: "Wellness AI", d: "Chat with our bot for plans, practices and gentle nudges.", to: "/wellness-ai", soon: false },
+            { Icon: Coffee, t: "Daily classes", d: "Join our daily classes, or custom-schedule a session that fits your body and your week.", to: "/services", soon: false },
+            { Icon: Sparkles, t: "Special events", d: "Retreats and gatherings — the ones worth clearing the weekend for.", to: "/events", soon: false },
+            { Icon: Bot, t: "Wellness AI", d: "An experimental bot for plans, practices and gentle nudges. For tinkerers.", to: "/wellness-ai", soon: false },
+
             { Icon: Baby, t: "Birth Doula", d: "Continuous, calming support before, during and after birth — shown to ease labour, lower intervention rates and grow confidence for the new parent.", to: "/about", soon: true },
           ].map(({ Icon, t, d, to, soon }, i) => (
             <Reveal key={t} delay={i * 100}>

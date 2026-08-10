@@ -1,15 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles, Users, Waves, Instagram, Coffee, Bot, Calendar, ExternalLink, MessageCircle, Tent } from "lucide-react";
+import { ArrowRight, Sparkles, Users, Waves, Instagram, Bot, Tent, ExternalLink, MessageCircle, CalendarDays } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { JuneCalendar } from "@/components/balance/JuneCalendar";
 import { EventModal } from "@/components/balance/EventModal";
-import { ClassBookingDialog } from "@/components/balance/ClassBookingDialog";
 import { Reveal } from "@/components/balance/Reveal";
-import { BalanceEvent, SOCIAL, FEATURED_EVENT } from "@/data/events";
-import { CLASS_SLOTS } from "@/data/classes";
+import { BalanceEvent, SOCIAL, FEATURED_EVENT, WA_CUSTOM_CLASS, WA_DAILY_CLASS } from "@/data/events";
+
 
 const MARQUEE = [
   "move", "breathe", "gather", "camp", "soft strength", "deep breath",
@@ -30,21 +28,19 @@ const useCountdown = (target: Date) => {
 
 const Home: React.FC = () => {
   const [selected, setSelected] = useState<BalanceEvent | null>(null);
-  const [bookOpen, setBookOpen] = useState(false);
 
   const featuredDate = useMemo(() => new Date("2026-07-31T16:00:00+01:00"), []);
   const { days, hours } = useCountdown(featuredDate);
-
-  const waLink = `${SOCIAL.whatsappUrl}?text=${encodeURIComponent("Hi balance_ee — I'd like to book a Saturday class.")}`;
 
   return (
     <div className="min-h-screen bg-cream text-ink">
       <Helmet>
         <title>balance_ee — Abuja Yoga, Pilates & Wellness Retreats</title>
-        <meta name="description" content="Soirées, book clubs, camping. Weekly Saturday yoga and pilates classes in Abuja, monthly wellness events, and a personal wellness AI." />
+        <meta name="description" content="Daily yoga and pilates classes in Abuja, a specialized programme for injury and postpartum recovery, wellness retreats, and an experimental wellness AI." />
         <link rel="canonical" href="/" />
       </Helmet>
       <Navbar />
+
 
       {/* HERO — bento grid */}
       <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-8 overflow-hidden">
@@ -60,26 +56,29 @@ const Home: React.FC = () => {
                 Move like you <span className="italic text-cream/95">mean it.</span>
               </h1>
               <p className="mt-6 max-w-2xl text-lg md:text-xl text-cream/95 leading-relaxed">
-                Soirées, book clubs, camping — something for you every month. Chat &amp; schedule classes on WhatsApp.
+                Daily classes, a specialized programme, and events worth clearing the weekend for.
+                Chat on WhatsApp to schedule a custom class or join our daily classes.
               </p>
               <div className="flex flex-wrap gap-3 mt-8">
-                <button
-                  onClick={() => setBookOpen(true)}
+                <a
+                  href={WA_DAILY_CLASS}
+                  target="_blank" rel="noreferrer noopener"
                   className="inline-flex items-center gap-2 rounded-full bg-cream text-terracotta font-medium px-6 py-3.5 hover:bg-ink hover:text-cream transition-colors"
                 >
-                  Book a class <ArrowRight className="w-4 h-4" />
-                </button>
+                  Join daily classes <ArrowRight className="w-4 h-4" />
+                </a>
                 <a
-                  href={waLink}
+                  href={WA_CUSTOM_CLASS}
                   target="_blank" rel="noreferrer noopener"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3.5 hover:bg-cream hover:text-terracotta transition-colors"
                 >
-                  <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
+                  <MessageCircle className="w-4 h-4" /> Custom-schedule a class
                 </a>
                 <Link to="/services" className="inline-flex items-center gap-2 rounded-full bg-ink/20 backdrop-blur border-2 border-cream/40 text-cream font-medium px-6 py-3.5 hover:bg-ink/40 transition-colors">
                   Services
                 </Link>
               </div>
+
             </Reveal>
 
             {/* CLASSES tile */}
@@ -87,33 +86,41 @@ const Home: React.FC = () => {
               <div className="absolute -bottom-12 -right-12 w-48 h-48 rounded-full bg-terracotta/40 blur-3xl group-hover:bg-terracotta/60 transition-colors" />
               <div className="relative flex items-start justify-between">
                 <div>
-                  <p className="text-[11px] uppercase tracking-[0.25em] text-peach">always on · saturdays</p>
-                  <p className="font-display text-4xl mt-2">Classes</p>
+                  <p className="text-[11px] uppercase tracking-[0.25em] text-peach">always on</p>
+                  <p className="font-display text-4xl mt-2">Daily Classes</p>
                 </div>
-                <Coffee className="w-7 h-7 text-peach" />
+                <CalendarDays className="w-7 h-7 text-peach" />
               </div>
               <p className="relative mt-3 text-cream/85 text-sm">
-                Two 50-minute sessions every Saturday · complimentary tea after. Book 24h ahead.
+                Yoga, pilates and mobility, daily. Join the group, or custom-schedule around your date,
+                location, goals, limitations and difficulty level.
               </p>
-              <div className="relative mt-4 flex flex-wrap gap-1.5">
-                {CLASS_SLOTS.map((s) => (
-                  <span key={s.id} className="text-[11px] font-mono bg-cream/10 border border-cream/15 rounded-full px-2 py-0.5">Sat · {s.label}</span>
-                ))}
+              <div className="relative mt-5 flex flex-wrap gap-2">
+                <a
+                  href={WA_DAILY_CLASS}
+                  target="_blank" rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 rounded-full bg-cream text-ink font-medium px-5 py-2.5 hover:bg-terracotta hover:text-cream transition-colors"
+                >
+                  Join <ArrowRight className="w-4 h-4" />
+                </a>
+                <a
+                  href={WA_CUSTOM_CLASS}
+                  target="_blank" rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 rounded-full border border-cream/40 text-cream font-medium px-5 py-2.5 hover:bg-cream/10 transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4" /> Custom schedule
+                </a>
               </div>
-              <button
-                onClick={() => setBookOpen(true)}
-                className="relative mt-5 inline-flex items-center gap-2 rounded-full bg-cream text-ink font-medium px-5 py-2.5 hover:bg-terracotta hover:text-cream transition-colors"
-              >
-                Book a class <ArrowRight className="w-4 h-4" />
-              </button>
             </Reveal>
+
 
             {/* WELLNESS AI tile */}
             <Reveal as="div" delay={140} className="col-span-12 sm:col-span-6 lg:col-span-4 rounded-3xl bg-sage text-cream p-6 sm:p-8 min-h-[220px] shadow-soft relative overflow-hidden group">
               <Bot className="w-8 h-8" />
-              <p className="text-[11px] uppercase tracking-[0.25em] text-cream/80 mt-2">new · ai chatbot</p>
+              <p className="text-[11px] uppercase tracking-[0.25em] text-cream/80 mt-2">experimental · ai chatbot</p>
               <p className="font-display text-4xl mt-1">Wellness AI</p>
-              <p className="mt-2 text-cream/90 text-sm">A bot that builds workout plans &amp; wellness practices for your scenario.</p>
+              <p className="mt-2 text-cream/90 text-sm">An experimental bot that drafts workout plans &amp; wellness practices. For the tinkerers.</p>
+
               <Link to="/wellness-ai" className="mt-4 inline-flex items-center gap-2 rounded-full bg-cream text-forest font-medium px-5 py-2.5 hover:bg-ink hover:text-cream transition-colors">
                 Try it <ArrowRight className="w-4 h-4" />
               </Link>
@@ -161,9 +168,10 @@ const Home: React.FC = () => {
               <Users className="w-7 h-7" />
               <div>
                 <p className="font-display text-2xl">Community</p>
-                <p className="text-sm text-cream/85">tea, books &amp; soirées</p>
+                <p className="text-sm text-cream/85">real rooms, real conversation</p>
               </div>
             </Reveal>
+
             <Reveal as="a" delay={220}
               {...({
                 href: SOCIAL.instagram,
@@ -244,21 +252,25 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Calendar */}
-      <section className="px-4 md:px-8 py-16 md:py-24 bg-sage/10">
-        <div className="mx-auto max-w-5xl">
+      {/* Events strip */}
+      <section className="px-4 md:px-8 py-16 md:py-24 bg-sage/15">
+        <div className="mx-auto max-w-5xl text-center">
           <Reveal>
-            <div className="text-center mb-10">
-              <p className="text-xs uppercase tracking-[0.3em] text-terracotta">monthly</p>
-              <h2 className="font-display text-5xl sm:text-6xl text-ink mt-3">Soirées, book clubs, camping.</h2>
-              <p className="mt-4 text-ink/70 max-w-xl mx-auto">Something for you every month. Classes run every Saturday — events are the special ones.</p>
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <JuneCalendar onSelectEvent={setSelected} />
+            <p className="text-xs uppercase tracking-[0.3em] text-terracotta">classes daily · events monthly</p>
+            <h2 className="font-display text-5xl sm:text-6xl text-ink mt-3">Classes are the everyday. Events are the special ones.</h2>
+            <p className="mt-4 text-ink/70 max-w-xl mx-auto">
+              Come move with us during the week, then join us for the gatherings worth planning around.
+            </p>
+            <Link
+              to="/events"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-ink text-cream font-medium px-6 py-3.5 hover:bg-terracotta transition-colors"
+            >
+              See all events <ArrowRight className="w-4 h-4" />
+            </Link>
           </Reveal>
         </div>
       </section>
+
 
       {/* Why move */}
       <section className="relative px-4 md:px-8 py-16 md:py-24 overflow-hidden">
@@ -270,16 +282,17 @@ const Home: React.FC = () => {
             </h2>
             <p className="mt-5 text-ink/80 text-lg leading-relaxed">
               Pilates strengthens your core. Yoga softens your nervous system. Walking clears your head. Lifting reshapes your story.
-              You don't need to do all of it — just start, gently, this Saturday.
+              You don't need to do all of it — just start, gently, today.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <button onClick={() => setBookOpen(true)} className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-3 font-medium hover:bg-terracotta transition-colors">
-                Book a Saturday class <ArrowRight className="w-4 h-4" />
-              </button>
+              <a href={WA_DAILY_CLASS} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-3 font-medium hover:bg-terracotta transition-colors">
+                Join a class <ArrowRight className="w-4 h-4" />
+              </a>
               <Link to="/learn" className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink px-5 py-3 font-medium hover:bg-ink hover:text-cream transition-colors">
                 Read Learn
               </Link>
             </div>
+
           </Reveal>
           <Reveal delay={120}>
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -313,13 +326,13 @@ const Home: React.FC = () => {
             <h2 className="relative font-display text-4xl sm:text-6xl">Come find your balance.</h2>
             <p className="relative mt-4 max-w-xl mx-auto opacity-95">A class, a camp weekend, a chat with the bot — pick your entry point.</p>
             <div className="relative flex flex-wrap justify-center gap-3 mt-7">
-              <button onClick={() => setBookOpen(true)} className="rounded-full bg-cream text-terracotta font-medium px-6 py-3 hover:bg-ink hover:text-cream transition-colors">
-                Book a class
-              </button>
-              <Link to="/calendar" className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors">
-                <Calendar className="w-4 h-4" /> See events
+              <a href={WA_DAILY_CLASS} target="_blank" rel="noreferrer noopener" className="rounded-full bg-cream text-terracotta font-medium px-6 py-3 hover:bg-ink hover:text-cream transition-colors">
+                Join daily classes
+              </a>
+              <Link to="/events" className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors">
+                <Sparkles className="w-4 h-4" /> See events
               </Link>
-              <a href={waLink} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors">
+              <a href={WA_CUSTOM_CLASS} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors">
                 <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
               </a>
             </div>
@@ -329,7 +342,7 @@ const Home: React.FC = () => {
 
       <Footer />
       <EventModal event={selected} onClose={() => setSelected(null)} />
-      <ClassBookingDialog open={bookOpen} onClose={() => setBookOpen(false)} />
+
     </div>
   );
 };

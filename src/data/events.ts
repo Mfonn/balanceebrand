@@ -145,7 +145,32 @@ export const SOCIAL = {
   whatsappUrl: "https://wa.me/2349112984781",
   phone: "+234 911 298 4781",
   phoneTel: "tel:+2349112984781",
+  phoneAlt: "+234 704 053 8528",
+  phoneAltTel: "tel:+2347040538528",
 };
+
+/** Google Form for the specialized programme intake / waitlist. */
+export const PROGRAMME_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScoTVrlDpdPuspBv7JiR5qHI0g_vb_zSrPOvG8FHB_JWhSJCA/viewform?usp=header";
+
+const wa = (text: string) => `${SOCIAL.whatsappUrl}?text=${encodeURIComponent(text)}`;
+
+/** Custom-scheduled class request — collects date, location, goals, limitations, difficulty. */
+export const WA_CUSTOM_CLASS = wa(
+  `Hi balance_ee — I'd like to schedule a custom class.
+
+Preferred date & time:
+Location:
+Goals:
+Health conditions / physical limitations:
+Preferred difficulty level (easy / medium / hard):`
+);
+
+/** Join the daily classes. */
+export const WA_DAILY_CLASS = wa(
+  "Hi balance_ee — I'd like to join the daily classes. Please send me the schedule and how to start."
+);
+
 
 export type Sponsor = { name: string; blurb: string; url: string; logo?: string };
 
