@@ -4,13 +4,13 @@ import { Menu, X, Instagram } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { AuthSheet } from "./AuthSheet";
-import { Mark } from "./balance/Mark";
 import { SOCIAL } from "@/data/events";
 
 const NAV_LINKS: { to: string; label: string; badge?: string }[] = [
   { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
-  { to: "/calendar", label: "Events" },
+  { to: "/events", label: "Events" },
+
   { to: "/wellness-ai", label: "Wellness AI", badge: "new" },
   { to: "/learn", label: "Learn" },
   { to: "/about", label: "About" },
