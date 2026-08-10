@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Heart, Phone, MessageCircle } from "lucide-react";
-import { Mark } from "./balance/Mark";
-import { SOCIAL } from "@/data/events";
+import { SOCIAL, WA_DAILY_CLASS } from "@/data/events";
 
 export const Footer: React.FC = () => (
   <footer className="relative bg-forest text-cream mt-20 overflow-hidden">
@@ -13,11 +12,11 @@ export const Footer: React.FC = () => (
     <div className="relative mx-auto max-w-7xl px-4 md:px-8 py-16 grid gap-12 md:grid-cols-3">
       <div>
         <div className="flex items-center gap-3 mb-4">
-          <Mark className="w-12 h-12" />
           <span className="font-display text-3xl">balance<span className="text-peach">_ee</span></span>
         </div>
         <p className="text-cream/80 max-w-xs leading-relaxed">
-          A wellness community in Abuja. Weekly Saturday classes, monthly events, and a wellness bot in your pocket.
+          A wellness community in Abuja. Daily classes, a specialized programme, special events, and an
+          experimental wellness bot in your pocket.
         </p>
       </div>
 
@@ -26,8 +25,7 @@ export const Footer: React.FC = () => (
         <ul className="space-y-2 text-cream/85">
           <li><Link to="/" className="hover:text-peach transition-colors">Home</Link></li>
           <li><Link to="/services" className="hover:text-peach transition-colors">Services</Link></li>
-          <li><Link to="/classes" className="hover:text-peach transition-colors">Saturday Classes</Link></li>
-          <li><Link to="/calendar" className="hover:text-peach transition-colors">Events</Link></li>
+          <li><Link to="/events" className="hover:text-peach transition-colors">Events</Link></li>
           <li><Link to="/event/tents-and-tonic" className="hover:text-peach transition-colors">TenTS&amp;Tonic</Link></li>
           <li><Link to="/wellness-ai" className="hover:text-peach transition-colors">Wellness AI</Link></li>
           <li><Link to="/about" className="hover:text-peach transition-colors">About</Link></li>
@@ -38,7 +36,7 @@ export const Footer: React.FC = () => (
         <h4 className="font-display text-2xl mb-4">Stay close</h4>
         <div className="flex flex-wrap gap-2">
           <a
-            href={SOCIAL.whatsappUrl}
+            href={WA_DAILY_CLASS}
             target="_blank"
             rel="noreferrer noopener"
             className="inline-flex items-center gap-2 rounded-full bg-cream text-forest px-5 py-2.5 font-medium hover:bg-peach hover:text-ink transition-colors"
@@ -61,7 +59,7 @@ export const Footer: React.FC = () => (
           </a>
         </div>
         <p className="mt-6 text-sm text-cream/70">
-          Chat &amp; schedule classes on WhatsApp — or an Instagram DM works too.
+          Chat on WhatsApp to schedule a custom class or join our daily classes.
         </p>
         <p className="mt-8 text-xs text-cream/50 flex items-center gap-1">
           Made with <Heart className="w-3 h-3 fill-peach text-peach" /> · © {new Date().getFullYear()} balance_ee
