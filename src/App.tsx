@@ -3,10 +3,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import CalendarPage from "./pages/CalendarPage";
+import EventsPage from "./pages/CalendarPage";
 import Learn from "./pages/Learn";
 import Booking from "./pages/Booking";
-import Classes from "./pages/Classes";
 import Services from "./pages/Services";
 import TentsAndTonic from "./pages/TentsAndTonic";
 import WellnessAI from "./pages/WellnessAI";
@@ -25,13 +24,14 @@ const App = () => (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/services" element={<Services />} />
-      <Route path="/classes" element={<Classes />} />
-      <Route path="/calendar" element={<CalendarPage />} />
+      <Route path="/events" element={<EventsPage />} />
+      <Route path="/calendar" element={<EventsPage />} />
       <Route path="/event/tents-and-tonic" element={<TentsAndTonic />} />
       <Route path="/wellness-ai" element={<WellnessAI />} />
       <Route path="/learn" element={<Learn />} />
       <Route path="/booking" element={<Booking />} />
       <Route path="/about" element={<About />} />
+
 
       {/* Admin-only routes (kept; not surfaced in nav) */}
       <Route path="/auth" element={<Auth />} />
