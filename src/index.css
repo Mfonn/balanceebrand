@@ -9,63 +9,65 @@
 
 @layer base {
   :root {
-    /* Brand palette (HSL) */
-    --terracotta: 14 53% 53%;      /* #c4654a */
-    --peach: 24 70% 70%;            /* #e8a87c */
-    --sage: 110 21% 57%;            /* #87a878 */
-    --forest: 100 17% 34%;          /* #4a6741 */
-    --cream: 36 41% 96%;            /* warm off-white */
-    --ink: 100 17% 18%;             /* deep forest for text */
-    --gilt: 38 55% 62%;             /* soft luxe gold accent */
-    --obsidian: 220 18% 9%;         /* futuristic deep ink */
+    /* Brand palette (HSL) — moody mid-tone */
+    --terracotta: 14 50% 44%;       /* deeper clay */
+    --peach: 24 52% 62%;            /* muted warm peach */
+    --sage: 110 16% 42%;            /* deeper sage */
+    --forest: 100 18% 20%;          /* near-black forest */
+    --cream: 30 14% 82%;            /* warm taupe surface (was off-white) */
+    --ink: 100 14% 12%;             /* deep forest-black for text */
+    --gilt: 38 44% 52%;             /* antique gold accent */
+    --obsidian: 220 18% 8%;         /* deep ink */
 
-    --background: 36 41% 96%;
-    --foreground: 100 17% 18%;
+    --background: 30 14% 82%;
+    --foreground: 100 14% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 100 17% 18%;
+    --card: 32 16% 87%;
+    --card-foreground: 100 14% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 100 17% 18%;
+    --popover: 32 16% 87%;
+    --popover-foreground: 100 14% 12%;
 
-    --primary: 14 53% 53%;
-    --primary-foreground: 36 41% 96%;
+    --primary: 14 50% 44%;
+    --primary-foreground: 30 20% 92%;
 
-    --secondary: 110 21% 57%;
-    --secondary-foreground: 36 41% 96%;
+    --secondary: 110 16% 42%;
+    --secondary-foreground: 30 20% 92%;
 
-    --muted: 36 30% 92%;
-    --muted-foreground: 100 12% 35%;
+    --muted: 30 12% 76%;
+    --muted-foreground: 100 10% 28%;
 
-    --accent: 24 70% 70%;
-    --accent-foreground: 100 17% 18%;
+    --accent: 24 52% 62%;
+    --accent-foreground: 100 14% 12%;
 
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 36 41% 96%;
+    --destructive: 0 62% 42%;
+    --destructive-foreground: 30 20% 92%;
 
-    --border: 36 25% 85%;
-    --input: 36 25% 85%;
-    --ring: 14 53% 53%;
+    --border: 30 12% 68%;
+    --input: 30 12% 68%;
+    --ring: 14 50% 44%;
 
     --radius: 1rem;
 
     /* Gradients & shadows */
-    --gradient-warm: linear-gradient(135deg, hsl(24 70% 78%), hsl(14 53% 60%));
-    --gradient-sage: linear-gradient(135deg, hsl(110 21% 65%), hsl(100 17% 38%));
-    --gradient-sunrise: linear-gradient(135deg, hsl(24 70% 75%) 0%, hsl(14 53% 53%) 50%, hsl(330 50% 60%) 100%);
-    --shadow-soft: 0 8px 32px -8px hsl(14 53% 30% / 0.18);
-    --shadow-glow: 0 0 40px hsl(24 70% 70% / 0.5), 0 0 80px hsl(14 53% 53% / 0.25);
+    --gradient-warm: linear-gradient(135deg, hsl(24 45% 52%), hsl(14 50% 38%));
+    --gradient-sage: linear-gradient(135deg, hsl(110 16% 44%), hsl(100 18% 22%));
+    --gradient-sunrise: linear-gradient(135deg, hsl(24 48% 55%) 0%, hsl(14 50% 40%) 55%, hsl(330 28% 32%) 100%);
+    --shadow-soft: 0 10px 34px -10px hsl(100 20% 8% / 0.35);
+    --shadow-glow: 0 0 40px hsl(24 45% 45% / 0.35), 0 0 90px hsl(14 50% 35% / 0.3);
+
 
     /* Sidebar (legacy, kept for shadcn) */
-    --sidebar-background: 36 41% 96%;
-    --sidebar-foreground: 100 17% 18%;
-    --sidebar-primary: 14 53% 53%;
-    --sidebar-primary-foreground: 36 41% 96%;
-    --sidebar-accent: 36 30% 92%;
-    --sidebar-accent-foreground: 100 17% 18%;
-    --sidebar-border: 36 25% 85%;
-    --sidebar-ring: 14 53% 53%;
+    --sidebar-background: 30 14% 82%;
+    --sidebar-foreground: 100 14% 12%;
+    --sidebar-primary: 14 50% 44%;
+    --sidebar-primary-foreground: 30 20% 92%;
+    --sidebar-accent: 30 12% 76%;
+    --sidebar-accent-foreground: 100 14% 12%;
+    --sidebar-border: 30 12% 68%;
+    --sidebar-ring: 14 50% 44%;
   }
+
 
   .dark {
     --background: 100 17% 10%;
