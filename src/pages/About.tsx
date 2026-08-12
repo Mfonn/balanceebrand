@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Instagram, Heart, Sparkles, Bot, Coffee, Users, Phone, Baby, MessageCircle } from "lucide-react";
+import { Instagram, Heart, Sparkles, Bot, Coffee, Users, Phone, Baby, MessageCircle, Mail } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";
@@ -49,8 +49,19 @@ const About: React.FC = () => (
             >
               <Instagram className="w-4 h-4" /> DM {SOCIAL.handle}
             </a>
+            <a
+              href={SOCIAL.emailHref}
+              className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink px-6 py-3 font-medium hover:bg-ink hover:text-cream transition-colors"
+            >
+              <Mail className="w-4 h-4" /> {SOCIAL.email}
+            </a>
           </div>
-          <p className="mt-3 text-sm text-ink/60">Chat &amp; schedule classes on WhatsApp.</p>
+          <p className="mt-3 text-sm text-ink/60">
+            Chat &amp; schedule classes on WhatsApp, or{" "}
+            <a href={SOCIAL.newsletter} target="_blank" rel="noreferrer noopener" className="text-terracotta underline underline-offset-4">
+              subscribe to our newsletter
+            </a>.
+          </p>
         </Reveal>
         <Reveal delay={120}>
           <div className="relative rounded-3xl overflow-hidden shadow-soft aspect-[4/5] ring-1 ring-gilt/30">

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Heart, Phone, MessageCircle } from "lucide-react";
+import { Instagram, Heart, Phone, MessageCircle, Mail } from "lucide-react";
 import { SOCIAL, WA_DAILY_CLASS } from "@/data/events";
 
 export const Footer: React.FC = () => (
@@ -29,6 +29,7 @@ export const Footer: React.FC = () => (
           <li><Link to="/event/tents-and-tonic" className="hover:text-peach transition-colors">TenTS&amp;Tonic</Link></li>
           <li><Link to="/wellness-ai" className="hover:text-peach transition-colors">Wellness AI</Link></li>
           <li><Link to="/about" className="hover:text-peach transition-colors">About</Link></li>
+          <li><a href={SOCIAL.newsletter} target="_blank" rel="noreferrer noopener" className="hover:text-peach transition-colors">Newsletter</a></li>
         </ul>
       </div>
 
