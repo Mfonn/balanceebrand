@@ -51,7 +51,7 @@ const TentsAndTonic: React.FC = () => {
         />
         <link rel="canonical" href="/event/tents-and-tonic" />
         <meta property="og:title" content="TenTS&Tonic — The Art of Being a Neighbor" />
-        <meta property="og:description" content="A wellness camping retreat in Abuja · 31 July – 2 August 2026 · balance_ee × African Dream Community." />
+        <meta property="og:description" content="A wellness camping retreat in Abuja · 31 July – 2 August 2026 · balance_ee." />
         <meta property="og:image" content={event.image} />
       </Helmet>
 
@@ -63,9 +63,6 @@ const TentsAndTonic: React.FC = () => {
       <section className="relative pt-16 md:pt-20 pb-12 md:pb-20 px-4 md:px-8 overflow-hidden">
         <div className="relative mx-auto max-w-6xl grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <Reveal>
-            <p className="text-[11px] uppercase tracking-[0.35em] text-gilt/90 mb-3">
-              African Dream Community <span className="text-gilt">✕</span> balance_ee
-            </p>
             <p className="text-xs uppercase tracking-[0.3em] text-terracotta font-semibold">
               TenTS&amp;Tonic — a wellness camping retreat
             </p>

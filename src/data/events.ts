@@ -120,7 +120,6 @@ export const EVENTS: BalanceEvent[] = [
     ],
     bring: ["Easy-to-move outfit", "Rain layer", "Reusable bottle", "An open mind"],
     selarUrl: "https://www.rekap.africa/e/tentstonic-l8d55",
-    collab: "@balance_ee × African Dream Community",
     accent: "terracotta",
     featured: true,
     status: "upcoming",
@@ -147,6 +146,9 @@ export const SOCIAL = {
   phoneTel: "tel:+2349112984781",
   phoneAlt: "+234 704 053 8528",
   phoneAltTel: "tel:+2347040538528",
+  email: "balance.in.motion.lab@gmail.com",
+  emailHref: "mailto:balance.in.motion.lab@gmail.com",
+  newsletter: "https://balanceinmotionlab.substack.com/",
 };
 
 /** Google Form for the specialized programme intake / waitlist. */
