@@ -1,12 +1,32 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { ExternalLink, MessageCircle, MapPin, Calendar, Droplets, Gauge, Leaf, Sparkles, Users, HeartPulse, Eye, Scissors, Phone } from "lucide-react";
+import { ExternalLink, MessageCircle, MapPin, Calendar, Droplets, Gauge, Leaf, Sparkles, Users, HeartPulse, Eye, Scissors, Phone, Mail } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";
 import { SponsorMarquee } from "@/components/SponsorMarquee";
 import { SOCIAL, getEventBySlug } from "@/data/events";
 import oviacareAsset from "@/assets/oviacare-logo.svg.asset.json";
+import { GalleryGrid, type GalleryItem } from "@/components/GalleryGrid";
+import g1 from "@/assets/gallery/dsc9653-2.jpg.asset.json";
+import g2 from "@/assets/gallery/dji-20260724112647-0024-d-2.jpg.asset.json";
+import g3 from "@/assets/gallery/dsc9741.jpg.asset.json";
+import g4 from "@/assets/gallery/dsc9694.jpg.asset.json";
+import g5 from "@/assets/gallery/dsc9693.jpg.asset.json";
+import g6 from "@/assets/gallery/1000172397.jpg.asset.json";
+import g7 from "@/assets/gallery/1000172727.jpg.asset.json";
+import g8 from "@/assets/gallery/1000172729.jpg.asset.json";
+
+const GALLERY: GalleryItem[] = [
+  { src: g1.url, alt: "A guest balancing in a yoga pose, blowing bubbles on an outdoor mat", caption: "movement, outdoors" },
+  { src: g2.url, alt: "Aerial view of colourful yoga mats laid out beside a pool", caption: "mats by the water" },
+  { src: g3.url, alt: "A speaker sitting cross-legged on a mat with a microphone", caption: "mindfulness session" },
+  { src: g4.url, alt: "TenTS&Tonic flyers and a QR code on a wicker table above the mats", caption: "the weekend, printed" },
+  { src: g5.url, alt: "A TenTS&Tonic flyer resting on a car dashboard", caption: "on the way" },
+  { src: g6.url, alt: "A guest resting in a camping chair outside a tent", caption: "slow hours at camp" },
+  { src: g7.url, alt: "Bioderma sample tubes on a skincare routine worksheet", caption: "skincare, with Bioderma" },
+  { src: g8.url, alt: "Three Bioderma skincare tubes on a purple surface", caption: "take-home routine" },
+];
 
 const IG_REELS = [
   "https://www.instagram.com/reel/Da70aySoQFx/",
@@ -106,6 +126,12 @@ const TentsAndTonic: React.FC = () => {
                 className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink font-medium px-6 py-3.5 hover:bg-ink hover:text-cream transition-colors"
               >
                 <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
+              </a>
+              <a
+                href={SOCIAL.emailHref}
+                className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink font-medium px-5 py-2.5 hover:bg-ink hover:text-cream transition-colors text-sm"
+              >
+                <Mail className="w-4 h-4" /> {SOCIAL.email}
               </a>
             </div>
           </Reveal>
@@ -290,6 +316,21 @@ const TentsAndTonic: React.FC = () => {
         </div>
       </section>
 
+      {/* PHOTO GALLERY */}
+      <section className="px-4 md:px-8 py-16 md:py-20">
+        <div className="mx-auto max-w-6xl">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.3em] text-terracotta text-center">the gallery</p>
+            <h2 className="font-display text-4xl md:text-5xl text-center mt-3 mb-10">
+              How the weekend <span className="italic">actually felt.</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={80}>
+            <GalleryGrid items={GALLERY} />
+          </Reveal>
+        </div>
+      </section>
+
       {/* INSTAGRAM GALLERY */}
       <section className="px-4 md:px-8 py-16">
         <div className="mx-auto max-w-4xl">
@@ -358,6 +399,12 @@ const TentsAndTonic: React.FC = () => {
                 className="inline-flex items-center gap-2 rounded-full bg-terracotta text-cream font-medium px-5 py-2.5 hover:bg-ink transition-colors text-sm"
               >
                 <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
+              </a>
+              <a
+                href={SOCIAL.emailHref}
+                className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink font-medium px-5 py-2.5 hover:bg-ink hover:text-cream transition-colors text-sm"
+              >
+                <Mail className="w-4 h-4" /> {SOCIAL.email}
               </a>
             </div>
           </div>
