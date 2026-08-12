@@ -29,7 +29,6 @@ const GALLERY: GalleryItem[] = [
 ];
 
 const IG_REELS = [
-  "https://www.instagram.com/reel/Da70aySoQFx/",
   "https://www.instagram.com/reel/DZ5HCM5MO2Z/",
 ];
 
