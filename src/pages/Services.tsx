@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import {
   Sparkles, ArrowRight, HeartPulse, MessageCircle, ExternalLink,
-  CalendarClock, MapPin, Target, ShieldPlus, Gauge, Baby,
+  CalendarClock, MapPin, Target, ShieldPlus, Gauge, Baby, Building2, Mail,
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -24,7 +24,7 @@ const Services: React.FC = () => (
       <title>Services — Specialized Programme & Daily Classes | balance_ee Abuja</title>
       <meta
         name="description"
-        content="Two ways in at balance_ee Abuja: a specialized programme (currently intaking — fill the form to join the waitlist) and daily yoga & pilates classes you can also custom-schedule on WhatsApp."
+        content="Ways in at balance_ee Abuja: a specialized programme (currently intaking — fill the form to join the waitlist) and daily yoga & pilates classes you can also custom-schedule on WhatsApp."
       />
       <link rel="canonical" href="/services" />
     </Helmet>
@@ -43,8 +43,8 @@ const Services: React.FC = () => (
         </Reveal>
         <Reveal delay={160}>
           <p className="mt-5 text-ink/75 text-lg max-w-2xl mx-auto">
-            Two services: a specialized programme built around your body, and daily classes you can join
-            or schedule to fit your life.
+            A specialized programme built around your body, daily classes you can join or schedule to fit
+            your life, and wellness activations designed for your space.
           </p>
         </Reveal>
       </div>
@@ -149,6 +149,62 @@ const Services: React.FC = () => (
               >
                 Join the daily classes <ArrowRight className="w-4 h-4" />
               </a>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    {/* 3. WELLNESS ACTIVATIONS */}
+    <section className="px-4 md:px-8 py-12">
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <div className="rounded-3xl bg-forest text-cream p-8 sm:p-12 relative overflow-hidden shadow-soft ring-1 ring-gilt/30">
+            <div className="absolute -top-24 -left-16 w-72 h-72 rounded-full bg-gilt/20 blur-3xl" aria-hidden />
+            <div className="relative grid lg:grid-cols-2 gap-10 items-start">
+              <div>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-gilt/20 border border-gilt/40 text-gilt px-3 py-1 text-[11px] uppercase tracking-[0.25em] font-semibold">
+                  <Building2 className="w-3 h-3" /> for spaces &amp; brands
+                </span>
+                <h2 className="font-display text-4xl sm:text-5xl mt-5">Wellness activations, hosted in your space.</h2>
+                <p className="mt-4 text-cream/85 leading-relaxed">
+                  A designed movement-and-mindfulness moment for your hotel, office, showroom, launch or
+                  retreat — programming, instruction, mats and flow, run end to end by us.
+                </p>
+                <p className="mt-4 text-cream/85 leading-relaxed">
+                  Built for teams that need a real reset, guest experiences worth photographing, and brand
+                  moments that should feel considered rather than corporate. Tell us the space, the audience
+                  and the date; we'll shape the rest.
+                </p>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <a
+                    href={`${SOCIAL.emailHref}?subject=${encodeURIComponent("Wellness activation enquiry")}`}
+                    className="inline-flex items-center gap-2 rounded-full bg-gilt text-ink font-medium px-6 py-3.5 hover:bg-peach transition-colors"
+                  >
+                    <Mail className="w-4 h-4" /> Enquire by email
+                  </a>
+                  <a
+                    href={`${SOCIAL.whatsappUrl}?text=${encodeURIComponent("Hi balance_ee — I'd like to plan a wellness activation in our space.")}`}
+                    target="_blank" rel="noreferrer noopener"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-cream/60 text-cream font-medium px-6 py-3.5 hover:bg-cream hover:text-forest transition-colors"
+                  >
+                    <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
+                  </a>
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {[
+                  { t: "Corporate & team days", d: "A grounded hour that people actually talk about afterwards." },
+                  { t: "Hotels & residences", d: "Guest programming — poolside, rooftop, lawn or studio." },
+                  { t: "Launches & press moments", d: "Movement as the centrepiece, styled for the camera." },
+                  { t: "Offsites & retreats", d: "A full arc of sessions across the weekend." },
+                ].map((x) => (
+                  <div key={x.t} className="rounded-2xl bg-cream/10 border border-cream/20 p-5">
+                    <p className="font-display text-xl">{x.t}</p>
+                    <p className="text-sm text-cream/75 mt-1 leading-relaxed">{x.d}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </Reveal>
