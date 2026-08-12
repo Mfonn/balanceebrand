@@ -224,7 +224,7 @@ const Home: React.FC = () => {
               The Art of <span className="italic">Being a Neighbor.</span>
             </h2>
             <p className="mt-5 text-ink/80 text-lg leading-relaxed">
-              A wellness camping retreat with African Dream Community. Movement, mindfulness, a skincare
+              A wellness camping retreat. Movement, mindfulness, a skincare
               talk by Dr. Selma of Bioderma, and real conversation under Abuja's rainy-season sky.
               Waterproof tents provided.
             </p>
