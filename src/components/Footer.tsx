@@ -57,10 +57,31 @@ export const Footer: React.FC = () => (
           >
             <Phone className="w-4 h-4" /> {SOCIAL.phone}
           </a>
+          <a
+            href={SOCIAL.emailHref}
+            className="inline-flex items-center gap-2 rounded-full border border-cream/40 text-cream px-5 py-2.5 font-medium hover:bg-cream hover:text-forest transition-colors"
+          >
+            <Mail className="w-4 h-4" /> Email us
+          </a>
         </div>
         <p className="mt-6 text-sm text-cream/70">
           Chat on WhatsApp to schedule a custom class or join our daily classes.
         </p>
+
+        <div className="mt-6 rounded-2xl border border-gilt/40 bg-cream/5 p-5">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-gilt">letters from the lab</p>
+          <p className="mt-2 text-sm text-cream/80 leading-relaxed">
+            Notes on movement, mindfulness and what we're building next — straight to your inbox.
+          </p>
+          <a
+            href={SOCIAL.newsletter}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-gilt text-ink px-5 py-2.5 font-medium hover:bg-peach transition-colors"
+          >
+            <Mail className="w-4 h-4" /> Subscribe to the newsletter
+          </a>
+        </div>
         <p className="mt-8 text-xs text-cream/50 flex items-center gap-1">
           Made with <Heart className="w-3 h-3 fill-peach text-peach" /> · © {new Date().getFullYear()} balance_ee
         </p>
