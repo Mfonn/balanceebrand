@@ -86,6 +86,12 @@ const Services: React.FC = () => (
                   >
                     <MessageCircle className="w-4 h-4" /> Ask first
                   </a>
+                  <a
+                    href={SOCIAL.emailHref}
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-cream/60 text-cream font-medium px-6 py-3.5 hover:bg-cream hover:text-ink transition-colors"
+                  >
+                    <Mail className="w-4 h-4" /> {SOCIAL.email}
+                  </a>
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 gap-3">
@@ -149,6 +155,12 @@ const Services: React.FC = () => (
               >
                 Join the daily classes <ArrowRight className="w-4 h-4" />
               </a>
+              <a
+                href={SOCIAL.emailHref}
+                className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink font-medium px-6 py-3.5 hover:bg-ink hover:text-cream transition-colors"
+              >
+                <Mail className="w-4 h-4" /> {SOCIAL.email}
+              </a>
             </div>
           </div>
         </Reveal>
@@ -181,7 +193,7 @@ const Services: React.FC = () => (
                     href={`${SOCIAL.emailHref}?subject=${encodeURIComponent("Wellness activation enquiry")}`}
                     className="inline-flex items-center gap-2 rounded-full bg-gilt text-ink font-medium px-6 py-3.5 hover:bg-peach transition-colors"
                   >
-                    <Mail className="w-4 h-4" /> Enquire by email
+                    <Mail className="w-4 h-4" /> {SOCIAL.email}
                   </a>
                   <a
                     href={`${SOCIAL.whatsappUrl}?text=${encodeURIComponent("Hi balance_ee — I'd like to plan a wellness activation in our space.")}`}

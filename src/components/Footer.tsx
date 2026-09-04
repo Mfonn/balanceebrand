@@ -26,7 +26,6 @@ export const Footer: React.FC = () => (
           <li><Link to="/" className="hover:text-peach transition-colors">Home</Link></li>
           <li><Link to="/services" className="hover:text-peach transition-colors">Services</Link></li>
           <li><Link to="/events" className="hover:text-peach transition-colors">Events</Link></li>
-          <li><Link to="/event/tents-and-tonic" className="hover:text-peach transition-colors">TenTS&amp;Tonic</Link></li>
           <li><Link to="/wellness-ai" className="hover:text-peach transition-colors">Wellness AI</Link></li>
           <li><Link to="/about" className="hover:text-peach transition-colors">About</Link></li>
           <li><a href={SOCIAL.newsletter} target="_blank" rel="noreferrer noopener" className="hover:text-peach transition-colors">Newsletter</a></li>
@@ -62,7 +61,7 @@ export const Footer: React.FC = () => (
             href={SOCIAL.emailHref}
             className="inline-flex items-center gap-2 rounded-full border border-cream/40 text-cream px-5 py-2.5 font-medium hover:bg-cream hover:text-forest transition-colors"
           >
-            <Mail className="w-4 h-4" /> Email us
+            <Mail className="w-4 h-4" /> {SOCIAL.email}
           </a>
         </div>
         <p className="mt-6 text-sm text-cream/70">

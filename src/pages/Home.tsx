@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles, Users, Waves, Instagram, Bot, Tent, ExternalLink, MessageCircle, CalendarDays } from "lucide-react";
@@ -6,31 +6,16 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { EventModal } from "@/components/balance/EventModal";
 import { Reveal } from "@/components/balance/Reveal";
-import { BalanceEvent, SOCIAL, FEATURED_EVENT, WA_CUSTOM_CLASS, WA_DAILY_CLASS } from "@/data/events";
+import { BalanceEvent, SOCIAL, WA_CUSTOM_CLASS, WA_DAILY_CLASS } from "@/data/events";
 
 
 const MARQUEE = [
   "move", "breathe", "gather", "camp", "soft strength", "deep breath",
-  "tea", "books", "yoga", "pilates", "tents", "presence",
+  "tea", "books", "yoga", "pilates", "presence",
 ];
-
-const useCountdown = (target: Date) => {
-  const [now, setNow] = useState(() => new Date());
-  useEffect(() => {
-    const id = setInterval(() => setNow(new Date()), 1000 * 60);
-    return () => clearInterval(id);
-  }, []);
-  const ms = Math.max(0, target.getTime() - now.getTime());
-  const days = Math.floor(ms / 86400000);
-  const hours = Math.floor((ms % 86400000) / 3600000);
-  return { days, hours, past: ms === 0 };
-};
 
 const Home: React.FC = () => {
   const [selected, setSelected] = useState<BalanceEvent | null>(null);
-
-  const featuredDate = useMemo(() => new Date("2026-07-31T16:00:00+01:00"), []);
-  const { days, hours } = useCountdown(featuredDate);
 
   return (
     <div className="min-h-screen bg-cream text-ink">
@@ -126,27 +111,21 @@ const Home: React.FC = () => {
               </Link>
             </Reveal>
 
-            {/* FEATURED EVENT — TenTS&Tonic countdown */}
-            <Reveal as="div" delay={120} className="col-span-12 lg:col-span-3 rounded-3xl gradient-sunrise text-cream p-6 sm:p-7 min-h-[220px] shadow-glow relative overflow-hidden group">
+            {/* RECAP LINK TILE */}
+            <Reveal as="div" delay={120} className="col-span-12 lg:col-span-3 rounded-3xl gradient-sunrise text-cream p-6 sm:p-7 min-h-[220px] shadow-glow relative overflow-hidden flex flex-col justify-between">
               <div className="flex items-start justify-between">
-                <p className="text-[10px] uppercase tracking-[0.25em]">featured · 31 jul</p>
+                <p className="text-[10px] uppercase tracking-[0.25em]">a look back</p>
                 <Tent className="w-5 h-5" />
               </div>
-              <p className="font-display text-3xl mt-1 leading-tight">TenTS&amp;Tonic</p>
-              <p className="text-xs text-cream/90 mt-1">The Art of Being a Neighbor</p>
-              <div className="mt-4 flex items-end gap-3">
-                <div>
-                  <p className="font-display text-5xl leading-none">{days}</p>
-                  <p className="text-[10px] uppercase tracking-wider">days</p>
-                </div>
-                <div>
-                  <p className="font-display text-3xl leading-none">{hours}</p>
-                  <p className="text-[10px] uppercase tracking-wider">hrs</p>
-                </div>
+              <div>
+                <p className="font-display text-3xl leading-tight">A camping weekend, remembered.</p>
+                <Link
+                  to="/tents-and-tonic-recap"
+                  className="mt-4 inline-flex items-center gap-2 rounded-full bg-cream text-ink font-medium px-5 py-2.5 hover:bg-ink hover:text-cream transition-colors text-sm"
+                >
+                  TenTS&amp;Tonic Recap <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
-              <Link to="/event/tents-and-tonic" className="mt-4 inline-flex items-center gap-1 text-sm font-medium hover:underline">
-                See details <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
             </Reveal>
 
             {/* Mini pillar tiles */}
@@ -199,56 +178,6 @@ const Home: React.FC = () => {
               <span className="text-terracotta">✦</span>
             </span>
           ))}
-        </div>
-      </section>
-
-      {/* Featured TenTS&Tonic band */}
-      <section className="px-4 md:px-8 py-16 md:py-24">
-        <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <Reveal>
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] shadow-soft group">
-              <img src={FEATURED_EVENT.image} alt={FEATURED_EVENT.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
-              <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-cream/95 text-terracotta px-3 py-1 text-[11px] uppercase tracking-[0.2em] font-semibold">
-                <Sparkles className="w-3 h-3" /> featured · next up
-              </span>
-              <div className="absolute bottom-5 left-5 right-5 text-cream">
-                <p className="text-xs uppercase tracking-[0.25em] text-gilt">{FEATURED_EVENT.date}</p>
-                <p className="font-display text-3xl sm:text-4xl mt-1">{FEATURED_EVENT.title}</p>
-              </div>
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <p className="text-xs uppercase tracking-[0.3em] text-terracotta">31 jul → 2 aug · headline event</p>
-            <h2 className="font-display text-5xl md:text-6xl text-ink mt-3 leading-[1.0] text-balance">
-              The Art of <span className="italic">Being a Neighbor.</span>
-            </h2>
-            <p className="mt-5 text-ink/80 text-lg leading-relaxed">
-              A wellness camping retreat. Movement, mindfulness, a skincare
-              talk by Dr. Selma of Bioderma, and real conversation under Abuja's rainy-season sky.
-              Waterproof tents provided.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {FEATURED_EVENT.included.slice(0, 4).map((i) => (
-                <span key={i} className="text-xs rounded-full bg-peach/30 text-ink px-3 py-1.5">{i}</span>
-              ))}
-            </div>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link
-                to="/event/tents-and-tonic"
-                className="inline-flex items-center gap-2 rounded-full bg-terracotta text-cream font-medium px-6 py-3 hover:bg-ink transition-colors"
-              >
-                Full event page <ArrowRight className="w-4 h-4" />
-              </Link>
-              <a
-                href={FEATURED_EVENT.selarUrl}
-                target="_blank" rel="noreferrer noopener"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink font-medium px-6 py-3 hover:bg-ink hover:text-cream transition-colors"
-              >
-                Book on Rekap <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
-          </Reveal>
         </div>
       </section>
 
