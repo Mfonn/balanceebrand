@@ -67,6 +67,31 @@ const EventsPage: React.FC = () => {
                 </button>
               </Reveal>
             ))}
+            {UPCOMING_EVENTS.length === 0 && (
+              <Reveal>
+                <div className="rounded-3xl border-2 border-forest/15 bg-card p-7">
+                  <p className="font-display text-2xl">The next one is being planned.</p>
+                  <p className="mt-2 text-ink/75 leading-relaxed">
+                    Classes run daily in the meantime — chat with us on WhatsApp to be first to hear about the
+                    next gathering.
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <Link
+                      to="/services"
+                      className="inline-flex items-center gap-2 rounded-full bg-ink text-cream font-medium px-5 py-2.5 hover:bg-terracotta transition-colors text-sm"
+                    >
+                      See our services <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <Link
+                      to="/tents-and-tonic-recap"
+                      className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink font-medium px-5 py-2.5 hover:bg-ink hover:text-cream transition-colors text-sm"
+                    >
+                      TenTS&amp;Tonic Recap <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              </Reveal>
+            )}
           </div>
         </div>
       </section>
