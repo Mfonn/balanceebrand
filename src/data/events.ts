@@ -30,6 +30,8 @@ export type BalanceEvent = {
   featured?: boolean;
   status?: "upcoming" | "past";
   recapNote?: string;
+  /** Kept in data for its own page, but not listed on the events page. */
+  hiddenFromLists?: boolean;
 };
 
 export const EVENTS: BalanceEvent[] = [
