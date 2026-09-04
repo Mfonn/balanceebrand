@@ -121,8 +121,9 @@ export const EVENTS: BalanceEvent[] = [
     bring: ["Easy-to-move outfit", "Rain layer", "Reusable bottle", "An open mind"],
     selarUrl: "https://www.rekap.africa/e/tentstonic-l8d55",
     accent: "terracotta",
-    featured: true,
-    status: "upcoming",
+    featured: false,
+    status: "past",
+    hiddenFromLists: true,
   },
 ];
 
@@ -131,9 +132,9 @@ export const JUNE_EVENTS = EVENTS;
 export const getEventsForDay = (day: number, month = 7) =>
   EVENTS.filter((e) => e.month === month && e.day === day);
 export const EVENT_DAYS = Array.from(new Set(EVENTS.map((e) => e.day)));
-export const FEATURED_EVENT = EVENTS.find((e) => e.featured)!;
-export const UPCOMING_EVENTS = EVENTS.filter((e) => e.status !== "past");
-export const PAST_EVENTS = EVENTS.filter((e) => e.status === "past");
+export const FEATURED_EVENT = EVENTS.find((e) => e.featured && !e.hiddenFromLists);
+export const UPCOMING_EVENTS = EVENTS.filter((e) => e.status !== "past" && !e.hiddenFromLists);
+export const PAST_EVENTS = EVENTS.filter((e) => e.status === "past" && !e.hiddenFromLists);
 export const getEventBySlug = (slug: string) =>
   EVENTS.find((e) => e.slug === slug || e.id === slug);
 
