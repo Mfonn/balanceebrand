@@ -6,7 +6,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { EventModal } from "@/components/balance/EventModal";
 import { Reveal } from "@/components/balance/Reveal";
-import { BalanceEvent, FEATURED_EVENT, UPCOMING_EVENTS, PAST_EVENTS } from "@/data/events";
+import { BalanceEvent, UPCOMING_EVENTS, PAST_EVENTS } from "@/data/events";
 
 const EventsPage: React.FC = () => {
   const [selected, setSelected] = useState<BalanceEvent | null>(null);
@@ -14,10 +14,10 @@ const EventsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-cream text-ink">
       <Helmet>
-        <title>Events — TenTS&amp;Tonic | balance_ee Abuja</title>
+        <title>Events — Retreats, Soirées & Gatherings | balance_ee Abuja</title>
         <meta
           name="description"
-          content="What's on at balance_ee: TenTS&Tonic, a wellness camping retreat in Abuja on 31 July – 2 August 2026, plus past gatherings."
+          content="Special events at balance_ee Abuja — retreats, soirées and gatherings, plus a look back at the ones already held."
         />
         <link rel="canonical" href="/events" />
       </Helmet>
@@ -40,40 +40,6 @@ const EventsPage: React.FC = () => {
             </p>
           </Reveal>
         </div>
-      </section>
-
-      {/* Featured event hero band */}
-      <section className="px-4 md:px-8 pb-12">
-        <Reveal>
-          <div className="mx-auto max-w-5xl rounded-3xl overflow-hidden relative shadow-glow">
-            <div className="relative aspect-[16/9] sm:aspect-[21/9]">
-              <img src={FEATURED_EVENT.image} alt={FEATURED_EVENT.title} className="absolute inset-0 w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/55 to-ink/10" />
-              <div className="absolute inset-0 p-6 sm:p-10 flex flex-col justify-end text-cream">
-                <span className="inline-flex items-center gap-1.5 self-start rounded-full bg-cream/95 text-terracotta px-3 py-1 text-[11px] uppercase tracking-[0.2em] font-semibold mb-3">
-                  <Sparkles className="w-3 h-3" /> next up · {FEATURED_EVENT.date}
-                </span>
-                <h2 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight">{FEATURED_EVENT.title}</h2>
-                <p className="mt-2 text-cream/90 max-w-xl">{FEATURED_EVENT.subtitle ?? FEATURED_EVENT.tagline}</p>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  <Link
-                    to="/event/tents-and-tonic"
-                    className="inline-flex items-center gap-2 rounded-full bg-terracotta text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors"
-                  >
-                    Full event page <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  <a
-                    href={FEATURED_EVENT.selarUrl}
-                    target="_blank" rel="noreferrer noopener"
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors"
-                  >
-                    Book on Rekap <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Reveal>
       </section>
 
       {/* Upcoming list */}

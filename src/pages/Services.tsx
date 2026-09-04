@@ -86,6 +86,12 @@ const Services: React.FC = () => (
                   >
                     <MessageCircle className="w-4 h-4" /> Ask first
                   </a>
+                  <a
+                    href={SOCIAL.emailHref}
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-cream/60 text-cream font-medium px-6 py-3.5 hover:bg-cream hover:text-ink transition-colors"
+                  >
+                    <Mail className="w-4 h-4" /> {SOCIAL.email}
+                  </a>
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 gap-3">
