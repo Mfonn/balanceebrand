@@ -94,7 +94,6 @@ export const EVENTS: BalanceEvent[] = [
   },
   {
     id: "just-move",
-    slug: "just-move",
     month: 9,
     day: 17,
     slot: "PM",

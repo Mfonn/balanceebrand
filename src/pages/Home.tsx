@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles, Users, Waves, Instagram, Bot, Tent, ExternalLink, MessageCircle, CalendarDays } from "lucide-react";
+import { ArrowRight, Sparkles, Users, Waves, Instagram, Bot, Tent, MessageCircle, CalendarDays, Video, Check } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { EventModal } from "@/components/balance/EventModal";
 import { Reveal } from "@/components/balance/Reveal";
-import { BalanceEvent, SOCIAL, WA_CUSTOM_CLASS, WA_DAILY_CLASS } from "@/data/events";
+import { BalanceEvent, SOCIAL, FEATURED_EVENT, COMMUNITY_BENEFITS, WA_JUST_MOVE, WA_CUSTOM_CLASS, WA_DAILY_CLASS } from "@/data/events";
 
 
 const MARQUEE = [
@@ -200,6 +200,104 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+
+      {/* Next up — Just Move webinar */}
+      {FEATURED_EVENT && (
+        <section className="px-4 md:px-8 py-16 md:py-24">
+          <div className="mx-auto max-w-6xl">
+            <Reveal>
+              <div className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden bg-ink text-cream shadow-glow">
+                <div className="relative min-h-[260px] lg:min-h-full">
+                  <img
+                    src={FEATURED_EVENT.image}
+                    alt="Just Move webinar artwork"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                    width={1280}
+                    height={960}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent lg:bg-gradient-to-r" />
+                </div>
+                <div className="p-8 sm:p-12">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gilt/20 border border-gilt/40 text-gilt px-3 py-1 text-[11px] uppercase tracking-[0.25em] font-semibold">
+                    <Video className="w-3 h-3" /> next up · virtual
+                  </span>
+                  <h2 className="font-display text-5xl sm:text-6xl mt-5 leading-[1]">{FEATURED_EVENT.title}</h2>
+                  <p className="mt-3 text-cream/85">{FEATURED_EVENT.date} · online</p>
+                  <p className="mt-5 text-cream/85 leading-relaxed">
+                    One hour to stop thinking in "workouts". We'll look at fitness as a system — rhythm and
+                    mobility, strength, functional capacity — bust the myths that keep people stuck, and walk
+                    through what your body is actually doing when you move.
+                  </p>
+                  <ul className="mt-5 space-y-2 text-sm text-cream/85">
+                    {["Rest is not doing nothing", "Pain does not mean stop forever", "Cardio is not the whole heart story"].map((m) => (
+                      <li key={m} className="flex items-start gap-2">
+                        <Check className="w-4 h-4 text-peach mt-0.5 shrink-0" /> {m}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-7 flex flex-wrap gap-3">
+                    <a
+                      href={WA_JUST_MOVE}
+                      target="_blank" rel="noreferrer noopener"
+                      className="inline-flex items-center gap-2 rounded-full bg-cream text-ink font-medium px-6 py-3.5 hover:bg-terracotta hover:text-cream transition-colors"
+                    >
+                      Save my seat <ArrowRight className="w-4 h-4" />
+                    </a>
+                    <button
+                      onClick={() => setSelected(FEATURED_EVENT)}
+                      className="inline-flex items-center gap-2 rounded-full border-2 border-cream/60 text-cream font-medium px-6 py-3.5 hover:bg-cream hover:text-ink transition-colors"
+                    >
+                      What we'll cover
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {/* Community group */}
+      <section className="px-4 md:px-8 pb-4">
+        <Reveal>
+          <div className="mx-auto max-w-6xl rounded-3xl bg-sage/20 border-2 border-forest/15 p-8 sm:p-12 grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-forest">the group chat</p>
+              <h2 className="font-display text-4xl sm:text-5xl text-ink mt-3 leading-[1.05]">
+                Join the community on WhatsApp.
+              </h2>
+              <p className="mt-4 text-ink/75 leading-relaxed">
+                It's where the everyday happens — tips, check-ins, and the first word on everything we open up.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={SOCIAL.communityGroup}
+                  target="_blank" rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 rounded-full bg-ink text-cream font-medium px-6 py-3.5 hover:bg-terracotta transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4" /> Join the group chat
+                </a>
+                <a
+                  href={SOCIAL.newsletter}
+                  target="_blank" rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink font-medium px-6 py-3.5 hover:bg-ink hover:text-cream transition-colors"
+                >
+                  Subscribe to the newsletter
+                </a>
+              </div>
+            </div>
+            <ul className="space-y-3">
+              {COMMUNITY_BENEFITS.map((b) => (
+                <li key={b} className="flex items-start gap-3 rounded-2xl bg-cream border border-forest/10 p-4 text-ink">
+                  <Check className="w-5 h-5 text-terracotta mt-0.5 shrink-0" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+      </section>
 
       {/* Why move */}
       <section className="relative px-4 md:px-8 py-16 md:py-24 overflow-hidden">

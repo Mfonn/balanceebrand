@@ -153,12 +153,16 @@ export const EventModal: React.FC<Props> = ({ event, onClose }) => {
                 </Link>
               )}
               <a
-                href={event.selarUrl}
+                href={event.selarUrl || SOCIAL.whatsappUrl}
                 target="_blank"
                 rel="noreferrer noopener"
                 className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-terracotta text-cream font-medium py-3.5 px-6 hover:bg-ink transition-colors text-base"
               >
-                Book tickets <ExternalLink className="w-4 h-4" />
+                {event.selarUrl ? (
+                  <>Book tickets <ExternalLink className="w-4 h-4" /></>
+                ) : (
+                  <>Save my seat <ArrowRight className="w-4 h-4" /></>
+                )}
               </a>
               <a
                 href={SOCIAL.instagram}
