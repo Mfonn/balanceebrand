@@ -1,5 +1,6 @@
 import bookClubImg from "@/assets/event-book-club.jpg";
 import soireeImg from "@/assets/event-fitness-soiree.jpg";
+import justMoveImg from "@/assets/event-just-move.jpg";
 import tentsAsset from "@/assets/tents-real.png.asset.json";
 import oviacareAsset from "@/assets/oviacare-logo.svg.asset.json";
 const tentsImg = tentsAsset.url;
@@ -92,6 +93,34 @@ export const EVENTS: BalanceEvent[] = [
     recapNote: "The Soirée has wrapped. Recap reels coming to Instagram — DM us for the next one.",
   },
   {
+    id: "just-move",
+    month: 9,
+    day: 17,
+    slot: "PM",
+    title: "Just Move",
+    subtitle: "A virtual session on fitness as a system",
+    tagline: "Virtual webinar · Thursday, 17 September 2026",
+    date: "Thursday, 17 September 2026",
+    time: "Virtual · time to be announced",
+    location: "Online",
+    image: justMoveImg,
+    vibe: "Clear, myth-busting, whole-body — for real bodies, not app avatars",
+    included: [
+      "Fitness as a system: rhythm and mobility, strength, functional capacity — not just \"workouts\"",
+      "Myth 1: rest means doing nothing",
+      "Myth 2: pain means stop forever",
+      "Myth 3: cardio is the only thing that matters for the heart",
+      "The whole-body view: cardiovascular, lymphatic, neurological, muscular, skeletal, endocrine",
+      "Why generic fitness apps fail people with real bodies",
+    ],
+    tickets: [{ label: "Virtual seat", price: "Details soon", note: "message us to be notified" }],
+    bring: ["A notebook", "Your questions", "A quiet 60 minutes"],
+    selarUrl: "",
+    accent: "sage",
+    featured: true,
+    status: "upcoming",
+  },
+  {
     id: "tents-and-tonic",
     slug: "tents-and-tonic",
     month: 7,
@@ -152,6 +181,7 @@ export const SOCIAL = {
   email: "balance.in.motion.lab@gmail.com",
   emailHref: "mailto:balance.in.motion.lab@gmail.com",
   newsletter: "https://balanceinmotionlab.substack.com/",
+  communityGroup: "https://chat.whatsapp.com/DVv33K8ORrMFNkK3y631ho?s=cl&p=a&mlu=4&ilr=4",
 };
 
 /** Google Form for the specialized programme intake / waitlist. */
@@ -196,4 +226,16 @@ export const SPONSORS: Sponsor[] = [
     url: "https://oviacare.org/",
     logo: oviacareAsset.url,
   },
+];
+
+/** Register interest in the Just Move webinar. */
+export const WA_JUST_MOVE = wa(
+  "Hi balance_ee — I'd like a seat at the Just Move webinar on 17 September. Please send me the details."
+);
+
+/** What you get inside the WhatsApp community. */
+export const COMMUNITY_BENEFITS = [
+  "A community that actually shows up",
+  "Daily movement & wellness tips",
+  "First to hear about classes, webinars and events",
 ];

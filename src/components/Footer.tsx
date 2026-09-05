@@ -68,6 +68,21 @@ export const Footer: React.FC = () => (
           Chat on WhatsApp to schedule a custom class or join our daily classes.
         </p>
 
+        <div className="mt-6 rounded-2xl border border-cream/20 bg-cream/5 p-5">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-peach">the group chat</p>
+          <p className="mt-2 text-sm text-cream/80 leading-relaxed">
+            Community, daily tips, and the first word on new classes, webinars and events.
+          </p>
+          <a
+            href={SOCIAL.communityGroup}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-cream text-forest px-5 py-2.5 font-medium hover:bg-peach hover:text-ink transition-colors"
+          >
+            <MessageCircle className="w-4 h-4" /> Join the community
+          </a>
+        </div>
+
         <div className="mt-6 rounded-2xl border border-gilt/40 bg-cream/5 p-5">
           <p className="text-[11px] uppercase tracking-[0.3em] text-gilt">letters from the lab</p>
           <p className="mt-2 text-sm text-cream/80 leading-relaxed">
