@@ -181,24 +181,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Events strip */}
-      <section className="px-4 md:px-8 py-16 md:py-24 bg-sage/15">
-        <div className="mx-auto max-w-5xl text-center">
-          <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-terracotta">classes daily · events monthly</p>
-            <h2 className="font-display text-5xl sm:text-6xl text-ink mt-3">Classes are the everyday. Events are the special ones.</h2>
-            <p className="mt-4 text-ink/70 max-w-xl mx-auto">
-              Come move with us during the week, then join us for the gatherings worth planning around.
-            </p>
-            <Link
-              to="/events"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-ink text-cream font-medium px-6 py-3.5 hover:bg-terracotta transition-colors"
-            >
-              See all events <ArrowRight className="w-4 h-4" />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
 
 
       {/* Next up — Just Move webinar */}
@@ -220,7 +202,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="p-8 sm:p-12">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-gilt/20 border border-gilt/40 text-gilt px-3 py-1 text-[11px] uppercase tracking-[0.25em] font-semibold">
-                    <Video className="w-3 h-3" /> next up · virtual
+                    <Video className="w-3 h-3" /> next up · virtual · free
                   </span>
                   <h2 className="font-display text-5xl sm:text-6xl mt-5 leading-[1]">{FEATURED_EVENT.title}</h2>
                   <p className="mt-3 text-cream/85">{FEATURED_EVENT.date} · online</p>
