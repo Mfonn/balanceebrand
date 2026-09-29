@@ -1,321 +1,79 @@
-import React, { useState } from "react";
+import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles, Users, Waves, Instagram, Bot, Tent, MessageCircle, CalendarDays, Video, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MessageCircle, Play } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { EventModal } from "@/components/balance/EventModal";
 import { Reveal } from "@/components/balance/Reveal";
-import { BalanceEvent, SOCIAL, FEATURED_EVENT, COMMUNITY_BENEFITS, WA_JUST_MOVE, WA_CUSTOM_CLASS, WA_DAILY_CLASS } from "@/data/events";
+import { Button } from "@/components/ui/button";
+import { JUST_MOVE_VIDEO_URL, SOCIAL, WA_PILATES } from "@/data/events";
+import towerDarkAsset from "@/assets/studio/studio-tower-dark.jpg.asset.json";
+import towerWideAsset from "@/assets/studio/studio-tower-wide.jpg.asset.json";
+import reformerEntryAsset from "@/assets/studio/studio-reformer-entry.jpg.asset.json";
+import reformerWideAsset from "@/assets/studio/studio-reformer-wide.jpg.asset.json";
 
+const Home: React.FC = () => (
+  <div className="min-h-screen bg-cream text-ink">
+    <Helmet>
+      <title>balance_ee — Pilates, Movement Education & Wellness in Abuja</title>
+      <meta name="description" content="Schedule reformer and tower Pilates in Abuja, watch the Just Move webinar series, and explore thoughtful movement experiences by balance_ee." />
+      <link rel="canonical" href="/" />
+    </Helmet>
+    <Navbar />
 
-const MARQUEE = [
-  "move", "breathe", "gather", "camp", "soft strength", "deep breath",
-  "tea", "books", "yoga", "pilates", "presence",
-];
-
-const Home: React.FC = () => {
-  const [selected, setSelected] = useState<BalanceEvent | null>(null);
-
-  return (
-    <div className="min-h-screen bg-cream text-ink">
-      <Helmet>
-        <title>balance_ee — Abuja Yoga, Pilates & Wellness Retreats</title>
-        <meta name="description" content="Daily yoga and pilates classes in Abuja, a specialized programme for injury and postpartum recovery, wellness retreats, and an experimental wellness AI." />
-        <link rel="canonical" href="/" />
-      </Helmet>
-      <Navbar />
-
-
-      {/* HERO — bento grid */}
-      <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-8 overflow-hidden">
-        <div className="absolute -top-32 -left-24 w-[28rem] h-[28rem] rounded-full bg-peach/30 blur-3xl pointer-events-none animate-float-y" aria-hidden />
-        <div className="absolute top-40 -right-24 w-[26rem] h-[26rem] rounded-full bg-sage/25 blur-3xl pointer-events-none animate-float-y" style={{ animationDelay: "1.6s" }} aria-hidden />
-
-        <div className="relative mx-auto max-w-7xl">
-          <div className="grid grid-cols-12 gap-3 sm:gap-4 md:gap-5">
-            {/* Big intro tile — full width */}
-            <Reveal as="div" className="col-span-12 rounded-3xl gradient-warm p-8 sm:p-12 md:p-16 text-cream relative overflow-hidden min-h-[420px] md:min-h-[480px] flex flex-col justify-end shadow-soft">
-              <p className="text-[11px] uppercase tracking-[0.35em] opacity-90 mb-4">a wellness community · abuja</p>
-              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-balance max-w-4xl">
-                Move like you <span className="italic text-cream/95">mean it.</span>
-              </h1>
-              <p className="mt-6 max-w-2xl text-lg md:text-xl text-cream/95 leading-relaxed">
-                Daily classes, a specialized programme, and events worth clearing the weekend for.
-                Chat on WhatsApp to schedule a custom class or join our daily classes.
-              </p>
-              <div className="flex flex-wrap gap-3 mt-8">
-                <a
-                  href={WA_DAILY_CLASS}
-                  target="_blank" rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 rounded-full bg-cream text-terracotta font-medium px-6 py-3.5 hover:bg-ink hover:text-cream transition-colors"
-                >
-                  Join daily classes <ArrowRight className="w-4 h-4" />
-                </a>
-                <a
-                  href={WA_CUSTOM_CLASS}
-                  target="_blank" rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3.5 hover:bg-cream hover:text-terracotta transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4" /> Custom-schedule a class
-                </a>
-                <Link to="/services" className="inline-flex items-center gap-2 rounded-full bg-ink/20 backdrop-blur border-2 border-cream/40 text-cream font-medium px-6 py-3.5 hover:bg-ink/40 transition-colors">
-                  Services
-                </Link>
-              </div>
-
-            </Reveal>
-
-            {/* CLASSES tile */}
-            <Reveal as="div" delay={80} className="col-span-12 sm:col-span-6 lg:col-span-5 rounded-3xl bg-ink text-cream p-6 sm:p-8 min-h-[220px] shadow-soft relative overflow-hidden group">
-              <div className="absolute -bottom-12 -right-12 w-48 h-48 rounded-full bg-terracotta/40 blur-3xl group-hover:bg-terracotta/60 transition-colors" />
-              <div className="relative flex items-start justify-between">
-                <div>
-                  <p className="text-[11px] uppercase tracking-[0.25em] text-peach">always on</p>
-                  <p className="font-display text-4xl mt-2">Daily Classes</p>
-                </div>
-                <CalendarDays className="w-7 h-7 text-peach" />
-              </div>
-              <p className="relative mt-3 text-cream/85 text-sm">
-                Yoga, pilates and mobility, daily. Join the group, or custom-schedule around your date,
-                location, goals, limitations and difficulty level.
-              </p>
-              <div className="relative mt-5 flex flex-wrap gap-2">
-                <a
-                  href={WA_DAILY_CLASS}
-                  target="_blank" rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 rounded-full bg-cream text-ink font-medium px-5 py-2.5 hover:bg-terracotta hover:text-cream transition-colors"
-                >
-                  Join <ArrowRight className="w-4 h-4" />
-                </a>
-                <a
-                  href={WA_CUSTOM_CLASS}
-                  target="_blank" rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 rounded-full border border-cream/40 text-cream font-medium px-5 py-2.5 hover:bg-cream/10 transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4" /> Custom schedule
-                </a>
-              </div>
-            </Reveal>
-
-
-            {/* WELLNESS AI tile */}
-            <Reveal as="div" delay={140} className="col-span-12 sm:col-span-6 lg:col-span-4 rounded-3xl bg-sage text-cream p-6 sm:p-8 min-h-[220px] shadow-soft relative overflow-hidden group">
-              <Bot className="w-8 h-8" />
-              <p className="text-[11px] uppercase tracking-[0.25em] text-cream/80 mt-2">experimental · ai chatbot</p>
-              <p className="font-display text-4xl mt-1">Wellness AI</p>
-              <p className="mt-2 text-cream/90 text-sm">An experimental bot that drafts workout plans &amp; wellness practices. For the tinkerers.</p>
-
-              <Link to="/wellness-ai" className="mt-4 inline-flex items-center gap-2 rounded-full bg-cream text-forest font-medium px-5 py-2.5 hover:bg-ink hover:text-cream transition-colors">
-                Try it <ArrowRight className="w-4 h-4" />
-              </Link>
-            </Reveal>
-
-            {/* RECAP LINK TILE */}
-            <Reveal as="div" delay={120} className="col-span-12 lg:col-span-3 rounded-3xl gradient-sunrise text-cream p-6 sm:p-7 min-h-[220px] shadow-glow relative overflow-hidden flex flex-col justify-between">
-              <div className="flex items-start justify-between">
-                <p className="text-[10px] uppercase tracking-[0.25em]">a look back</p>
-                <Tent className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="font-display text-3xl leading-tight">A camping weekend, remembered.</p>
-                <Link
-                  to="/tents-and-tonic-recap"
-                  className="mt-4 inline-flex items-center gap-2 rounded-full bg-cream text-ink font-medium px-5 py-2.5 hover:bg-ink hover:text-cream transition-colors text-sm"
-                >
-                  TenTS&amp;Tonic Recap <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </Reveal>
-
-            {/* Mini pillar tiles */}
-            <Reveal as="div" delay={160} className="col-span-6 lg:col-span-3 rounded-3xl bg-peach text-ink p-5 sm:p-6 flex flex-col justify-between min-h-[160px] shadow-soft">
-              <Waves className="w-7 h-7" />
-              <div>
-                <p className="font-display text-2xl">Movement</p>
-                <p className="text-sm text-ink/75">yoga · pilates · mobility</p>
-              </div>
-            </Reveal>
-            <Reveal as="div" delay={180} className="col-span-6 lg:col-span-3 rounded-3xl bg-cream border-2 border-forest/15 text-ink p-5 sm:p-6 flex flex-col justify-between min-h-[160px] shadow-soft">
-              <Sparkles className="w-7 h-7 text-terracotta" />
-              <div>
-                <p className="font-display text-2xl">Mind</p>
-                <p className="text-sm text-ink/70">journaling · stillness</p>
-              </div>
-            </Reveal>
-            <Reveal as="div" delay={200} className="col-span-12 sm:col-span-6 lg:col-span-3 rounded-3xl bg-forest text-cream p-5 sm:p-6 flex flex-col justify-between min-h-[160px] shadow-soft">
-              <Users className="w-7 h-7" />
-              <div>
-                <p className="font-display text-2xl">Community</p>
-                <p className="text-sm text-cream/85">real rooms, real conversation</p>
-              </div>
-            </Reveal>
-
-            <Reveal as="a" delay={220}
-              {...({
-                href: SOCIAL.instagram,
-                target: "_blank",
-                rel: "noreferrer noopener",
-              } as any)}
-              className="col-span-12 sm:col-span-6 lg:col-span-3 rounded-3xl bg-terracotta text-cream p-5 sm:p-6 flex flex-col justify-between min-h-[160px] shadow-soft group hover:bg-ink transition-colors"
-            >
-              <Instagram className="w-7 h-7" />
-              <div>
-                <p className="font-display text-2xl">@balance_ee</p>
-                <p className="text-sm text-cream/85">follow along · DM to join</p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Marquee */}
-      <section className="bg-ink text-cream py-5 overflow-hidden border-y border-forest/30">
-        <div className="flex gap-12 animate-scroll-left whitespace-nowrap font-display text-3xl md:text-5xl">
-          {[...MARQUEE, ...MARQUEE, ...MARQUEE].map((w, i) => (
-            <span key={i} className="flex items-center gap-12">
-              {w}
-              <span className="text-terracotta">✦</span>
-            </span>
-          ))}
-        </div>
-      </section>
-
-
-
-      {/* Next up — Just Move webinar */}
-      {FEATURED_EVENT && (
-        <section className="px-4 md:px-8 py-16 md:py-24">
-          <div className="mx-auto max-w-6xl">
-            <Reveal>
-              <div className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden bg-ink text-cream shadow-glow">
-                <div className="relative min-h-[260px] lg:min-h-full">
-                  <img
-                    src={FEATURED_EVENT.image}
-                    alt="Just Move webinar artwork"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    loading="lazy"
-                    width={1280}
-                    height={960}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent lg:bg-gradient-to-r" />
-                </div>
-                <div className="p-8 sm:p-12">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gilt/20 border border-gilt/40 text-gilt px-3 py-1 text-[11px] uppercase tracking-[0.25em] font-semibold">
-                    <Video className="w-3 h-3" /> next up · virtual · free
-                  </span>
-                  <h2 className="font-display text-5xl sm:text-6xl mt-5 leading-[1]">{FEATURED_EVENT.title}</h2>
-                  <p className="mt-3 text-cream/85">{FEATURED_EVENT.date} · online</p>
-                  <p className="mt-5 text-cream/85 leading-relaxed">
-                    One hour to stop thinking in "workouts". We'll look at fitness as a system — rhythm and
-                    mobility, strength, functional capacity — bust the myths that keep people stuck, and walk
-                    through what your body is actually doing when you move.
-                  </p>
-                  <ul className="mt-5 space-y-2 text-sm text-cream/85">
-                    {["Rest is not doing nothing", "Pain does not mean stop forever", "Cardio is not the whole heart story"].map((m) => (
-                      <li key={m} className="flex items-start gap-2">
-                        <Check className="w-4 h-4 text-peach mt-0.5 shrink-0" /> {m}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-7 flex flex-wrap gap-3">
-                    <a
-                      href={WA_JUST_MOVE}
-                      target="_blank" rel="noreferrer noopener"
-                      className="inline-flex items-center gap-2 rounded-full bg-cream text-ink font-medium px-6 py-3.5 hover:bg-terracotta hover:text-cream transition-colors"
-                    >
-                      Save my seat <ArrowRight className="w-4 h-4" />
-                    </a>
-                    <button
-                      onClick={() => setSelected(FEATURED_EVENT)}
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-cream/60 text-cream font-medium px-6 py-3.5 hover:bg-cream hover:text-ink transition-colors"
-                    >
-                      What we'll cover
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-      )}
-
-      {/* Community group */}
-      <section className="px-4 md:px-8 pb-4">
-        <Reveal>
-          <div className="mx-auto max-w-6xl rounded-3xl bg-sage/20 border-2 border-forest/15 p-8 sm:p-12 grid lg:grid-cols-2 gap-8 items-center">
+    <main>
+      <section className="px-4 pb-14 pt-24 md:px-8 md:pb-24 md:pt-28">
+        <div className="mx-auto grid max-w-7xl grid-cols-12 gap-3 md:gap-5">
+          <Reveal className="col-span-12 border-t border-ink/30 pt-5 lg:col-span-5 lg:flex lg:min-h-[680px] lg:flex-col lg:justify-between">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-forest">the group chat</p>
-              <h2 className="font-display text-4xl sm:text-5xl text-ink mt-3 leading-[1.05]">
-                Join the community on WhatsApp.
-              </h2>
-              <p className="mt-4 text-ink/75 leading-relaxed">
-                It's where the everyday happens — tips, check-ins, and the first word on everything we open up.
+              <p className="text-xs font-medium uppercase tracking-[0.24em] text-terracotta">Movement · Education · Abuja</p>
+              <h1 className="mt-7 max-w-xl font-display text-6xl leading-[0.9] sm:text-7xl md:text-8xl lg:text-8xl">
+                Movement,<br /><span className="italic">considered.</span>
+              </h1>
+              <p className="mt-7 max-w-md text-base leading-relaxed text-ink/70 md:text-lg">
+                Reformer and tower Pilates, movement education, and experiences built for the way real bodies live.
               </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href={SOCIAL.communityGroup}
-                  target="_blank" rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 rounded-full bg-ink text-cream font-medium px-6 py-3.5 hover:bg-terracotta transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4" /> Join the group chat
-                </a>
-                <a
-                  href={SOCIAL.newsletter}
-                  target="_blank" rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink font-medium px-6 py-3.5 hover:bg-ink hover:text-cream transition-colors"
-                >
-                  Subscribe to the newsletter
-                </a>
+            </div>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Button asChild variant="editorial" size="lg"><a href={WA_PILATES} target="_blank" rel="noreferrer noopener">Schedule Pilates <ArrowRight /></a></Button>
+              <Button asChild variant="editorial-outline" size="lg"><Link to="/just-move">Explore Just Move</Link></Button>
+            </div>
+          </Reveal>
+
+          <Reveal delay={100} className="col-span-12 lg:col-span-7">
+            <div className="group relative min-h-[520px] overflow-hidden rounded-t-[11rem] border border-ink/15 md:min-h-[680px]">
+              <img src={towerDarkAsset.url} alt="Tower Pilates studio with illuminated stone arches in Abuja" className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.02]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-5 p-6 text-cream md:p-9">
+                <div><p className="text-[10px] uppercase tracking-[0.24em] text-peach">Private sessions available</p><p className="mt-2 font-display text-3xl md:text-4xl">Refine your form. Find your centre.</p></div>
+                <span className="hidden h-12 w-12 items-center justify-center border border-cream/40 sm:flex"><ArrowUpRight /></span>
               </div>
             </div>
-            <ul className="space-y-3">
-              {COMMUNITY_BENEFITS.map((b) => (
-                <li key={b} className="flex items-start gap-3 rounded-2xl bg-cream border border-forest/10 p-4 text-ink">
-                  <Check className="w-5 h-5 text-terracotta mt-0.5 shrink-0" />
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* Why move */}
-      <section className="relative px-4 md:px-8 py-16 md:py-24 overflow-hidden">
-        <div className="relative mx-auto max-w-6xl grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-forest">why move?</p>
-            <h2 className="font-display text-5xl md:text-6xl text-ink mt-3 leading-[1.05] text-balance">
-              Movement is a love letter to your body.
-            </h2>
-            <p className="mt-5 text-ink/80 text-lg leading-relaxed">
-              Pilates strengthens your core. Yoga softens your nervous system. Walking clears your head. Lifting reshapes your story.
-              You don't need to do all of it — just start, gently, today.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a href={WA_DAILY_CLASS} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-3 font-medium hover:bg-terracotta transition-colors">
-                Join a class <ArrowRight className="w-4 h-4" />
-              </a>
-              <Link to="/learn" className="inline-flex items-center gap-2 rounded-full border-2 border-ink text-ink px-5 py-3 font-medium hover:bg-ink hover:text-cream transition-colors">
-                Read Learn
-              </Link>
-            </div>
-
           </Reveal>
-          <Reveal delay={120}>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {[
-                { t: "Core", d: "central strength" },
-                { t: "Glutes", d: "fire the engine" },
-                { t: "Feet", d: "your foundation" },
-                { t: "Posture", d: "stand tall" },
-                { t: "Walking", d: "the daily reset" },
-                { t: "Lifting", d: "strong bones" },
-              ].map((c, i) => (
-                <div key={c.t} className={`rounded-2xl p-5 ${i % 3 === 0 ? "bg-terracotta text-cream" : i % 3 === 1 ? "bg-peach text-ink" : "bg-forest text-cream"} shadow-soft hover:-translate-y-0.5 transition-transform`}>
-                  <p className="font-display text-2xl">{c.t}</p>
-                  <p className="text-sm opacity-90 mt-1">{c.d}</p>
+
+          <Reveal delay={80} className="col-span-12 bg-ink p-7 text-cream md:col-span-7 md:p-10">
+            <div className="flex h-full flex-col justify-between gap-12">
+              <div className="flex items-center justify-between border-b border-cream/20 pb-4">
+                <p className="text-xs uppercase tracking-[0.24em] text-peach">Just Move · Three-part series</p>
+                <span className="text-xs text-cream/50">Sep—Nov 2026</span>
+              </div>
+              <div>
+                <p className="max-w-2xl font-display text-4xl leading-tight sm:text-6xl">Fitness is a system, not a stack of workouts.</p>
+                <p className="mt-5 max-w-2xl leading-relaxed text-cream/65">Part 01 is now available. Parts 02 and 03 continue the conversation in October and November.</p>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <Button asChild className="bg-cream text-ink hover:bg-terracotta hover:text-cream" size="lg"><a href={JUST_MOVE_VIDEO_URL} target="_blank" rel="noreferrer noopener"><Play /> Watch Part 01</a></Button>
+                  <Button asChild variant="outline" className="border-cream/40 bg-transparent text-cream hover:bg-cream hover:text-ink" size="lg"><Link to="/just-move">View the series</Link></Button>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={140} className="col-span-12 border border-ink/20 bg-card p-7 md:col-span-5 md:p-10">
+            <p className="text-xs uppercase tracking-[0.24em] text-terracotta">Series index</p>
+            <div className="mt-8 divide-y divide-ink/20 border-y border-ink/20">
+              {[['01','September','Watch now'],['02','October','Coming soon'],['03','November','Coming soon']].map(([number, month, status]) => (
+                <div key={number} className="grid grid-cols-[48px_1fr_auto] items-center py-5">
+                  <span className="font-display text-3xl text-terracotta">{number}</span><span className="text-sm">{month} 2026</span><span className="text-[10px] uppercase tracking-[0.16em] text-ink/50">{status}</span>
                 </div>
               ))}
             </div>
@@ -323,37 +81,38 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="px-4 md:px-8 pb-16 md:pb-24">
-        <Reveal>
-          <div className="mx-auto max-w-5xl rounded-3xl gradient-sunrise p-8 sm:p-14 text-center text-cream relative overflow-hidden shadow-glow">
-            <div className="absolute inset-0 opacity-20 pointer-events-none">
-              <div className="absolute top-0 left-0 w-40 h-40 rounded-full bg-cream blur-3xl" />
-              <div className="absolute bottom-0 right-0 w-40 h-40 rounded-full bg-forest blur-3xl" />
-            </div>
-            <p className="relative text-xs uppercase tracking-[0.3em] mb-3">ready when you are</p>
-            <h2 className="relative font-display text-4xl sm:text-6xl">Come find your balance.</h2>
-            <p className="relative mt-4 max-w-xl mx-auto opacity-95">A class, a camp weekend, a chat with the bot — pick your entry point.</p>
-            <div className="relative flex flex-wrap justify-center gap-3 mt-7">
-              <a href={WA_DAILY_CLASS} target="_blank" rel="noreferrer noopener" className="rounded-full bg-cream text-terracotta font-medium px-6 py-3 hover:bg-ink hover:text-cream transition-colors">
-                Join daily classes
-              </a>
-              <Link to="/events" className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors">
-                <Sparkles className="w-4 h-4" /> See events
-              </Link>
-              <a href={WA_CUSTOM_CLASS} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 rounded-full border-2 border-cream text-cream font-medium px-6 py-3 hover:bg-cream hover:text-terracotta transition-colors">
-                <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
-              </a>
-            </div>
+      <section className="border-y border-ink/20 px-4 py-16 md:px-8 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <Reveal><div className="grid gap-6 lg:grid-cols-12 lg:items-end"><div className="lg:col-span-7"><p className="text-xs uppercase tracking-[0.24em] text-terracotta">Reformer + Tower Pilates</p><h2 className="mt-4 font-display text-5xl leading-[0.95] sm:text-7xl">Precision, strength and control.</h2></div><p className="max-w-md text-ink/65 lg:col-span-5">Schedule around your goals, experience and physical needs. Tell us which format you are interested in and we will guide the next step.</p></div></Reveal>
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            <Reveal><div className="group relative aspect-[4/3] overflow-hidden"><img src={towerWideAsset.url} alt="Tower Pilates equipment in a softly lit Abuja studio" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]" /><div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" /><p className="absolute bottom-5 left-5 font-display text-4xl text-cream">Tower Pilates</p></div></Reveal>
+            <Reveal delay={90}><div className="group relative aspect-[4/3] overflow-hidden"><img src={reformerWideAsset.url} alt="Wood reformer Pilates equipment in a modern Abuja studio" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]" /><div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" /><p className="absolute bottom-5 left-5 font-display text-4xl text-cream">Reformer Pilates</p></div></Reveal>
           </div>
-        </Reveal>
+          <Reveal className="mt-7 flex flex-col justify-between gap-5 border-t border-ink/25 pt-6 sm:flex-row sm:items-center"><p className="max-w-xl text-sm leading-relaxed text-ink/65">Your enquiry can include your preferred date, location, goals, physical limitations and experience level.</p><Button asChild variant="editorial" size="lg"><a href={WA_PILATES} target="_blank" rel="noreferrer noopener"><MessageCircle /> Schedule on WhatsApp</a></Button></Reveal>
+        </div>
       </section>
 
-      <Footer />
-      <EventModal event={selected} onClose={() => setSelected(null)} />
+      <section className="px-4 py-16 md:px-8 md:py-24">
+        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-12">
+          <Reveal className="md:col-span-5"><img src={reformerEntryAsset.url} alt="Warm wood reformer Pilates studio interior" className="h-full min-h-[440px] w-full object-cover" /></Reveal>
+          <Reveal delay={80} className="bg-terracotta p-8 text-cream md:col-span-7 md:p-12 lg:p-16">
+            <div className="flex h-full flex-col justify-between gap-20">
+              <div><p className="text-xs uppercase tracking-[0.24em] text-peach">In development</p><h2 className="mt-4 max-w-2xl font-display text-5xl leading-none sm:text-6xl">Movement support is becoming more intelligent—and more considered.</h2></div>
+              <p className="max-w-xl leading-relaxed text-cream/80">We are exploring how better guidance and better-designed training environments can help people move with more confidence. More when it is ready.</p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
-    </div>
-  );
-};
+      <section className="bg-card px-4 py-16 md:px-8 md:py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-3">
+          <Reveal><p className="text-xs uppercase tracking-[0.24em] text-terracotta">The archive</p><h2 className="mt-3 font-display text-5xl">Past events, held properly.</h2><Button asChild variant="editorial-outline" className="mt-7" size="lg"><Link to="/events">Explore the archive <ArrowRight /></Link></Button></Reveal>
+          <Reveal delay={80} className="border-l border-ink/20 pl-6 lg:col-span-2"><p className="max-w-2xl text-xl leading-relaxed text-ink/65">From intimate conversations to full weekends away, the archive holds the gatherings that shaped this community.</p><div className="mt-8 flex flex-wrap gap-3"><Button asChild variant="editorial"><a href={SOCIAL.communityGroup} target="_blank" rel="noreferrer noopener">Join the community</a></Button><Button asChild variant="editorial-outline"><a href={SOCIAL.newsletter} target="_blank" rel="noreferrer noopener">Read the newsletter</a></Button></div></Reveal>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </div>
+);
 
 export default Home;
