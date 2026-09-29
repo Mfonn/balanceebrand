@@ -117,8 +117,9 @@ export const EVENTS: BalanceEvent[] = [
     bring: ["A notebook", "Your questions", "A quiet 60 minutes"],
     selarUrl: "",
     accent: "sage",
-    featured: true,
-    status: "upcoming",
+    featured: false,
+    status: "past",
+    recapNote: "Part 01 of the Just Move Series. Watch the recording on the series page.",
   },
   {
     id: "tents-and-tonic",
@@ -230,7 +231,28 @@ export const SPONSORS: Sponsor[] = [
 
 /** Register interest in the Just Move webinar. */
 export const WA_JUST_MOVE = wa(
-  "Hi balance_ee — I'd like a seat at the Just Move webinar on 17 September. Please send me the details."
+  "Hi balance_ee — I'd like updates about the next Just Move webinar."
+);
+
+export const JUST_MOVE_VIDEO_URL = "https://youtu.be/-q5X2UNPJW0?si=ifc6RdaCOhCotVv4";
+export const JUST_MOVE_EMBED_URL = "https://www.youtube-nocookie.com/embed/-q5X2UNPJW0";
+
+export const JUST_MOVE_PARTS = [
+  { number: "01", month: "September 2026", status: "Watch now", completed: true },
+  { number: "02", month: "October 2026", status: "Coming soon", completed: false },
+  { number: "03", month: "November 2026", status: "Coming soon", completed: false },
+] as const;
+
+/** Reformer and tower Pilates scheduling enquiry. */
+export const WA_PILATES = wa(
+  `Hi balance_ee — I'd like to schedule a Pilates class.
+
+Preferred date and time:
+Reformer or Tower Pilates:
+Location:
+My goals:
+Health conditions or physical limitations:
+Experience level:`
 );
 
 /** What you get inside the WhatsApp community. */

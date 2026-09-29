@@ -3,69 +3,68 @@
 @tailwind utilities;
 
 
-/* balance_ee design system — terracotta + sage, joyful, alive
+/* balance_ee design system — architectural charcoal + ember
    All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    /* Brand palette (HSL) — moody mid-tone */
-    --terracotta: 14 50% 44%;       /* deeper clay */
-    --peach: 24 52% 62%;            /* muted warm peach */
-    --sage: 110 16% 42%;            /* deeper sage */
-    --forest: 100 18% 20%;          /* near-black forest */
-    --cream: 30 14% 82%;            /* warm taupe surface (was off-white) */
-    --ink: 100 14% 12%;             /* deep forest-black for text */
-    --gilt: 38 44% 52%;             /* antique gold accent */
-    --obsidian: 220 18% 8%;         /* deep ink */
+    --terracotta: 12 55% 52%;
+    --peach: 24 24% 86%;
+    --sage: 40 5% 33%;
+    --forest: 0 0% 18%;
+    --cream: 32 22% 87%;
+    --ink: 0 0% 9%;
+    --gilt: 38 32% 57%;
+    --obsidian: 0 0% 6%;
 
-    --background: 30 14% 82%;
-    --foreground: 100 14% 12%;
+    --background: 32 22% 87%;
+    --foreground: 0 0% 9%;
 
-    --card: 32 16% 87%;
-    --card-foreground: 100 14% 12%;
+    --card: 32 25% 92%;
+    --card-foreground: 0 0% 9%;
 
-    --popover: 32 16% 87%;
-    --popover-foreground: 100 14% 12%;
+    --popover: 32 25% 92%;
+    --popover-foreground: 0 0% 9%;
 
-    --primary: 14 50% 44%;
-    --primary-foreground: 30 20% 92%;
+    --primary: 12 55% 52%;
+    --primary-foreground: 32 22% 92%;
 
-    --secondary: 110 16% 42%;
-    --secondary-foreground: 30 20% 92%;
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 32 22% 92%;
 
-    --muted: 30 12% 76%;
-    --muted-foreground: 100 10% 28%;
+    --muted: 30 10% 78%;
+    --muted-foreground: 30 4% 35%;
 
-    --accent: 24 52% 62%;
-    --accent-foreground: 100 14% 12%;
+    --accent: 12 55% 52%;
+    --accent-foreground: 32 22% 92%;
 
     --destructive: 0 62% 42%;
     --destructive-foreground: 30 20% 92%;
 
-    --border: 30 12% 68%;
-    --input: 30 12% 68%;
-    --ring: 14 50% 44%;
+    --border: 30 8% 66%;
+    --input: 30 8% 66%;
+    --ring: 12 55% 52%;
 
-    --radius: 1rem;
+    --radius: 0.5rem;
 
     /* Gradients & shadows */
-    --gradient-warm: linear-gradient(135deg, hsl(24 45% 52%), hsl(14 50% 38%));
-    --gradient-sage: linear-gradient(135deg, hsl(110 16% 44%), hsl(100 18% 22%));
-    --gradient-sunrise: linear-gradient(135deg, hsl(24 48% 55%) 0%, hsl(14 50% 40%) 55%, hsl(330 28% 32%) 100%);
-    --shadow-soft: 0 10px 34px -10px hsl(100 20% 8% / 0.35);
-    --shadow-glow: 0 0 40px hsl(24 45% 45% / 0.35), 0 0 90px hsl(14 50% 35% / 0.3);
+    --gradient-warm: linear-gradient(135deg, hsl(12 55% 52%), hsl(8 45% 35%));
+    --gradient-sage: linear-gradient(135deg, hsl(0 0% 22%), hsl(0 0% 9%));
+    --gradient-sunrise: linear-gradient(135deg, hsl(12 55% 52%), hsl(0 0% 18%));
+    --shadow-soft: 0 14px 38px -24px hsl(0 0% 5% / 0.55);
+    --shadow-glow: 0 24px 80px -32px hsl(12 55% 35% / 0.5);
 
 
     /* Sidebar (legacy, kept for shadcn) */
-    --sidebar-background: 30 14% 82%;
-    --sidebar-foreground: 100 14% 12%;
-    --sidebar-primary: 14 50% 44%;
+    --sidebar-background: 32 22% 87%;
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 12 55% 52%;
     --sidebar-primary-foreground: 30 20% 92%;
-    --sidebar-accent: 30 12% 76%;
-    --sidebar-accent-foreground: 100 14% 12%;
-    --sidebar-border: 30 12% 68%;
-    --sidebar-ring: 14 50% 44%;
+    --sidebar-accent: 30 10% 78%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 30 8% 66%;
+    --sidebar-ring: 12 55% 52%;
   }
 
 
@@ -98,9 +97,19 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "ss01", "ss02";
+    letter-spacing: 0;
   }
   h1, h2, h3, h4 { @apply font-display; }
   ::selection { background-color: hsl(var(--terracotta) / 0.25); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @layer utilities {
