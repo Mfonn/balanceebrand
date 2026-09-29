@@ -12,8 +12,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Cabin', 'system-ui', 'sans-serif'],
-        display: ['"Abril Fatface"', 'Georgia', 'serif'],
+        sans: ['"Work Sans"', 'system-ui', 'sans-serif'],
+        display: ['"Instrument Serif"', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
