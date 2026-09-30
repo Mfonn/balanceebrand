@@ -7,6 +7,8 @@
 - [x] "Just Move" webinar — Part 01 marked complete with its YouTube recording
 - [x] Premium editorial redesign focused on Home, Events and the Just Move Series
 - [x] Reformer and tower Pilates scheduling entry point
+- [x] Just Move campaign artwork promoted; studio photography reduced to supporting thumbnails
+- [ ] Verify GitHub Pages deployment after the user repository is connected
 
 ## Waiting on the user
 - Part 02 and Part 03 titles, exact dates, times and registration details
