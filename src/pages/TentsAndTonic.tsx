@@ -7,24 +7,24 @@ import { Reveal } from "@/components/balance/Reveal";
 import { SponsorMarquee } from "@/components/SponsorMarquee";
 import { SOCIAL, SPONSORS, getEventBySlug } from "@/data/events";
 import { GalleryGrid, type GalleryItem } from "@/components/GalleryGrid";
-import g1 from "@/assets/gallery/dsc9653-2.jpg.asset.json";
-import g2 from "@/assets/gallery/dji-20260724112647-0024-d-2.jpg.asset.json";
-import g3 from "@/assets/gallery/dsc9741.jpg.asset.json";
-import g4 from "@/assets/gallery/dsc9694.jpg.asset.json";
-import g5 from "@/assets/gallery/dsc9693.jpg.asset.json";
-import g6 from "@/assets/gallery/1000172397.jpg.asset.json";
-import g7 from "@/assets/gallery/1000172727.jpg.asset.json";
-import g8 from "@/assets/gallery/1000172729.jpg.asset.json";
+import g1 from "@/assets/gallery/dsc9653-2.jpg";
+import g2 from "@/assets/gallery/dji-20260724112647-0024-d-2.jpg";
+import g3 from "@/assets/gallery/dsc9741.jpg";
+import g4 from "@/assets/gallery/dsc9694.jpg";
+import g5 from "@/assets/gallery/dsc9693.jpg";
+import g6 from "@/assets/gallery/1000172397.jpg";
+import g7 from "@/assets/gallery/1000172727.jpg";
+import g8 from "@/assets/gallery/1000172729.jpg";
 
 const GALLERY: GalleryItem[] = [
-  { src: g1.url, alt: "A guest balancing in a yoga pose, blowing bubbles on an outdoor mat", caption: "movement, outdoors" },
-  { src: g2.url, alt: "Aerial view of colourful yoga mats laid out beside a pool", caption: "mats by the water" },
-  { src: g3.url, alt: "A speaker sitting cross-legged on a mat with a microphone", caption: "mindfulness session" },
-  { src: g4.url, alt: "Retreat flyers and a QR code on a wicker table above the mats", caption: "the weekend, printed" },
-  { src: g5.url, alt: "A retreat flyer resting on a car dashboard", caption: "on the way" },
-  { src: g6.url, alt: "A guest resting in a camping chair outside a tent", caption: "slow hours at camp" },
-  { src: g7.url, alt: "Bioderma sample tubes on a skincare routine worksheet", caption: "skincare, with Bioderma" },
-  { src: g8.url, alt: "Three Bioderma skincare tubes on a purple surface", caption: "take-home routine" },
+  { src: g1, alt: "A guest balancing in a yoga pose, blowing bubbles on an outdoor mat", caption: "movement, outdoors" },
+  { src: g2, alt: "Aerial view of colourful yoga mats laid out beside a pool", caption: "mats by the water" },
+  { src: g3, alt: "A speaker sitting cross-legged on a mat with a microphone", caption: "mindfulness session" },
+  { src: g4, alt: "Retreat flyers and a QR code on a wicker table above the mats", caption: "the weekend, printed" },
+  { src: g5, alt: "A retreat flyer resting on a car dashboard", caption: "on the way" },
+  { src: g6, alt: "A guest resting in a camping chair outside a tent", caption: "slow hours at camp" },
+  { src: g7, alt: "Bioderma sample tubes on a skincare routine worksheet", caption: "skincare, with Bioderma" },
+  { src: g8, alt: "Three Bioderma skincare tubes on a purple surface", caption: "take-home routine" },
 ];
 
 const IG_REELS = ["https://www.instagram.com/reel/DZ5HCM5MO2Z/"];

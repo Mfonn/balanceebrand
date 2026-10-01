@@ -7,9 +7,9 @@ import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";
 import { Button } from "@/components/ui/button";
 import { JUST_MOVE_VIDEO_URL, SOCIAL, WA_PILATES } from "@/data/events";
-import justMoveAsset from "@/assets/just-move-2026-webinar.png.asset.json";
-import towerAsset from "@/assets/studio/studio-tower-wide.jpg.asset.json";
-import reformerAsset from "@/assets/studio/studio-reformer-wide.jpg.asset.json";
+import justMoveAsset from "@/assets/just-move-2026-webinar.png";
+import towerAsset from "@/assets/studio/studio-tower-wide.jpg";
+import reformerAsset from "@/assets/studio/studio-reformer-wide.jpg";
 
 const Home: React.FC = () => (
   <div className="min-h-screen bg-cream text-ink">
@@ -48,7 +48,7 @@ const Home: React.FC = () => (
       <section className="px-4 pb-16 md:px-8 md:pb-24">
         <div className="mx-auto grid max-w-7xl gap-0 bg-ink text-cream lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
-            <img src={justMoveAsset.url} alt="Just Move 2026 webinar artwork: hormones, habits and moving through life" className="aspect-[4/3] h-full w-full object-cover" />
+            <img src={justMoveAsset} alt="Just Move 2026 webinar artwork: hormones, habits and moving through life" className="aspect-[4/3] h-full w-full object-cover" />
           </Reveal>
           <Reveal delay={100} className="flex flex-col justify-between gap-16 border-l border-cream/15 p-7 lg:col-span-5 md:p-10 lg:p-12">
             <div>
@@ -78,8 +78,8 @@ const Home: React.FC = () => (
             <Button asChild variant="editorial" className="mt-6" size="lg"><a href={WA_PILATES} target="_blank" rel="noreferrer noopener"><MessageCircle /> Schedule on WhatsApp</a></Button>
           </Reveal>
           <Reveal delay={130} className="grid grid-cols-2 gap-2 lg:col-span-4">
-            <figure><img src={towerAsset.url} alt="Tower Pilates studio" className="aspect-square w-full object-cover" /><figcaption className="mt-2 text-[10px] uppercase tracking-[0.16em] text-ink/50">Tower</figcaption></figure>
-            <figure><img src={reformerAsset.url} alt="Reformer Pilates studio" className="aspect-square w-full object-cover" /><figcaption className="mt-2 text-[10px] uppercase tracking-[0.16em] text-ink/50">Reformer</figcaption></figure>
+            <figure><img src={towerAsset} alt="Tower Pilates studio" className="aspect-square w-full object-cover" /><figcaption className="mt-2 text-[10px] uppercase tracking-[0.16em] text-ink/50">Tower</figcaption></figure>
+            <figure><img src={reformerAsset} alt="Reformer Pilates studio" className="aspect-square w-full object-cover" /><figcaption className="mt-2 text-[10px] uppercase tracking-[0.16em] text-ink/50">Reformer</figcaption></figure>
           </Reveal>
         </div>
       </section>

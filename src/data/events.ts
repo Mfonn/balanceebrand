@@ -1,9 +1,9 @@
 import bookClubImg from "@/assets/event-book-club.jpg";
 import soireeImg from "@/assets/event-fitness-soiree.jpg";
 import justMoveImg from "@/assets/event-just-move.jpg";
-import tentsAsset from "@/assets/tents-real.png.asset.json";
-import oviacareAsset from "@/assets/oviacare-logo.svg.asset.json";
-const tentsImg = tentsAsset.url;
+import tentsAsset from "@/assets/tents-real.png";
+import oviacareAsset from "@/assets/oviacare-logo.svg";
+const tentsImg = tentsAsset;
 
 export type BalanceEvent = {
   id: string;
@@ -225,7 +225,7 @@ export const SPONSORS: Sponsor[] = [
     name: "OviaCare",
     blurb: "Specialist hair & scalp clinic — expert diagnosis, treatment and personalized care for all hair conditions.",
     url: "https://oviacare.org/",
-    logo: oviacareAsset.url,
+    logo: oviacareAsset,
   },
 ];
 
