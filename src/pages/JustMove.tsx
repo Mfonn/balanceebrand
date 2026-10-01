@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";
 import { Button } from "@/components/ui/button";
 import { JUST_MOVE_EMBED_URL, JUST_MOVE_PARTS, JUST_MOVE_VIDEO_URL, SOCIAL } from "@/data/events";
-import justMoveAsset from "@/assets/just-move-2026-webinar.png.asset.json";
+import justMoveAsset from "@/assets/just-move-2026-webinar.png";
 
 const JustMove: React.FC = () => (
   <div className="min-h-screen bg-cream text-ink">
@@ -16,7 +16,7 @@ const JustMove: React.FC = () => (
       <section className="px-4 pb-16 pt-28 md:px-8 md:pb-24 md:pt-36">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12 lg:items-center">
           <Reveal className="lg:col-span-5"><p className="text-xs font-medium uppercase tracking-[0.24em] text-terracotta">A three-part webinar series</p><h1 className="mt-5 font-display text-7xl leading-[0.88] sm:text-8xl lg:text-9xl">Just<br /><span className="italic text-terracotta">Move.</span></h1><p className="mt-7 max-w-md text-lg leading-relaxed text-ink/65">Fitness is rhythm, mobility, strength and functional capacity working as one connected system.</p></Reveal>
-          <Reveal delay={100} className="lg:col-span-7"><img src={justMoveAsset.url} alt="Just Move 2026 webinar artwork: hormones, habits and moving through life" className="w-full border border-ink/20 object-cover shadow-soft" /></Reveal>
+          <Reveal delay={100} className="lg:col-span-7"><img src={justMoveAsset} alt="Just Move 2026 webinar artwork: hormones, habits and moving through life" className="w-full border border-ink/20 object-cover shadow-soft" /></Reveal>
         </div>
       </section>
 
