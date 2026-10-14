@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { to: "/", label: "Home" },
   { to: "/events", label: "Events" },
   { to: "/just-move", label: "Just Move Series" },
+  { to: "/technogym-consultation", label: "Equipment & spaces" },
 ];
 
 export const Navbar: React.FC = () => {

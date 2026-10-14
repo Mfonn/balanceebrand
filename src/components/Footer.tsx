@@ -21,6 +21,7 @@ export const Footer: React.FC = () => (
           <li><Link to="/" className="hover:text-peach transition-colors">Home</Link></li>
           <li><Link to="/events" className="hover:text-peach transition-colors">Events</Link></li>
           <li><Link to="/just-move" className="hover:text-peach transition-colors">Just Move Series</Link></li>
+          <li><Link to="/technogym-consultation" className="hover:text-peach transition-colors">Equipment &amp; spaces</Link></li>
           <li><a href={SOCIAL.newsletter} target="_blank" rel="noreferrer noopener" className="hover:text-peach transition-colors">Newsletter</a></li>
         </ul>
       </div>
