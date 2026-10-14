@@ -9,6 +9,7 @@
 - [x] Reformer and tower Pilates scheduling entry point
 - [x] Just Move campaign artwork promoted; studio photography reduced to supporting thumbnails
 - [x] TenTS&Tonic recap replaced with the full newsletter article, images and links
+- [x] Technogym equipment and fitness-space consultation page added with supplied imagery, Reform brochure, and prefilled contact options
 - [ ] Verify GitHub Pages deployment after the user repository is connected
 
 ## Waiting on the user

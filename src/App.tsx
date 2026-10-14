@@ -17,6 +17,7 @@ import CreateEvent from "./pages/CreateEvent";
 import EditEvent from "./pages/EditEvent";
 import NotFound from "./pages/NotFound";
 import JustMove from "./pages/JustMove";
+import TechnogymConsultation from "./pages/TechnogymConsultation";
 
 const App = () => (
   <TooltipProvider>
@@ -27,6 +28,7 @@ const App = () => (
       <Route path="/services" element={<Services />} />
       <Route path="/events" element={<EventsPage />} />
       <Route path="/just-move" element={<JustMove />} />
+      <Route path="/technogym-consultation" element={<TechnogymConsultation />} />
       <Route path="/calendar" element={<EventsPage />} />
       <Route path="/event/tents-and-tonic" element={<TentsAndTonic />} />
       <Route path="/tents-and-tonic-recap" element={<TentsAndTonic />} />

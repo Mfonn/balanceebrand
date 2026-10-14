@@ -115,6 +115,33 @@
 @layer utilities {
   .text-balance { text-wrap: balance; }
 
+  .equipment-board {
+    position: relative;
+    isolation: isolate;
+    background-color: hsl(var(--cream));
+    background-image: radial-gradient(hsl(var(--ink) / 0.12) 0.7px, transparent 0.7px),
+      radial-gradient(ellipse at 18% 16%, hsl(var(--peach) / 0.22), transparent 26%),
+      radial-gradient(ellipse at 86% 42%, hsl(var(--gilt) / 0.12), transparent 24%);
+    background-size: 22px 22px, 100% 100%, 100% 100%;
+  }
+  .equipment-frame {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(180deg, hsl(var(--foreground) / 0.16), hsl(var(--border) / 0.55), transparent);
+    pointer-events: none;
+  }
+  .equipment-note { transform-origin: center; transition: transform 180ms ease, box-shadow 180ms ease; }
+  .equipment-note:hover, .equipment-note:focus-visible { transform: rotate(0deg) translateY(-3px); }
+  .equipment-polaroid { background: hsl(var(--card)); border: 1px solid hsl(var(--ink) / 0.13); padding: 0.7rem 0.7rem 1rem; box-shadow: var(--shadow-soft); }
+  .equipment-pin-left { transform: rotate(-1deg); }
+  .equipment-pin-right { transform: rotate(1deg); }
+  .equipment-group:hover, .equipment-group:focus-visible { transform: rotate(0deg) translateY(-4px); }
+  .equipment-detail > button[aria-label="Close"] { z-index: 2; background: hsl(var(--cream) / 0.92); color: hsl(var(--ink)); }
+
   /* Shimmer sweep used on calendar event days */
   .shimmer-day {
     position: relative;
