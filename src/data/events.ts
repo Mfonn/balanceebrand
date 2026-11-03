@@ -240,9 +240,9 @@ export const JUST_MOVE_VIDEO_URL = "https://youtu.be/-1qighMNXUY?si=a37tZDfB-iO4
 export const JUST_MOVE_EMBED_URL = "https://www.youtube-nocookie.com/embed/-1qighMNXUY";
 
 export const JUST_MOVE_PARTS = [
-  { number: "01", month: "September 2026", status: "Watch now", completed: true, videoUrl: JUST_MOVE_PART1_VIDEO_URL },
+  { number: "01", month: "September 2026", status: "Watch now", completed: true, videoUrl: JUST_MOVE_PART1_VIDEO_URL, title: "Hormones, habits and moving through life" },
   { number: "02", month: "October 2026", status: "Watch now", completed: true, videoUrl: JUST_MOVE_VIDEO_URL, title: "Bone Density, the Gym and Your Relationship with Weights" },
-  { number: "03", month: "November 2026", status: "Coming soon", completed: false },
+  { number: "03", month: "November 2026", status: "Coming soon", completed: false, videoUrl: "", title: "" },
 ] as const;
 
 /** Reformer and tower Pilates scheduling enquiry. */
