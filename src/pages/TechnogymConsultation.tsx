@@ -19,8 +19,10 @@ import functionalPhoto from "@/assets/equipment/equipment-studio-treadmills.webp
 import jointsPhoto from "@/assets/equipment/equipment-elliptical.webp";
 import restorePhoto from "@/assets/equipment/equipment-home-bike.webp";
 
+type GroupId = "strength" | "endurance" | "functional" | "joints" | "restore";
+
 type EquipmentGroup = {
-  id: string; name: string; tagline: string; summary: string;
+  id: GroupId; name: string; tagline: string; summary: string;
   image: string; alt: string; chip: string; goals: string[]; question: string; note?: string;
 };
 
@@ -82,8 +84,6 @@ const groups: EquipmentGroup[] = [
     question: "What kind of practice helps me feel more at home in my body?",
   },
 ];
-
-type GroupId = (typeof groups)[number]["id"];
 
 const consultationSchema = z.object({
   name: z.string().trim().min(1, "Please enter your name.").max(100, "Keep your name under 100 characters."),
