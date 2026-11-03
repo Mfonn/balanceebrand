@@ -19,7 +19,14 @@ import functionalPhoto from "@/assets/equipment/equipment-studio-treadmills.webp
 import jointsPhoto from "@/assets/equipment/equipment-elliptical.webp";
 import restorePhoto from "@/assets/equipment/equipment-home-bike.webp";
 
-const groups = [
+type GroupId = "strength" | "endurance" | "functional" | "joints" | "restore";
+
+type EquipmentGroup = {
+  id: GroupId; name: string; tagline: string; summary: string;
+  image: string; alt: string; chip: string; goals: string[]; question: string; note?: string;
+};
+
+const groups: EquipmentGroup[] = [
   {
     id: "strength",
     name: "BUILD STRENGTH",
@@ -76,9 +83,7 @@ const groups = [
     goals: ["Make room for mobility", "Pair strength with recovery", "Build a mind-body practice"],
     question: "What kind of practice helps me feel more at home in my body?",
   },
-] as const;
-
-type GroupId = (typeof groups)[number]["id"];
+];
 
 const consultationSchema = z.object({
   name: z.string().trim().min(1, "Please enter your name.").max(100, "Keep your name under 100 characters."),
@@ -337,9 +342,9 @@ const TechnogymConsultation: React.FC = () => {
                 ))}
               </ol>
               <a className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-forest underline decoration-terracotta underline-offset-4" href="/assets/equipment/technogym-reform-brochure.pdf" target="_blank" rel="noreferrer noopener">
-                View the Technogym Reform brochure <ArrowUpRight className="h-4 w-4" />
+                View the Technogym Reformer brochure <ArrowUpRight className="h-4 w-4" />
               </a>
-              <p className="mt-2 text-xs text-ink/55">A Reform product brochure; further catalogue choices can be shared during a consultation.</p>
+              <p className="mt-2 text-xs text-ink/55">A Reformer product brochure; further catalogue choices can be shared during a consultation.</p>
             </div>
 
             <div className="border border-ink/15 bg-cream/75 p-5 shadow-soft sm:p-8 lg:col-span-7">

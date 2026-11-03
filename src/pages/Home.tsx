@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";
 import { Button } from "@/components/ui/button";
 import { JUST_MOVE_VIDEO_URL, SOCIAL, WA_PILATES } from "@/data/events";
-import justMoveAsset from "@/assets/just-move-2026-webinar.png";
+import justMove2Asset from "@/assets/just-move-2026-webinar-2.png";
 import towerAsset from "@/assets/studio/studio-tower-wide.jpg";
 import reformerAsset from "@/assets/studio/studio-reformer-wide.jpg";
 
@@ -33,7 +33,7 @@ const Home: React.FC = () => (
               </div>
               <div className="lg:col-span-4">
                 <p className="max-w-md text-lg leading-relaxed text-ink/65">
-                  balance_ee explores how real bodies move—through education, practice and experiences that stay with you.
+                  Exploring Movement, Education and Experiences
                 </p>
                 <div className="mt-7 flex flex-wrap gap-3">
                   <Button asChild variant="editorial" size="lg"><Link to="/just-move">Enter Just Move <ArrowRight /></Link></Button>
@@ -48,19 +48,19 @@ const Home: React.FC = () => (
       <section className="px-4 pb-16 md:px-8 md:pb-24">
         <div className="mx-auto grid max-w-7xl gap-0 bg-ink text-cream lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
-            <img src={justMoveAsset} alt="Just Move 2026 webinar artwork: hormones, habits and moving through life" className="aspect-[4/3] h-full w-full object-cover" />
+            <img src={justMove2Asset} alt="Just Move II webinar artwork: bone density, the gym and your relationship with weights" className="aspect-[4/3] h-full w-full object-cover" />
           </Reveal>
           <Reveal delay={100} className="flex flex-col justify-between gap-16 border-l border-cream/15 p-7 lg:col-span-5 md:p-10 lg:p-12">
             <div>
               <div className="flex items-center justify-between border-b border-cream/20 pb-4">
                 <p className="text-xs uppercase tracking-[0.24em] text-peach">Just Move Series</p>
-                <span className="text-xs text-cream/50">01 / 03</span>
+                <span className="text-xs text-cream/50">02 / 03</span>
               </div>
               <h2 className="mt-8 font-display text-5xl leading-[0.95] sm:text-6xl">A three-part conversation about movement in real life.</h2>
-              <p className="mt-6 max-w-xl leading-relaxed text-cream/65">Part 01 is ready to watch. Parts 02 and 03 continue in October and November.</p>
+              <p className="mt-6 max-w-xl leading-relaxed text-cream/65">Parts 01 and 02 are ready to watch. Part 03 arrives in November.</p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button asChild className="bg-cream text-ink hover:bg-terracotta hover:text-cream" size="lg"><a href={JUST_MOVE_VIDEO_URL} target="_blank" rel="noreferrer noopener"><Play /> Watch Part 01</a></Button>
+              <Button asChild className="bg-cream text-ink hover:bg-terracotta hover:text-cream" size="lg"><a href={JUST_MOVE_VIDEO_URL} target="_blank" rel="noreferrer noopener"><Play /> Watch Part 02</a></Button>
               <Button asChild variant="outline" className="border-cream/40 bg-transparent text-cream hover:bg-cream hover:text-ink" size="lg"><Link to="/just-move">See the full series</Link></Button>
             </div>
           </Reveal>

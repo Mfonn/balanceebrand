@@ -234,13 +234,15 @@ export const WA_JUST_MOVE = wa(
   "Hi balance_ee — I'd like updates about the next Just Move webinar."
 );
 
-export const JUST_MOVE_VIDEO_URL = "https://youtu.be/-q5X2UNPJW0?si=ifc6RdaCOhCotVv4";
-export const JUST_MOVE_EMBED_URL = "https://www.youtube-nocookie.com/embed/-q5X2UNPJW0";
+export const JUST_MOVE_PART1_VIDEO_URL = "https://youtu.be/-q5X2UNPJW0?si=ifc6RdaCOhCotVv4";
+export const JUST_MOVE_PART1_EMBED_URL = "https://www.youtube-nocookie.com/embed/-q5X2UNPJW0";
+export const JUST_MOVE_VIDEO_URL = "https://youtu.be/-1qighMNXUY?si=a37tZDfB-iO45bno";
+export const JUST_MOVE_EMBED_URL = "https://www.youtube-nocookie.com/embed/-1qighMNXUY";
 
 export const JUST_MOVE_PARTS = [
-  { number: "01", month: "September 2026", status: "Watch now", completed: true },
-  { number: "02", month: "October 2026", status: "Coming soon", completed: false },
-  { number: "03", month: "November 2026", status: "Coming soon", completed: false },
+  { number: "01", month: "September 2026", status: "Watch now", completed: true, videoUrl: JUST_MOVE_PART1_VIDEO_URL, title: "Hormones, habits and moving through life" },
+  { number: "02", month: "October 2026", status: "Watch now", completed: true, videoUrl: JUST_MOVE_VIDEO_URL, title: "Bone Density, the Gym and Your Relationship with Weights" },
+  { number: "03", month: "November 2026", status: "Coming soon", completed: false, videoUrl: "", title: "" },
 ] as const;
 
 /** Reformer and tower Pilates scheduling enquiry. */
