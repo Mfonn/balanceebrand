@@ -19,7 +19,12 @@ import functionalPhoto from "@/assets/equipment/equipment-studio-treadmills.webp
 import jointsPhoto from "@/assets/equipment/equipment-elliptical.webp";
 import restorePhoto from "@/assets/equipment/equipment-home-bike.webp";
 
-const groups = [
+type EquipmentGroup = {
+  id: string; name: string; tagline: string; summary: string;
+  image: string; alt: string; chip: string; goals: string[]; question: string; note?: string;
+};
+
+const groups: EquipmentGroup[] = [
   {
     id: "strength",
     name: "BUILD STRENGTH",
