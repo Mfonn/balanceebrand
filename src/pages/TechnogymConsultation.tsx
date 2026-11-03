@@ -81,7 +81,7 @@ const groups: EquipmentGroup[] = [
     goals: ["Make room for mobility", "Pair strength with recovery", "Build a mind-body practice"],
     question: "What kind of practice helps me feel more at home in my body?",
   },
-] as const;
+];
 
 type GroupId = (typeof groups)[number]["id"];
 
