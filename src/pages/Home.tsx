@@ -33,7 +33,7 @@ const Home: React.FC = () => (
               </div>
               <div className="lg:col-span-4">
                 <p className="max-w-md text-lg leading-relaxed text-ink/65">
-                  balance_ee explores how real bodies move—through education, practice and experiences that stay with you.
+                  Exploring Movement, Education and Experiences
                 </p>
                 <div className="mt-7 flex flex-wrap gap-3">
                   <Button asChild variant="editorial" size="lg"><Link to="/just-move">Enter Just Move <ArrowRight /></Link></Button>
