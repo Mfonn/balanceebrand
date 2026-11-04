@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";
@@ -234,9 +235,10 @@ const TentsAndTonic: React.FC = () => {
 
               <Reveal>
                 <aside className="border-y border-ink/20 py-10">
-                  <p className="font-display text-3xl italic leading-snug">
-                    P.S. — I’m building something new. If you’ve got two minutes and an opinion, <ExternalTextLink href="https://docs.google.com/forms/d/e/1FAIpQLSfYlkJvLvTncmpFuBVQcBy6a09hk1qSTq4AGvME0qP5-DbwNw/viewform?usp=publish-editor">I’d love to hear it</ExternalTextLink>.
-                  </p>
+                  <Link to="/fitness-soiree-recap" className="inline-flex items-baseline gap-2 font-display text-3xl italic leading-snug text-terracotta transition-colors hover:text-ink">
+                    Check our Fitness Soirée recap
+                    <ArrowUpRight className="h-5 w-5 translate-y-0.5" aria-hidden="true" />
+                  </Link>
                   <p className="mt-7 text-sm leading-relaxed text-ink/60">
                     Balance_ee — Abuja. <a href="https://balanceee.com.ng/" className="underline underline-offset-4">balanceee.com.ng</a> · <ExternalTextLink href="https://www.instagram.com/balance_ee/">@balance_ee</ExternalTextLink> · <ExternalTextLink href="https://www.youtube.com/shorts/muXiYgzoze0">YouTube @Balance_ee</ExternalTextLink>
                   </p>

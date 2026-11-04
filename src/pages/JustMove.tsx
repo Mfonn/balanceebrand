@@ -5,7 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";
 import { Button } from "@/components/ui/button";
-import { JUST_MOVE_EMBED_URL, JUST_MOVE_PART1_VIDEO_URL, JUST_MOVE_PARTS, JUST_MOVE_VIDEO_URL, SOCIAL } from "@/data/events";
+import { JUST_MOVE_EMBED_URL, JUST_MOVE_PART1_EMBED_URL, JUST_MOVE_PART1_VIDEO_URL, JUST_MOVE_PARTS, JUST_MOVE_VIDEO_URL, SOCIAL } from "@/data/events";
 import justMove2Asset from "@/assets/just-move-2026-webinar-2.png";
 
 const JustMove: React.FC = () => (
@@ -24,6 +24,17 @@ const JustMove: React.FC = () => (
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12">
           <Reveal className="lg:col-span-8"><div className="overflow-hidden bg-ink"><div className="aspect-video"><iframe className="h-full w-full" src={JUST_MOVE_EMBED_URL} title="Just Move Part 02 webinar recording" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /></div><div className="flex flex-col gap-5 border-t border-cream/15 p-6 text-cream sm:flex-row sm:items-end sm:justify-between md:p-8"><div><p className="text-[11px] uppercase tracking-[0.24em] text-peach">Part 02 · October 2026</p><h2 className="mt-2 font-display text-4xl">Bone density, the gym and your relationship with weights</h2></div><Button asChild variant="outline" className="border-cream/40 bg-transparent text-cream hover:bg-cream hover:text-ink"><a href={JUST_MOVE_VIDEO_URL} target="_blank" rel="noreferrer noopener">Watch on YouTube <ArrowUpRight /></a></Button></div></div></Reveal>
           <Reveal delay={90} className="lg:col-span-4"><div className="h-full border-t-2 border-terracotta bg-cream p-7 md:p-9"><p className="text-xs uppercase tracking-[0.22em] text-terracotta">Part 02</p><h2 className="mt-5 font-display text-4xl leading-none">Strong bones are built, not wished for.</h2><p className="mt-5 leading-relaxed text-ink/65">This session is about bone density and your relationship with weights — why load matters, and how to make the gym something your body thanks you for.</p><a href={JUST_MOVE_PART1_VIDEO_URL} target="_blank" rel="noreferrer noopener" className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-terracotta"><Play className="h-4 w-4" /> Also watch Part 01</a></div></Reveal>
+        </div>
+      </section>
+
+      <section id="part-01" className="px-4 py-16 md:px-8 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="overflow-hidden bg-ink">
+              <div className="aspect-video"><iframe className="h-full w-full" src={JUST_MOVE_PART1_EMBED_URL} title="Just Move Part 01 webinar recording" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /></div>
+              <div className="flex flex-col gap-5 border-t border-cream/15 p-6 text-cream sm:flex-row sm:items-end sm:justify-between md:p-8"><div><p className="text-[11px] uppercase tracking-[0.24em] text-peach">Part 01 · September 2026</p><h2 className="mt-2 font-display text-4xl">Hormones, habits and moving through life</h2></div><Button asChild variant="outline" className="border-cream/40 bg-transparent text-cream hover:bg-cream hover:text-ink"><a href={JUST_MOVE_PART1_VIDEO_URL} target="_blank" rel="noreferrer noopener">Watch on YouTube <ArrowUpRight /></a></Button></div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

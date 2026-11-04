@@ -8,6 +8,7 @@ import Learn from "./pages/Learn";
 import Booking from "./pages/Booking";
 import Services from "./pages/Services";
 import TentsAndTonic from "./pages/TentsAndTonic";
+import FitnessSoireeRecap from "./pages/FitnessSoireeRecap";
 import WellnessAI from "./pages/WellnessAI";
 import About from "./pages/About";
 import Auth from "./pages/Auth";
@@ -32,6 +33,7 @@ const App = () => (
       <Route path="/calendar" element={<EventsPage />} />
       <Route path="/event/tents-and-tonic" element={<TentsAndTonic />} />
       <Route path="/tents-and-tonic-recap" element={<TentsAndTonic />} />
+      <Route path="/fitness-soiree-recap" element={<FitnessSoireeRecap />} />
       <Route path="/wellness-ai" element={<WellnessAI />} />
       <Route path="/learn" element={<Learn />} />
       <Route path="/booking" element={<Booking />} />

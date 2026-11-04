@@ -6,10 +6,17 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";
 import { Button } from "@/components/ui/button";
-import { PAST_EVENTS, JUST_MOVE_VIDEO_URL } from "@/data/events";
+import { JUST_MOVE_VIDEO_URL, getEventBySlug } from "@/data/events";
+
+const RECAP_LINKS: Record<string, string> = {
+  "tents-and-tonic": "/tents-and-tonic-recap",
+  "fitness-soiree": "/fitness-soiree-recap",
+};
+
+const ORDER = ["tents-and-tonic", "fitness-soiree", "book-club"];
 
 const EventsPage: React.FC = () => {
-  const visibleEvents = PAST_EVENTS.filter((event) => event.id !== "just-move");
+  const visibleEvents = ORDER.map((id) => getEventBySlug(id)).filter(Boolean);
   return (
     <div className="min-h-screen bg-cream text-ink">
       <Helmet><title>Events Archive — balance_ee Abuja</title><meta name="description" content="Explore past balance_ee movement and wellness gatherings in Abuja, plus the completed Just Move webinar." /><link rel="canonical" href="/events" /></Helmet>
@@ -25,10 +32,9 @@ const EventsPage: React.FC = () => {
 
             <div className="mt-16 border-t border-ink/25">
               {visibleEvents.map((event, index) => {
-                const recapLink = event.id === "tents-and-tonic" ? "/tents-and-tonic-recap" : undefined;
-                return <Reveal key={event.id} delay={index * 70}><article className="grid gap-6 border-b border-ink/20 py-8 md:grid-cols-[180px_1fr_auto] md:items-center"><img src={event.image} alt="" className="aspect-[4/3] w-full object-cover grayscale transition duration-500 hover:grayscale-0" /><div><p className="text-[10px] uppercase tracking-[0.2em] text-terracotta">{event.date}</p><h2 className="mt-2 font-display text-4xl">{event.title}</h2><p className="mt-2 text-sm text-ink/60">{event.tagline}</p></div>{recapLink ? <Link to={recapLink} className="inline-flex items-center gap-2 text-sm font-medium">View recap <ArrowUpRight className="h-4 w-4" /></Link> : <span className="text-xs uppercase tracking-[0.18em] text-ink/40">Past event</span>}</article></Reveal>;
+                const recapLink = RECAP_LINKS[event.id];
+                return <Reveal key={event.id} delay={index * 70}><article className="grid gap-6 border-b border-ink/20 py-8 md:grid-cols-[180px_1fr_auto] md:items-center"><img src={event.image} alt={event.title} className="aspect-[4/3] w-full object-cover grayscale transition duration-500 hover:grayscale-0" /><div><p className="text-[10px] uppercase tracking-[0.2em] text-terracotta">{event.date}</p><h2 className="mt-2 font-display text-4xl">{event.title}</h2><p className="mt-2 text-sm text-ink/60">{event.tagline}</p></div>{recapLink ? <Link to={recapLink} className="inline-flex items-center gap-2 text-sm font-medium">View recap <ArrowUpRight className="h-4 w-4" /></Link> : <span className="text-xs uppercase tracking-[0.18em] text-ink/40">Past event</span>}</article></Reveal>;
               })}
-              <Reveal delay={150}><article className="grid gap-6 border-b border-ink/20 py-8 md:grid-cols-[180px_1fr_auto] md:items-center"><div className="flex aspect-[4/3] items-center justify-center bg-terracotta font-display text-5xl text-cream">T&amp;T</div><div><p className="text-[10px] uppercase tracking-[0.2em] text-terracotta">31 July – 2 August 2026</p><h2 className="mt-2 font-display text-4xl">TenTS&amp;Tonic</h2><p className="mt-2 text-sm text-ink/60">A wellness camping weekend in Abuja.</p></div><Link to="/tents-and-tonic-recap" className="inline-flex items-center gap-2 text-sm font-medium">View recap <ArrowUpRight className="h-4 w-4" /></Link></article></Reveal>
             </div>
           </div>
         </section>
