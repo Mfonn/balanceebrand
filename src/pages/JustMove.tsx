@@ -5,7 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/balance/Reveal";
 import { Button } from "@/components/ui/button";
-import { JUST_MOVE_EMBED_URL, JUST_MOVE_PART1_VIDEO_URL, JUST_MOVE_PARTS, JUST_MOVE_VIDEO_URL, SOCIAL } from "@/data/events";
+import { JUST_MOVE_EMBED_URL, JUST_MOVE_PART1_EMBED_URL, JUST_MOVE_PART1_VIDEO_URL, JUST_MOVE_PARTS, JUST_MOVE_VIDEO_URL, SOCIAL } from "@/data/events";
 import justMove2Asset from "@/assets/just-move-2026-webinar-2.png";
 
 const JustMove: React.FC = () => (

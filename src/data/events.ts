@@ -234,7 +234,7 @@ export const WA_JUST_MOVE = wa(
   "Hi balance_ee — I'd like updates about the next Just Move webinar."
 );
 
-export const JUST_MOVE_PART1_VIDEO_URL = "https://youtu.be/-q5X2UNPJW0?si=ifc6RdaCOhCotVv4";
+export const JUST_MOVE_PART1_VIDEO_URL = "https://youtu.be/-q5X2UNPJW0?si=GsVYNaeaYkp71S4S";
 export const JUST_MOVE_PART1_EMBED_URL = "https://www.youtube-nocookie.com/embed/-q5X2UNPJW0";
 export const JUST_MOVE_VIDEO_URL = "https://youtu.be/-1qighMNXUY?si=a37tZDfB-iO45bno";
 export const JUST_MOVE_EMBED_URL = "https://www.youtube-nocookie.com/embed/-1qighMNXUY";
