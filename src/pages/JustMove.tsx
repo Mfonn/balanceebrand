@@ -27,6 +27,17 @@ const JustMove: React.FC = () => (
         </div>
       </section>
 
+      <section id="part-01" className="px-4 py-16 md:px-8 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="overflow-hidden bg-ink">
+              <div className="aspect-video"><iframe className="h-full w-full" src={JUST_MOVE_PART1_EMBED_URL} title="Just Move Part 01 webinar recording" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /></div>
+              <div className="flex flex-col gap-5 border-t border-cream/15 p-6 text-cream sm:flex-row sm:items-end sm:justify-between md:p-8"><div><p className="text-[11px] uppercase tracking-[0.24em] text-peach">Part 01 · September 2026</p><h2 className="mt-2 font-display text-4xl">Hormones, habits and moving through life</h2></div><Button asChild variant="outline" className="border-cream/40 bg-transparent text-cream hover:bg-cream hover:text-ink"><a href={JUST_MOVE_PART1_VIDEO_URL} target="_blank" rel="noreferrer noopener">Watch on YouTube <ArrowUpRight /></a></Button></div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="bg-ink px-4 py-16 text-cream md:px-8 md:py-24">
         <div className="mx-auto max-w-7xl">
           <Reveal><p className="text-xs uppercase tracking-[0.24em] text-peach">Series index</p><h2 className="mt-3 max-w-3xl font-display text-5xl leading-none sm:text-6xl">Three conversations. One connected body.</h2></Reveal>
