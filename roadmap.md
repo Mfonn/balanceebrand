@@ -18,5 +18,10 @@
 ## Waiting on the user
 - Part 03 title, exact date, time and registration details
 
+## In progress
+- [x] Resolve the FitnessSoireeRecap import runtime error and re-check preview routes
+- [ ] Verify GitHub Pages serves the built site and direct route pages after the deployment workflow runs
+- [ ] Connect the project to the user's GitHub repository and set Pages source to GitHub Actions (requires user action in project settings)
+
 ## Later
 - TenTS&Tonic recap: add videos when available
