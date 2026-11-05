@@ -26,8 +26,16 @@ jobs:
         run: npm ci || npm install
       - name: Build
         run: npm run build
-      - name: SPA 404 fallback
-        run: cp dist/index.html dist/404.html
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Create direct route entry points
+        run: |
+          touch dist/.nojekyll
+          cp dist/index.html dist/404.html
+          for route in events just-move services technogym-consultation calendar tents-and-tonic-recap fitness-soiree-recap wellness-ai learn booking about; do
+            mkdir -p "dist/$route"
+            cp dist/index.html "dist/$route/index.html"
+          done
       - name: Ensure CNAME
         run: echo "balanceee.com.ng" > dist/CNAME
       - uses: actions/upload-pages-artifact@v3

@@ -19,8 +19,9 @@
 - Part 03 title, exact date, time and registration details
 
 ## In progress
-- [ ] Resolve the FitnessSoireeRecap import runtime error and re-check preview routes
-- [ ] Verify that GitHub Pages deployment includes the latest recap and Just Move changes; report any external deployment blocker clearly
+- [x] Resolve the FitnessSoireeRecap import runtime error and re-check preview routes
+- [ ] Verify GitHub Pages serves the built site and direct route pages after the deployment workflow runs
+- [ ] Connect the project to the user's GitHub repository and set Pages source to GitHub Actions (requires user action in project settings)
 
 ## Later
 - TenTS&Tonic recap: add videos when available
