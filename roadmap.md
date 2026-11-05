@@ -18,5 +18,9 @@
 ## Waiting on the user
 - Part 03 title, exact date, time and registration details
 
+## In progress
+- [ ] Resolve the FitnessSoireeRecap import runtime error and re-check preview routes
+- [ ] Verify that GitHub Pages deployment includes the latest recap and Just Move changes; report any external deployment blocker clearly
+
 ## Later
 - TenTS&Tonic recap: add videos when available
